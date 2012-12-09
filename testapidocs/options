@@ -1,5 +1,5 @@
 -classpath
-'c:/Users/Rich/git/reb4j/target/classes;c:/Users/Rich/git/reb4j/target/test-classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/test-classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j.scala/target/classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j.scala/target/test-classes;C:/Users/Rich/.m2/repository/org/scala-lang/scala-library/2.9.2/scala-library-2.9.2.jar;C:/Users/Rich/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar;C:/Users/Rich/.m2/repository/org/scalatest/scalatest_2.9.2/1.8/scalatest_2.9.2-1.8.jar;C:/Users/Rich/.m2/repository/junit/junit/4.10/junit-4.10.jar'
+'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/test-classes;C:/Users/Rich/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar;C:/Users/Rich/.m2/repository/junit/junit/4.10/junit-4.10.jar'
 -encoding
 'UTF-8'
 -public
@@ -11,16 +11,14 @@
 -charset
 'UTF-8'
 -d
-'c:/Users/Rich/git/reb4j/target/site/testapidocs'
+'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/site/testapidocs'
 -docencoding
 'UTF-8'
 -doctitle
-'Regular Expression Builder for Java 1.1.0-SNAPSHOT Test API'
--link
-'../apidocs'
+'reb4j Java Library 1.1.0-SNAPSHOT Test API'
 -linkoffline
-'http://download.oracle.com/javase/6/docs/api' 'c:/Users/Rich/git/reb4j/target/javadoc-bundle-options'
+'http://download.oracle.com/javase/6/docs/api' 'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'Regular Expression Builder for Java 1.1.0-SNAPSHOT Test API'
+'reb4j Java Library 1.1.0-SNAPSHOT Test API'
