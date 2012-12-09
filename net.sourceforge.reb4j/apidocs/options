@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/classes'
+-encoding
+'UTF-8'
+-public
+-sourcepath
+'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2012 <a href="https://github.com/reggert">Richard W. Eggert II</a>. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'reb4j Java Library 1.1.0-SNAPSHOT API'
+-linkoffline
+'http://download.oracle.com/javase/6/docs/api' 'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'reb4j Java Library 1.1.0-SNAPSHOT API'
