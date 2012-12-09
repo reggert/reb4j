@@ -17,7 +17,7 @@
   <body class="composite">
     <div id="banner">
                     <div id="bannerLeft">
-                reb4j Java Library
+                reb4j Scala Library
                 </div>
                     <div class="clear">
         <hr/>
@@ -103,7 +103,7 @@
             </li>
               </ul>
         </li>
-                                                                                                                                                                                                                                      <li class="collapsed">
+                                                                                                                                                              <li class="collapsed">
                           <a href="project-reports.html" title="Project Reports">Project Reports</a>
                   </li>
           </ul>
@@ -116,31 +116,18 @@
     </div>
     <div id="bodyColumn">
       <div id="contentBox">
-        <div class="section"><h2>About reb4j<a name="About_reb4j"></a></h2><p>The purpose of <b>reb4j</b> is to provide a pure Java wrapper around the regular expression syntax provided by the JRE's <a class="externalLink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html">java.util.regex.Pattern</a> class.</p><p><b>reb4j</b> provides the following benefits over writing regular expressions directly:</p><ul><li>The <b>reb4j</b> API guarantees proper expression syntax. If the Java code compiles, the regular expression will compile at runtime. In other words, it is not necessary to deal with <a class="externalLink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/PatternSyntaxException.html">PatternSyntaxException</a>s. You will know right away if there is a syntax error in your regular expression, rather than having to wait until runtime to find out. </li><li>The <b>reb4j</b> API enables composition of subexpressions. Complex expressions can be broken into manageable pieces, each of which can be independently tested and reused.</li><li>Patterns built using <b>reb4j</b> are inherently self-documenting (at least, moreso than regular expression syntax). Since composition is supported, each subexpression can be given a meaningful name that describes what it represents.</li><li>Since <b>reb4j</b> hides regular expression syntax from the developer, there is no need to memorize (or repeatedly look up) what symbols represent which expression constructs, nor is it necessary to &quot;double-escape&quot; strings (i.e., escaped once to override how the pattern compiler interprets special characters, and escaped again to fit into Java string literals).</li></ul><p>Of course, this comes at the cost of a modest performance penalty at startup as <b>reb4j</b> builds strings to pass into the pattern compiler, but the time required for this processing is dwarfed by the time spent by the compiler itself and should not be noticeable.</p><p>As a quick example, here's one way to use <b>reb4j</b> to describe a pattern that validates the format of a dotted decimal IP address (ensuring that each octet is a decimal value between 0 and 255):</p><div><pre>        final Regex oneDigitOctet = 
-                CharClass.POSIX_DIGIT;
-        final Regex twoDigitOctet = 
-                CharClass.range('1', '9').then(CharClass.POSIX_DIGIT);
-        final Regex oneHundredsOctet =
-                Regex.literal(&quot;1&quot;).then(CharClass.POSIX_DIGIT.repeat(2));
-        final Regex lowTwoHundredsOctet =
-                Regex.literal(&quot;2&quot;).then(CharClass.range('0', '4')).then(CharClass.POSIX_DIGIT);
-        final Regex highTwoHundredsOctet =
-                Regex.literal(&quot;25&quot;).then(CharClass.range('0', '5'));
-        final Regex octet =
-                Regex.or(
-                                oneDigitOctet, 
-                                twoDigitOctet, 
-                                oneHundredsOctet, 
-                                lowTwoHundredsOctet, 
-                                highTwoHundredsOctet
-                        );
-        final Regex dottedDecimalIPAddress =
-                octet.then(Regex.literal(&quot;.&quot;)).repeat(3).then(octet);
+        <div class="section"><h2>About reb4j<a name="About_reb4j"></a></h2><p>The purpose of <b>reb4j</b> is to provide a pure Java wrapper around the regular expression syntax provided by the JRE's <a class="externalLink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html">java.util.regex.Pattern</a> class.</p><p><b>reb4j</b> provides the following benefits over writing regular expressions directly:</p><ul><li>The <b>reb4j</b> API guarantees proper expression syntax. If the Java code compiles, the regular expression will compile at runtime. In other words, it is not necessary to deal with <a class="externalLink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/PatternSyntaxException.html">PatternSyntaxException</a>s. You will know right away if there is a syntax error in your regular expression, rather than having to wait until runtime to find out. </li><li>The <b>reb4j</b> API enables composition of subexpressions. Complex expressions can be broken into manageable pieces, each of which can be independently tested and reused.</li><li>Patterns built using <b>reb4j</b> are inherently self-documenting (at least, moreso than regular expression syntax). Since composition is supported, each subexpression can be given a meaningful name that describes what it represents.</li><li>Since <b>reb4j</b> hides regular expression syntax from the developer, there is no need to memorize (or repeatedly look up) what symbols represent which expression constructs, nor is it necessary to &quot;double-escape&quot; strings (i.e., escaped once to override how the pattern compiler interprets special characters, and escaped again to fit into Java string literals).</li></ul><p>Of course, this comes at the cost of a modest performance penalty at startup as <b>reb4j</b> builds strings to pass into the pattern compiler, but the time required for this processing is dwarfed by the time spent by the compiler itself and should not be noticeable.</p><p>As a quick example, here's one way to use <b>reb4j</b> to describe a pattern that validates the format of a dotted decimal IP address (ensuring that each octet is a decimal value between 0 and 255):</p><div><pre>        val oneDigitOctet = Posix.Digit
+        val twoDigitOctet = range('1', '9') ~~ Posix.Digit
+        val oneHundredsOctet = Literal('1') ~~ (Posix.Digit repeat 2)
+        val lowTwoHundredsOctet = Literal('2') ~~ range('0', '4') ~~ Posix.Digit
+        val highTwoHundredsOctet = Literal(&quot;25&quot;) ~~ range('0', '5')
+        val octet = oneDigitOctet||twoDigitOctet||oneHundredsOctet||lowTwoHundredsOctet||highTwoHundredsOctet
+        val dottedDecimalIPAddress = octet ~~ ((Literal('.') ~~ octet) repeat 3)
                 
-        final Pattern pattern = dottedDecimalIPAddress.toPattern();
-        String input = &quot;10.10.1.204&quot;;
-        boolean valid = pattern.matcher(input).matches();
-</pre></div><p>For reference, the generated regular expression looks like this (note that <b>reb4j</b> makes liberal use of &quot;non-capturing groups&quot;):</p><div><pre>(?:(?:(?:(?:\p{Digit}|(?:[1-9]\p{Digit})|(?:(?:1)(?:\p{Digit}{2}))|(?:(?:(?:2)[0-4])\p{Digit})|(?:(?:25)[0-5]))(?:\.)){3})(?:\p{Digit}|(?:[1-9]\p{Digit})|(?:(?:1)(?:\p{Digit}{2}))|(?:(?:(?:2)[0-4])\p{Digit})|(?:(?:25)[0-5])))
+        val pattern = dottedDecimalIPAddress.toPattern
+        val input = &quot;10.10.1.204&quot;
+        val valid = pattern.matcher(input).matches()
+</pre></div><p>For reference, the generated regular expression looks like this:</p><div><pre>(?:\p{Digit}|[1-9]\p{Digit}|1\p{Digit}{2}|2[0-4]\p{Digit}|25[0-5])(?:\.(?:\p{Digit}|[1-9]\p{Digit}|1\p{Digit}{2}|2[0-4]\p{Digit}|25[0-5])){3}
 </pre></div></div>
       </div>
     </div>
