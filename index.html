@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>About</title>
+    <title></title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -17,7 +17,7 @@
   <body class="composite">
     <div id="banner">
                     <div id="bannerLeft">
-                Regular Expression Builder for Java
+                reb4j Java Library
                 </div>
                     <div class="clear">
         <hr/>
@@ -25,15 +25,12 @@
     </div>
     <div id="breadcrumbs">
             
-        
-                <div class="xleft">
-        <span id="publishDate">Last Published: 2012-12-09</span>
-                  &nbsp;| <span id="projectVersion">Version: 1.1.0-SNAPSHOT</span>
-                      </div>
-            <div class="xright">                    <a href="./" title="Regular Expression Builder for Java">Regular Expression Builder for Java</a>
-              
-        
-      </div>
+                
+                  <div class="xright">        
+                
+                 <span id="publishDate">Last Published: 2012-12-09</span>
+              &nbsp;| <span id="projectVersion">Version: 1.1.0-SNAPSHOT</span>
+            </div>
       <div class="clear">
         <hr/>
       </div>
@@ -41,19 +38,25 @@
     <div id="leftColumn">
       <div id="navcolumn">
              
-        
-                                          <h5>Modules</h5>
+                
+                                <h5>Overview</h5>
                   <ul>
                   <li class="none">
-                          <a href="net.sourceforge.reb4j/index.html" title="reb4j Java Library">reb4j Java Library</a>
+            <strong>Introduction</strong>
+          </li>
+                  <li class="none">
+                          <a href="usage.html" title="Usage">Usage</a>
             </li>
                   <li class="none">
-                          <a href="net.sourceforge.reb4j.scala/index.html" title="reb4j Scala Library">reb4j Scala Library</a>
+                          <a href="download.html" title="Download">Download</a>
+            </li>
+                  <li class="none">
+                          <a href="https://sourceforge.net/projects/reb4j/" class="externalLink" title="SourceForge Project">SourceForge Project</a>
             </li>
           </ul>
                        <h5>Project Documentation</h5>
                   <ul>
-                                                                                                                                                                                                                                                                                                                                          <li class="expanded">
+                                                                                                                                                                                                                                                                                                                        <li class="expanded">
                           <a href="project-info.html" title="Project Information">Project Information</a>
                     <ul>
                       <li class="none">
@@ -96,14 +99,11 @@
                           <a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
             </li>
                       <li class="none">
-                          <a href="modules.html" title="Project Modules">Project Modules</a>
-            </li>
-                      <li class="none">
                           <a href="project-summary.html" title="Project Summary">Project Summary</a>
             </li>
               </ul>
         </li>
-                                                                                                                                            <li class="collapsed">
+                                                                                                                                                                                                                                      <li class="collapsed">
                           <a href="project-reports.html" title="Project Reports">Project Reports</a>
                   </li>
           </ul>
@@ -111,16 +111,37 @@
         <img class="poweredBy" alt="Built by Maven" src="./images/logos/maven-feather.png" />
       </a>
                    
-        
+                
             </div>
     </div>
     <div id="bodyColumn">
       <div id="contentBox">
-        <div class="section"><h2>About Regular Expression Builder for Java<a name="About_Regular_Expression_Builder_for_Java"></a></h2><a name="About_Regular_Expression_Builder_for_Java"></a><p>The purpose of reb4j is to provide a pure Java wrapper around
-		the regular expression syntax provided by the JRE's 
-		java.util.regex.Pattern class in order to facilitate programmatic
-		construction of regular expressions while taking advantage of
-		compile-time syntax checking.</p></div>
+        <div class="section"><h2>About reb4j<a name="About_reb4j"></a></h2><p>The purpose of <b>reb4j</b> is to provide a pure Java wrapper around the regular expression syntax provided by the JRE's <a class="externalLink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html">java.util.regex.Pattern</a> class.</p><p><b>reb4j</b> provides the following benefits over writing regular expressions directly:</p><ul><li>The <b>reb4j</b> API guarantees proper expression syntax. If the Java code compiles, the regular expression will compile at runtime. In other words, it is not necessary to deal with <a class="externalLink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/PatternSyntaxException.html">PatternSyntaxException</a>s. You will know right away if there is a syntax error in your regular expression, rather than having to wait until runtime to find out. </li><li>The <b>reb4j</b> API enables composition of subexpressions. Complex expressions can be broken into manageable pieces, each of which can be independently tested and reused.</li><li>Patterns built using <b>reb4j</b> are inherently self-documenting (at least, moreso than regular expression syntax). Since composition is supported, each subexpression can be given a meaningful name that describes what it represents.</li><li>Since <b>reb4j</b> hides regular expression syntax from the developer, there is no need to memorize (or repeatedly look up) what symbols represent which expression constructs, nor is it necessary to &quot;double-escape&quot; strings (i.e., escaped once to override how the pattern compiler interprets special characters, and escaped again to fit into Java string literals).</li></ul><p>Of course, this comes at the cost of a modest performance penalty at startup as <b>reb4j</b> builds strings to pass into the pattern compiler, but the time required for this processing is dwarfed by the time spent by the compiler itself and should not be noticeable.</p><p>As a quick example, here's one way to use <b>reb4j</b> to describe a pattern that validates the format of a dotted decimal IP address (ensuring that each octet is a decimal value between 0 and 255):</p><div><pre>        final Regex oneDigitOctet = 
+                CharClass.POSIX_DIGIT;
+        final Regex twoDigitOctet = 
+                CharClass.range('1', '9').then(CharClass.POSIX_DIGIT);
+        final Regex oneHundredsOctet =
+                Regex.literal(&quot;1&quot;).then(CharClass.POSIX_DIGIT.repeat(2));
+        final Regex lowTwoHundredsOctet =
+                Regex.literal(&quot;2&quot;).then(CharClass.range('0', '4')).then(CharClass.POSIX_DIGIT);
+        final Regex highTwoHundredsOctet =
+                Regex.literal(&quot;25&quot;).then(CharClass.range('0', '5'));
+        final Regex octet =
+                Regex.or(
+                                oneDigitOctet, 
+                                twoDigitOctet, 
+                                oneHundredsOctet, 
+                                lowTwoHundredsOctet, 
+                                highTwoHundredsOctet
+                        );
+        final Regex dottedDecimalIPAddress =
+                octet.then(Regex.literal(&quot;.&quot;)).repeat(3).then(octet);
+                
+        final Pattern pattern = dottedDecimalIPAddress.toPattern();
+        String input = &quot;10.10.1.204&quot;;
+        boolean valid = pattern.matcher(input).matches();
+</pre></div><p>For reference, the generated regular expression looks like this (note that <b>reb4j</b> makes liberal use of &quot;non-capturing groups&quot;):</p><div><pre>(?:(?:(?:(?:\p{Digit}|(?:[1-9]\p{Digit})|(?:(?:1)(?:\p{Digit}{2}))|(?:(?:(?:2)[0-4])\p{Digit})|(?:(?:25)[0-5]))(?:\.)){3})(?:\p{Digit}|(?:[1-9]\p{Digit})|(?:(?:1)(?:\p{Digit}{2}))|(?:(?:(?:2)[0-4])\p{Digit})|(?:(?:25)[0-5])))
+</pre></div></div>
       </div>
     </div>
     <div class="clear">
@@ -131,7 +152,7 @@
               Copyright &#169;                    2012
                         <a href="http://reb4j.sourceforge.net">reb4j Project</a>.
             All Rights Reserved.      
-        
+                
                   </div>
       <div class="clear">
         <hr/>
