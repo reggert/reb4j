@@ -380,7 +380,11 @@ of times, using reluctant matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated at least the
 specified minimum number of times, using greedy matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated at least the
 specified minimum number of times, using greedy matching.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>
+	the minimum number of times that the pattern may be repeated;
+	must be be &gt;= 0;</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>
+	if <var>n</var> &lt; 0.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#atLeastOnce" data-isabs="false">
       <a id="atLeastOnce:Quantified"></a>
       <h4 class="signature">
@@ -443,7 +447,11 @@ once, using reluctant matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated at least the
 specified minimum number of times, using possessive matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated at least the
 specified minimum number of times, using possessive matching.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>
+	the minimum number of times that the pattern may be repeated;
+	must be be &gt;= 0;</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>
+	if <var>n</var> &lt; 0.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#atLeastReluctantly" data-isabs="false">
       <a id="atLeastReluctantly(Int):Quantified"></a>
       <h4 class="signature">
@@ -458,7 +466,11 @@ specified minimum number of times, using possessive matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated at least the
 specified minimum number of times, using reluctant matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated at least the
 specified minimum number of times, using reluctant matching.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>
+	the minimum number of times that the pattern may be repeated;
+	must be be &gt;= 0;</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>
+	if <var>n</var> &lt; 0.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.LineEnd#canEqual" data-isabs="false">
       <a id="canEqual(Any):Boolean"></a>
       <h4 class="signature">
@@ -763,8 +775,12 @@ expression.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated a number of
 times within the specified range, using greedy matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated a number of
 times within the specified range, using greedy matching.
-</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>the minimum number of times that may be repeated.</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum number of times that may be repeated.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>
+	the minimum number of times that the pattern may be repeated;
+	must be &gt;= 0.</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum number of times that the pattern may be repeated;
+	must be &gt;= <var>min</var>.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>
+	if <var>min</var> &lt; 0 or <var>max</var> &lt; <var>min</var>.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#repeat" data-isabs="false">
       <a id="repeat(Int):Quantified"></a>
       <h4 class="signature">
@@ -779,7 +795,10 @@ times within the specified range, using greedy matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated the specified
 number of times, using greedy matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated the specified
 number of times, using greedy matching.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>
+	the exact number of times the pattern must be repeated for the
+	quantified expression to match; must be &gt;= 0.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if n &lt; 0.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#repeatPossessively" data-isabs="false">
       <a id="repeatPossessively(Int,Int):Quantified"></a>
       <h4 class="signature">
@@ -794,8 +813,12 @@ number of times, using greedy matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated a number of
 times within the specified range, using possessive matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated a number of
 times within the specified range, using possessive matching.
-</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>the minimum number of times that may be repeated.</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum number of times that may be repeated.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>
+	the minimum number of times that the pattern may be repeated;
+	must be &gt;= 0.</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum number of times that the pattern may be repeated;
+	must be &gt; 0.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>
+	if <var>min</var> &lt; 0 or <var>max</var> &lt; <var>min</var>.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#repeatPossessively" data-isabs="false">
       <a id="repeatPossessively(Int):Quantified"></a>
       <h4 class="signature">
@@ -810,7 +833,10 @@ times within the specified range, using possessive matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated the specified
 number of times, using possessive matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated the specified
 number of times, using possessive matching.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>
+	the exact number of times the pattern must be repeated for the
+	quantified expression to match; must be &gt;= 0.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if n &lt; 0.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#repeatReluctantly" data-isabs="false">
       <a id="repeatReluctantly(Int,Int):Quantified"></a>
       <h4 class="signature">
@@ -825,8 +851,12 @@ number of times, using possessive matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated a number of
 times within the specified range, using reluctant matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated a number of
 times within the specified range, using reluctant matching.
-</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>the minimum number of times that may be repeated.</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum number of times that may be repeated.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>
+	the minimum number of times that the pattern may be repeated;
+	must be &gt;= 0.</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum number of times that the pattern may be repeated;
+	must be &gt; 0.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>
+	if <var>min</var> &lt; 0 or <var>max</var> &lt; <var>min</var>.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable#repeatReluctantly" data-isabs="false">
       <a id="repeatReluctantly(Int):Quantified"></a>
       <h4 class="signature">
@@ -841,7 +871,10 @@ times within the specified range, using reluctant matching.
       <p class="shortcomment cmt">Returns an expression that matches the receiver repeated the specified
 number of times, using reluctant matching.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an expression that matches the receiver repeated the specified
 number of times, using reluctant matching.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">n</dt><dd class="cmt"><p>
+	the exact number of times the pattern must be repeated for the
+	quantified expression to match; must be &gt;= 0.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.sourceforge.reb4j.scala.Quantifiable" class="extype" href="Quantifiable.html">Quantifiable</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt">IllegalArgumentException<p>if n &lt; 0.
+</p></span></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

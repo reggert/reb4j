@@ -71,7 +71,7 @@
         <a href="Literal$$CharLiteral.html"><span class="name">CharLiteral</span></a><span class="params">(<span name="unescapedChar">unescapedChar: Char</span>)</span><span class="result"> extends Literal with Quantifiable with Product with Serializable</span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Expression that matches a specific character.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal.StringLiteral" data-isabs="false">
       <a id="StringLiteral:StringLiteral"></a>
       <h4 class="signature">
@@ -83,7 +83,7 @@
         <a href="Literal$$StringLiteral.html"><span class="name">StringLiteral</span></a><span class="params">(<span name="unescaped">unescaped: String</span>)</span><span class="result"> extends Literal with Product with Serializable</span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Expression that matches a specific string.</p>
     </li></ol>
             </div>
 
@@ -162,7 +162,7 @@
         <span class="name">apply</span><span class="params">(<span name="unescaped">unescaped: String</span>)</span><span class="result">: <a name="net.sourceforge.reb4j.scala.Literal" class="extype" href="Literal.html">Literal</a> with <span name="scala.Product" class="extype">Product</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Constructs a literal from a string.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal#apply" data-isabs="false">
       <a id="apply(Char):CharLiteral"></a>
       <h4 class="signature">
@@ -174,7 +174,7 @@
         <span class="name">apply</span><span class="params">(<span name="unescaped">unescaped: <span name="scala.Char" class="extype">Char</span></span>)</span><span class="result">: <a name="net.sourceforge.reb4j.scala.Literal.CharLiteral" class="extype" href="Literal$$CharLiteral.html">CharLiteral</a></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Constructs a literal from a character.</p>
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -237,7 +237,7 @@
         <span class="name">escape</span><span class="params">(<span name="unescaped">unescaped: Seq[<span name="scala.Char" class="extype">Char</span>]</span>)</span><span class="result">: String</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Helper function to escape the specified string (if necessary).</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal#escapeChar" data-isabs="false">
       <a id="escapeChar(Char):String"></a>
       <h4 class="signature">
@@ -249,7 +249,7 @@
         <span class="name">escapeChar</span><span class="params">(<span name="c">c: <span name="scala.Char" class="extype">Char</span></span>)</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Helper function to escape the specified character (if necessary).</p>
     </li><li visbl="prt" name="scala.AnyRef#finalize" data-isabs="false">
       <a id="finalize():Unit"></a>
       <h4 class="signature">
@@ -314,17 +314,17 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal#needsEscape" data-isabs="false">
-      <a id="needsEscape:String"></a>
+      <a id="needsEscape:Set[Char]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">needsEscape</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+        <span class="name">needsEscape</span><span class="result">: <span name="scala.collection.immutable.Set" class="extype">Set</span>[<span name="scala.Char" class="extype">Char</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Characters that need to be escaped in expressions.</p>
     </li><li visbl="pub" name="scala.AnyRef#notify" data-isabs="false">
       <a id="notify():Unit"></a>
       <h4 class="signature">

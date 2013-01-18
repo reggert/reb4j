@@ -84,7 +84,7 @@ class and adopted for use by <b>reb4j</b>.</p>
         <a href="CompoundRaw.html"><span class="name">CompoundRaw</span></a><span class="params">(<span name="components">components: List[Raw]</span>)</span><span class="result"> extends Raw with Product with Serializable</span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Expression consisting of a sequence of raw expressions.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.EscapedLiteral" data-isabs="false">
       <a id="EscapedLiteral:EscapedLiteral"></a>
       <h4 class="signature">
@@ -96,7 +96,8 @@ class and adopted for use by <b>reb4j</b>.</p>
         <a href="EscapedLiteral.html"><span class="name">EscapedLiteral</span></a><span class="params">(<span name="literal">literal: Literal</span>)</span><span class="result"> extends Raw with Product with Serializable</span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Adapter from <a name="net.sourceforge.reb4j.scala.Literal" class="extype" href="Literal.html">Literal</a> to Raw].
+</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Expression" data-isabs="true">
       <a id="Expression:Expression"></a>
       <h4 class="signature">
@@ -120,7 +121,7 @@ class and adopted for use by <b>reb4j</b>.</p>
         <a href="Flag.html"><span class="name">Flag</span></a><span class="result"> extends Serializable with NotNull with Immutable</span>
       </span>
       </h4>
-      <p class="comment cmt">Flag that can be passed to the <code> java.util.regex.Pattern</code>
+      <p class="comment cmt">Flag that can be passed to the java.util.regex.Pattern
 regular expression engine.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Group" data-isabs="true">
       <a id="Group:Group"></a>
@@ -145,7 +146,7 @@ regular expression engine.</p>
         <a href="Implicits.html"><span class="name">Implicits</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Implicit functions to simply the construction of expressions.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal" data-isabs="true">
       <a id="Literal:Literal"></a>
       <h4 class="signature">
@@ -215,18 +216,18 @@ another.</p>
 
         <div class="values members" id="values">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.Adopt" data-isabs="false">
-      <a id="Adopt:Adopt"></a>
+              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.Adopted" data-isabs="false">
+      <a id="Adopted:Adopted"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Adopt$.html"><span class="name">Adopt</span></a><span class="result"> extends AnyRef</span>
+        <a href="Adopted$.html"><span class="name">Adopted</span></a><span class="result"> extends Serializable</span>
       </span>
       </h4>
-      <p class="comment cmt">Function that adopts the regular expression represented by the specified
+      <p class="comment cmt">Factory methods that adopt the regular expression represented by the specified
 java.util.regex.Pattern or scala.util.matching.Regex.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Alternation" data-isabs="false">
       <a id="Alternation:Alternation"></a>
@@ -287,7 +288,8 @@ java.util.regex.Pattern or scala.util.matching.Regex.</p>
         <a href="Implicits$.html"><span class="name">Implicits</span></a><span class="result"> extends Implicits</span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Companion object to Implicits that allows the implicit
+functions to be selectively imported.</p>
     </li><li visbl="pub" name="net.sourceforge.reb4j.scala.InputBegin" data-isabs="false">
       <a id="InputBegin:InputBegin"></a>
       <h4 class="signature">

@@ -48,20 +48,7 @@
 
         <div class="types members" id="types">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.BracketsRequired" data-isabs="true">
-      <a id="BracketsRequired:BracketsRequired"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="BracketsRequired.html"><span class="name">BracketsRequired</span></a><span class="result"> extends CharClass</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Trait indicating that a character class expression must be enclosed
-in square brackets when used as a regular expression.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.CharClass" data-isabs="true">
+              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.CharClass" data-isabs="true">
       <a id="CharClass:CharClass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -82,7 +69,7 @@ within a class of characters.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CharRange.html"><span class="name">CharRange</span></a><span class="result"> extends CharClass with WrappedNegation[CharRange] with BracketsRequired with Subset with Superset</span>
+        <a href="CharRange.html"><span class="name">CharRange</span></a><span class="result"> extends CharClass with WrappedNegation[CharRange] with BracketsRequired</span>
       </span>
       </h4>
       <p class="comment cmt">Character class matching any character between a range of characters.</p>
@@ -94,7 +81,7 @@ within a class of characters.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Intersection.html"><span class="name">Intersection</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[Intersection] with Ops with Subset</span>
+        <a href="Intersection.html"><span class="name">Intersection</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[Intersection]</span>
       </span>
       </h4>
       <p class="comment cmt">Character class representing the intersection of two or more character
@@ -107,7 +94,7 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MultiChar.html"><span class="name">MultiChar</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[MultiChar] with Subset with Superset</span>
+        <a href="MultiChar.html"><span class="name">MultiChar</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[MultiChar]</span>
       </span>
       </h4>
       <p class="comment cmt">Character class that matches any of the specified characters.</p>
@@ -131,7 +118,7 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Negated.html"><span class="name">Negated</span></a><span class="tparams">[<span name="T">T &lt;: WrappedNegation[T]</span>]</span><span class="result"> extends CharClass with SelfContained with Subset with Superset</span>
+        <a href="Negated.html"><span class="name">Negated</span></a><span class="tparams">[<span name="T">T &lt;: WrappedNegation[T]</span>]</span><span class="result"> extends CharClass with SelfContained</span>
       </span>
       </h4>
       <p class="comment cmt">Character class representing the negation of another character class.</p>
@@ -143,7 +130,7 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PredefinedClass.html"><span class="name">PredefinedClass</span></a><span class="result"> extends CharClass with SelfContained with Subset with Superset</span>
+        <a href="PredefinedClass.html"><span class="name">PredefinedClass</span></a><span class="result"> extends CharClass with SelfContained</span>
       </span>
       </h4>
       <p class="comment cmt">Class representing a predefined character class.</p>
@@ -167,7 +154,7 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SingleChar.html"><span class="name">SingleChar</span></a><span class="result"> extends CharClass with WrappedNegation[SingleChar] with SelfContained with Subset with Superset</span>
+        <a href="SingleChar.html"><span class="name">SingleChar</span></a><span class="result"> extends CharClass with WrappedNegation[SingleChar] with SelfContained</span>
       </span>
       </h4>
       
@@ -179,23 +166,10 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Union.html"><span class="name">Union</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[Union] with Superset with Ops</span>
+        <a href="Union.html"><span class="name">Union</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[Union]</span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation" data-isabs="true">
-      <a id="WrappedNegation:WrappedNegation[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="WrappedNegation.html"><span class="name">WrappedNegation</span></a><span class="tparams">[<span name="T">T &lt;: WrappedNegation[T]</span>]</span><span class="result"> extends CharClass</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Trait marking character classes that must be wrapped in
-square brackets in order to be negated.</p>
     </li></ol>
             </div>
 
@@ -215,30 +189,6 @@ square brackets in order to be negated.</p>
       </span>
       </h4>
       <p class="comment cmt">Factory object for creating character class expressions.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.Intersection" data-isabs="false">
-      <a id="Intersection:Intersection"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Intersection$.html"><span class="name">Intersection</span></a><span class="result"> extends Serializable</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Module containing traits related to character class intersection.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.Union" data-isabs="false">
-      <a id="Union:Union"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Union$.html"><span class="name">Union</span></a><span class="result"> extends Serializable</span>
-      </span>
-      </h4>
-      
     </li></ol>
             </div>
 
