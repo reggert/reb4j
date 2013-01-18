@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2013-01-17T23:47:15.513">
-<file name="C:\Users\Rich\git\reb4j\net.sourceforge.reb4j\src\main\java\net\sourceforge\reb4j\charclass\CharClass.java">
+<pmd version="4.3" timestamp="2013-01-18T00:08:44.536">
+<file name="C:\Users\Rich\git\reb4j\target\checkout\net.sourceforge.reb4j\src\main\java\net\sourceforge\reb4j\charclass\CharClass.java">
 <violation beginline="5" endline="5" begincolumn="1" endcolumn="40" rule="DontImportJavaLang" ruleset="Import Statement Rules" package="net.sourceforge.reb4j.charclass" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DontImportJavaLang" priority="4">
 Avoid importing anything from the package 'java.lang'
 </violation>
