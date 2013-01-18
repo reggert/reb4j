@@ -48,15 +48,111 @@
 
         <div class="types members" id="types">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.CharClass" data-isabs="false">
-      <a id="CharClass:CharClass"></a>
+              <ol><li visbl="pub" name="net.sourceforge.reb4j.AbstractAlternative" data-isabs="true">
+      <a id="AbstractAlternative:AbstractAlternative"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CharClass.html"><span class="name">CharClass</span></a><span class="result"> extends Regex</span>
+        <a href="AbstractAlternative.html"><span class="name">AbstractAlternative</span></a><span class="result"> extends AbstractExpression with Alternative</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.AbstractExpression" data-isabs="true">
+      <a id="AbstractExpression:AbstractExpression"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractExpression.html"><span class="name">AbstractExpression</span></a><span class="result"> extends Expression</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.AbstractQuantifiableSequenceableAlternative" data-isabs="true">
+      <a id="AbstractQuantifiableSequenceableAlternative:AbstractQuantifiableSequenceableAlternative"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractQuantifiableSequenceableAlternative.html"><span class="name">AbstractQuantifiableSequenceableAlternative</span></a><span class="result"> extends AbstractSequenceableAlternative with Quantifiable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.AbstractSequenceableAlternative" data-isabs="true">
+      <a id="AbstractSequenceableAlternative:AbstractSequenceableAlternative"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractSequenceableAlternative.html"><span class="name">AbstractSequenceableAlternative</span></a><span class="result"> extends AbstractAlternative with Sequenceable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Adopted" data-isabs="false">
+      <a id="Adopted:Adopted"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Adopted.html"><span class="name">Adopted</span></a><span class="result"> extends AbstractExpression</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Alternation" data-isabs="false">
+      <a id="Alternation:Alternation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Alternation.html"><span class="name">Alternation</span></a><span class="result"> extends AbstractExpression with AlternationOps</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.CharLiteral" data-isabs="false">
+      <a id="CharLiteral:CharLiteral"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CharLiteral.html"><span class="name">CharLiteral</span></a><span class="result"> extends Literal with Quantifiable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Entity" data-isabs="false">
+      <a id="Entity:Entity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Entity.html"><span class="name">Entity</span></a><span class="result"> extends Raw with Quantifiable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Expression" data-isabs="true">
+      <a id="Expression:Expression"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Expression.html"><span class="name">Expression</span></a><span class="result"> extends Serializable</span>
       </span>
       </h4>
       
@@ -72,27 +168,87 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.QuantifierMode" data-isabs="false">
-      <a id="QuantifierMode:QuantifierMode"></a>
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Group" data-isabs="false">
+      <a id="Group:Group"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="QuantifierMode.html"><span class="name">QuantifierMode</span></a><span class="result"> extends Enum[QuantifierMode]</span>
+        <a href="Group.html"><span class="name">Group</span></a><span class="result"> extends AbstractQuantifiableSequenceableAlternative with Quantifiable</span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Regex" data-isabs="false">
-      <a id="Regex:Regex"></a>
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Literal" data-isabs="true">
+      <a id="Literal:Literal"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Literal.html"><span class="name">Literal</span></a><span class="result"> extends AbstractSequenceableAlternative</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Quantifiable" data-isabs="true">
+      <a id="Quantifiable:Quantifiable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Quantifiable.html"><span class="name">Quantifiable</span></a><span class="result"> extends Expression</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Quantified" data-isabs="false">
+      <a id="Quantified:Quantified"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Quantified.html"><span class="name">Quantified</span></a><span class="result"> extends AbstractSequenceableAlternative</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Raw" data-isabs="false">
+      <a id="Raw:Raw"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Regex.html"><span class="name">Regex</span></a><span class="result"> extends Serializable</span>
+        <a href="Raw.html"><span class="name">Raw</span></a><span class="result"> extends AbstractSequenceableAlternative</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Sequence" data-isabs="false">
+      <a id="Sequence:Sequence"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Sequence.html"><span class="name">Sequence</span></a><span class="result"> extends AbstractExpression with Alternative with SequenceOps</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.StringLiteral" data-isabs="false">
+      <a id="StringLiteral:StringLiteral"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StringLiteral.html"><span class="name">StringLiteral</span></a><span class="result"> extends Literal</span>
       </span>
       </h4>
       
@@ -103,15 +259,39 @@
 
         <div class="values members" id="values">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.CharClass" data-isabs="false">
-      <a id="CharClass:CharClass"></a>
+              <ol><li visbl="pub" name="net.sourceforge.reb4j.Adopted" data-isabs="false">
+      <a id="Adopted:Adopted"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="CharClass$.html"><span class="name">CharClass</span></a><span class="result"> extends </span>
+        <a href="Adopted$.html"><span class="name">Adopted</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Alternation" data-isabs="false">
+      <a id="Alternation:Alternation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Alternation$.html"><span class="name">Alternation</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Entity" data-isabs="false">
+      <a id="Entity:Entity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Entity$.html"><span class="name">Entity</span></a><span class="result"> extends </span>
       </span>
       </h4>
       
@@ -127,27 +307,75 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.QuantifierMode" data-isabs="false">
-      <a id="QuantifierMode:QuantifierMode"></a>
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Group" data-isabs="false">
+      <a id="Group:Group"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="QuantifierMode$.html"><span class="name">QuantifierMode</span></a><span class="result"> extends </span>
+        <a href="Group$.html"><span class="name">Group</span></a><span class="result"> extends </span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Regex" data-isabs="false">
-      <a id="Regex:Regex"></a>
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Literal" data-isabs="false">
+      <a id="Literal:Literal"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Regex$.html"><span class="name">Regex</span></a><span class="result"> extends </span>
+        <a href="Literal$.html"><span class="name">Literal</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Quantified" data-isabs="false">
+      <a id="Quantified:Quantified"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Quantified$.html"><span class="name">Quantified</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Raw" data-isabs="false">
+      <a id="Raw:Raw"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Raw$.html"><span class="name">Raw</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.Sequence" data-isabs="false">
+      <a id="Sequence:Sequence"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Sequence$.html"><span class="name">Sequence</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.sourceforge.reb4j.charclass" data-isabs="false">
+      <a id="charclass:charclass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="charclass/package.html"><span class="name">charclass</span></a>
       </span>
       </h4>
       
