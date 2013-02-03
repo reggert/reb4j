@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>net.sourceforge.reb4j.scala</title>
+          <title>scala - reb4j Scala Library 2.1.0-SNAPSHOT API - net.sourceforge.reb4j.scala</title>
+          <meta name="description" content="scala - reb4j Scala Library 2.1.0 - SNAPSHOT API - net.sourceforge.reb4j.scala" />
+          <meta name="keywords" content="scala reb4j Scala Library 2.1.0 SNAPSHOT API net.sourceforge.reb4j.scala" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../../lib/template.css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js"></script>
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'net.sourceforge.reb4j.scala.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../../../lib/package_big.png" />
-        <p id="owner"><a name="net" class="extype" href="../../../package.html">net</a>.<a name="net.sourceforge" class="extype" href="../../package.html">sourceforge</a>.<a name="net.sourceforge.reb4j" class="extype" href="../package.html">reb4j</a></p>
+        <p id="owner"><a href="../../../package.html" class="extype" name="net">net</a>.<a href="../../package.html" class="extype" name="net.sourceforge">sourceforge</a>.<a href="../package.html" class="extype" name="net.sourceforge.reb4j">reb4j</a></p>
         <h1>scala</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.Adopted" data-isabs="false">
+              <ol><li name="net.sourceforge.reb4j.scala.Adopted" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AdoptedextendsExpression"></a>
       <a id="Adopted:Adopted"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,12 +72,13 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Adopted.html"><span class="name">Adopted</span></a><span class="result"> extends Expression</span>
+        <a href="Adopted.html"><span class="name">Adopted</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a></span>
       </span>
       </h4>
-      <p class="comment cmt">An expression that has been precompiled by the java.util.regex.Pattern
+      <p class="comment cmt">An expression that has been precompiled by the <span class="extype" name="java.util.regex.Pattern">java.util.regex.Pattern</span>
 class and adopted for use by <b>reb4j</b>.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Alternation" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Alternation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AlternationextendsExpressionwithAlternative"></a>
       <a id="Alternation:Alternation"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -69,11 +86,26 @@ class and adopted for use by <b>reb4j</b>.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Alternation.html"><span class="name">Alternation</span></a><span class="result"> extends Expression with Ops</span>
+        <a href="Alternation.html"><span class="name">Alternation</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a></span>
       </span>
       </h4>
       <p class="comment cmt">Expression representing a set of alternatives that may be matched.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.CompoundRaw" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Alternative" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AlternativeextendsExpression"></a>
+      <a id="Alternative:Alternative"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Alternative.html"><span class="name">Alternative</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Interface representing an expression that can be used as an alternative
+in an alternation expression.</p>
+    </li><li name="net.sourceforge.reb4j.scala.CompoundRaw" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CompoundRawextendsRawwithProductwithSerializable"></a>
       <a id="CompoundRaw:CompoundRaw"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -81,11 +113,12 @@ class and adopted for use by <b>reb4j</b>.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="CompoundRaw.html"><span class="name">CompoundRaw</span></a><span class="params">(<span name="components">components: List[Raw]</span>)</span><span class="result"> extends Raw with Product with Serializable</span>
+        <a href="CompoundRaw.html"><span class="name">CompoundRaw</span></a><span class="params">(<span name="components">components: <span class="extype" name="scala.List">List</span>[<a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a>]</span>)</span><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Expression consisting of a sequence of raw expressions.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.EscapedLiteral" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.EscapedLiteral" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EscapedLiteralextendsRawwithProductwithSerializable"></a>
       <a id="EscapedLiteral:EscapedLiteral"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -93,12 +126,13 @@ class and adopted for use by <b>reb4j</b>.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="EscapedLiteral.html"><span class="name">EscapedLiteral</span></a><span class="params">(<span name="literal">literal: Literal</span>)</span><span class="result"> extends Raw with Product with Serializable</span>
+        <a href="EscapedLiteral.html"><span class="name">EscapedLiteral</span></a><span class="params">(<span name="literal">literal: <a href="Literal.html" class="extype" name="net.sourceforge.reb4j.scala.Literal">Literal</a></span>)</span><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-      <p class="comment cmt">Adapter from <a name="net.sourceforge.reb4j.scala.Literal" class="extype" href="Literal.html">Literal</a> to Raw].
-</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Expression" data-isabs="true">
+      <p class="comment cmt">Adapter from <a href="Literal.html" class="extype" name="net.sourceforge.reb4j.scala.Literal">net.sourceforge.reb4j.scala.Literal</a> to <span class="extype" name="Raw].
+"></span></p>
+    </li><li name="net.sourceforge.reb4j.scala.Expression" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExpressionextendsSerializablewithNotNullwithImmutable"></a>
       <a id="Expression:Expression"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -106,11 +140,12 @@ class and adopted for use by <b>reb4j</b>.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Expression.html"><span class="name">Expression</span></a><span class="result"> extends Serializable with NotNull with Immutable</span>
+        <a href="Expression.html"><span class="name">Expression</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.NotNull">NotNull</span> with <span class="extype" name="scala.Immutable">Immutable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Base class extended by all <b>reb4j</b> expression builders.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Flag" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Flag" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlagextendsSerializablewithNotNullwithImmutable"></a>
       <a id="Flag:Flag"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -118,12 +153,13 @@ class and adopted for use by <b>reb4j</b>.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Flag.html"><span class="name">Flag</span></a><span class="result"> extends Serializable with NotNull with Immutable</span>
+        <a href="Flag.html"><span class="name">Flag</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.NotNull">NotNull</span> with <span class="extype" name="scala.Immutable">Immutable</span></span>
       </span>
       </h4>
-      <p class="comment cmt">Flag that can be passed to the java.util.regex.Pattern
+      <p class="comment cmt">Flag that can be passed to the <span class="extype" name="java.util.regex.Pattern">java.util.regex.Pattern</span>
 regular expression engine.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Group" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.scala.Group" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="GroupextendsExpressionwithAlternativewithSequenceablewithQuantifiable"></a>
       <a id="Group:Group"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -131,11 +167,12 @@ regular expression engine.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Group.html"><span class="name">Group</span></a><span class="result"> extends Expression with Alternative with Sequenceable with Quantifiable</span>
+        <a href="Group.html"><span class="name">Group</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.scala.Sequenceable">Sequenceable</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a></span>
       </span>
       </h4>
       <p class="comment cmt">Expression that has been grouped in parentheses.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Implicits" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.scala.Implicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ImplicitsextendsObject"></a>
       <a id="Implicits:Implicits"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -143,11 +180,12 @@ regular expression engine.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Implicits.html"><span class="name">Implicits</span></a><span class="result"> extends AnyRef</span>
+        <a href="Implicits.html"><span class="name">Implicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">Implicit functions to simply the construction of expressions.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.scala.Literal" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LiteralextendsExpressionwithAlternativewithSequenceable"></a>
       <a id="Literal:Literal"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -155,11 +193,12 @@ regular expression engine.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Literal.html"><span class="name">Literal</span></a><span class="result"> extends Expression with Alternative with Sequenceable</span>
+        <a href="Literal.html"><span class="name">Literal</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.scala.Sequenceable">Sequenceable</a></span>
       </span>
       </h4>
       <p class="comment cmt">Expression that matches a specific string.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantifiable" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.scala.Quantifiable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="QuantifiableextendsExpression"></a>
       <a id="Quantifiable:Quantifiable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -167,12 +206,13 @@ regular expression engine.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Quantifiable.html"><span class="name">Quantifiable</span></a><span class="result"> extends Expression</span>
+        <a href="Quantifiable.html"><span class="name">Quantifiable</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a></span>
       </span>
       </h4>
       <p class="comment cmt">Interface implemented by regular expression builders that can accept
 quantifiers.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Quantified" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Quantified" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QuantifiedextendsExpressionwithAlternativewithSequenceable"></a>
       <a id="Quantified:Quantified"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -180,11 +220,12 @@ quantifiers.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Quantified.html"><span class="name">Quantified</span></a><span class="result"> extends Expression with Alternative with Sequenceable</span>
+        <a href="Quantified.html"><span class="name">Quantified</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.scala.Sequenceable">Sequenceable</a></span>
       </span>
       </h4>
       <p class="comment cmt">An expression to which a quantifier has been attached.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Raw" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.scala.Raw" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RawextendsExpressionwithAlternativewithSequenceable"></a>
       <a id="Raw:Raw"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -192,11 +233,12 @@ quantifiers.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Raw.html"><span class="name">Raw</span></a><span class="result"> extends Expression with Alternative with Sequenceable</span>
+        <a href="Raw.html"><span class="name">Raw</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.scala.Sequenceable">Sequenceable</a></span>
       </span>
       </h4>
       <p class="comment cmt">Raw regular expression.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Sequence" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Sequence" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SequenceextendsExpressionwithAlternativewithSequenceable"></a>
       <a id="Sequence:Sequence"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -204,19 +246,34 @@ quantifiers.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Sequence.html"><span class="name">Sequence</span></a><span class="result"> extends Expression with Alternative with Ops</span>
+        <a href="Sequence.html"><span class="name">Sequence</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.scala.Sequenceable">Sequenceable</a></span>
       </span>
       </h4>
       <p class="comment cmt">Expression that matches a series of sub-expressions appearing one after
 another.</p>
+    </li><li name="net.sourceforge.reb4j.scala.Sequenceable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SequenceableextendsExpression"></a>
+      <a id="Sequenceable:Sequenceable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Sequenceable.html"><span class="name">Sequenceable</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Interface implemented by expressions that may be used as
+sub-expressions in sequences.</p>
     </li></ol>
             </div>
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.Adopted" data-isabs="false">
+              <ol><li name="net.sourceforge.reb4j.scala.Adopted" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Adopted"></a>
       <a id="Adopted:Adopted"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -224,24 +281,13 @@ another.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Adopted$.html"><span class="name">Adopted</span></a><span class="result"> extends Serializable</span>
+        <a href="Adopted$.html"><span class="name">Adopted</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Factory methods that adopt the regular expression represented by the specified
-java.util.regex.Pattern or scala.util.matching.Regex.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Alternation" data-isabs="false">
-      <a id="Alternation:Alternation"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Alternation$.html"><span class="name">Alternation</span></a><span class="result"> extends Serializable</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Module providing the implementation of alternation.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.AnyChar" data-isabs="false">
+<span class="extype" name="java.util.regex.Pattern">java.util.regex.Pattern</span> or <span class="extype" name="scala.util.matching.Regex">scala.util.matching.Regex</span>.</p>
+    </li><li name="net.sourceforge.reb4j.scala.AnyChar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AnyChar"></a>
       <a id="AnyChar:AnyChar"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -249,11 +295,12 @@ java.util.regex.Pattern or scala.util.matching.Regex.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="AnyChar$.html"><span class="name">AnyChar</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="AnyChar$.html"><span class="name">AnyChar</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches any single character.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Flag" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Flag" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Flag"></a>
       <a id="Flag:Flag"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -261,11 +308,12 @@ java.util.regex.Pattern or scala.util.matching.Regex.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Flag$.html"><span class="name">Flag</span></a><span class="result"> extends Serializable</span>
+        <a href="Flag$.html"><span class="name">Flag</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Group" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Group" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Group"></a>
       <a id="Group:Group"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -273,11 +321,12 @@ java.util.regex.Pattern or scala.util.matching.Regex.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Group$.html"><span class="name">Group</span></a><span class="result"> extends Serializable</span>
+        <a href="Group$.html"><span class="name">Group</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Factory object for groups.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Implicits" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Implicits" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Implicits"></a>
       <a id="Implicits:Implicits"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -285,12 +334,13 @@ java.util.regex.Pattern or scala.util.matching.Regex.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Implicits$.html"><span class="name">Implicits</span></a><span class="result"> extends Implicits</span>
+        <a href="Implicits$.html"><span class="name">Implicits</span></a><span class="result"> extends <a href="Implicits.html" class="extype" name="net.sourceforge.reb4j.scala.Implicits">Implicits</a></span>
       </span>
       </h4>
-      <p class="comment cmt">Companion object to Implicits that allows the implicit
+      <p class="comment cmt">Companion object to <a href="Implicits.html" class="extype" name="net.sourceforge.reb4j.scala.Implicits">Implicits</a> that allows the implicit
 functions to be selectively imported.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.InputBegin" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.InputBegin" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InputBegin"></a>
       <a id="InputBegin:InputBegin"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -298,11 +348,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="InputBegin$.html"><span class="name">InputBegin</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="InputBegin$.html"><span class="name">InputBegin</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches the beginning of input.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.InputEnd" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.InputEnd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InputEnd"></a>
       <a id="InputEnd:InputEnd"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -310,11 +361,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="InputEnd$.html"><span class="name">InputEnd</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="InputEnd$.html"><span class="name">InputEnd</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches the end of input.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.InputEndSkipEOL" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.InputEndSkipEOL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InputEndSkipEOL"></a>
       <a id="InputEndSkipEOL:InputEndSkipEOL"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -322,11 +374,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="InputEndSkipEOL$.html"><span class="name">InputEndSkipEOL</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="InputEndSkipEOL$.html"><span class="name">InputEndSkipEOL</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches the end of input, skipping end-of-line markers.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.LineBegin" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.LineBegin" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LineBegin"></a>
       <a id="LineBegin:LineBegin"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -334,11 +387,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="LineBegin$.html"><span class="name">LineBegin</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="LineBegin$.html"><span class="name">LineBegin</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches the beginning of a line.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.LineEnd" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.LineEnd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LineEnd"></a>
       <a id="LineEnd:LineEnd"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -346,11 +400,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="LineEnd$.html"><span class="name">LineEnd</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="LineEnd$.html"><span class="name">LineEnd</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches the end of a line.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Literal" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.Literal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Literal"></a>
       <a id="Literal:Literal"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -358,11 +413,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Literal$.html"><span class="name">Literal</span></a><span class="result"> extends Serializable</span>
+        <a href="Literal$.html"><span class="name">Literal</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Constructs a literal expression.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.MatchEnd" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.MatchEnd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MatchEnd"></a>
       <a id="MatchEnd:MatchEnd"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -370,11 +426,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="MatchEnd$.html"><span class="name">MatchEnd</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="MatchEnd$.html"><span class="name">MatchEnd</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches the end of the previous match.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.NonwordBoundary" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.NonwordBoundary" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NonwordBoundary"></a>
       <a id="NonwordBoundary:NonwordBoundary"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -382,23 +439,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="NonwordBoundary$.html"><span class="name">NonwordBoundary</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="NonwordBoundary$.html"><span class="name">NonwordBoundary</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches a non-word-boundary.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.Sequence" data-isabs="false">
-      <a id="Sequence:Sequence"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Sequence$.html"><span class="name">Sequence</span></a><span class="result"> extends Serializable</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Module containing traits for working with sequences.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.WordBoundary" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.WordBoundary" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WordBoundary"></a>
       <a id="WordBoundary:WordBoundary"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -406,11 +452,12 @@ functions to be selectively imported.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="WordBoundary$.html"><span class="name">WordBoundary</span></a><span class="result"> extends Raw with Quantifiable with Product with Serializable</span>
+        <a href="WordBoundary$.html"><span class="name">WordBoundary</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.scala.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Matches a word boundary.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="charclass"></a>
       <a id="charclass:charclass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -426,10 +473,20 @@ functions to be selectively imported.</p>
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>net.sourceforge.reb4j.scala.charclass</title>
+          <title>charclass - reb4j Scala Library 2.1.0-SNAPSHOT API - net.sourceforge.reb4j.scala.charclass</title>
+          <meta name="description" content="charclass - reb4j Scala Library 2.1.0 - SNAPSHOT API - net.sourceforge.reb4j.scala.charclass" />
+          <meta name="keywords" content="charclass reb4j Scala Library 2.1.0 SNAPSHOT API net.sourceforge.reb4j.scala.charclass" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../../../lib/template.css" />
-      <script type="text/javascript" src="../../../../../lib/jquery.js"></script>
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'net.sourceforge.reb4j.scala.charclass.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../../../../lib/package_big.png" />
-        <p id="owner"><a name="net" class="extype" href="../../../../package.html">net</a>.<a name="net.sourceforge" class="extype" href="../../../package.html">sourceforge</a>.<a name="net.sourceforge.reb4j" class="extype" href="../../package.html">reb4j</a>.<a name="net.sourceforge.reb4j.scala" class="extype" href="../package.html">scala</a></p>
+        <p id="owner"><a href="../../../../package.html" class="extype" name="net">net</a>.<a href="../../../package.html" class="extype" name="net.sourceforge">sourceforge</a>.<a href="../../package.html" class="extype" name="net.sourceforge.reb4j">reb4j</a>.<a href="../package.html" class="extype" name="net.sourceforge.reb4j.scala">scala</a></p>
         <h1>charclass</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.CharClass" data-isabs="true">
+              <ol><li name="net.sourceforge.reb4j.scala.charclass.CharClass" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CharClassextendsExpressionwithAlternativewithSequenceablewithQuantifiable"></a>
       <a id="CharClass:CharClass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,12 +72,13 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CharClass.html"><span class="name">CharClass</span></a><span class="result"> extends Expression with Alternative with Sequenceable with Quantifiable</span>
+        <a href="CharClass.html"><span class="name">CharClass</span></a><span class="result"> extends <a href="../Expression.html" class="extype" name="net.sourceforge.reb4j.scala.Expression">Expression</a> with <a href="../Alternative.html" class="extype" name="net.sourceforge.reb4j.scala.Alternative">Alternative</a> with <a href="../Sequenceable.html" class="extype" name="net.sourceforge.reb4j.scala.Sequenceable">Sequenceable</a> with <a href="../Quantifiable.html" class="extype" name="net.sourceforge.reb4j.scala.Quantifiable">Quantifiable</a></span>
       </span>
       </h4>
       <p class="comment cmt">Base class representing an expression that matches a single character
 within a class of characters.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.CharRange" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.CharRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CharRangeextendsCharClasswithWrappedNegation[net.sourceforge.reb4j.scala.charclass.CharRange]withBracketsRequired"></a>
       <a id="CharRange:CharRange"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -69,11 +86,12 @@ within a class of characters.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CharRange.html"><span class="name">CharRange</span></a><span class="result"> extends CharClass with WrappedNegation[CharRange] with BracketsRequired</span>
+        <a href="CharRange.html"><span class="name">CharRange</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation">WrappedNegation</span>[<a href="CharRange.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharRange">CharRange</a>] with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.BracketsRequired">BracketsRequired</span></span>
       </span>
       </h4>
       <p class="comment cmt">Character class matching any character between a range of characters.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.Intersection" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.Intersection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IntersectionextendsCharClasswithBracketsRequiredwithWrappedNegation[net.sourceforge.reb4j.scala.charclass.Intersection]"></a>
       <a id="Intersection:Intersection"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -81,12 +99,13 @@ within a class of characters.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Intersection.html"><span class="name">Intersection</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[Intersection]</span>
+        <a href="Intersection.html"><span class="name">Intersection</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.BracketsRequired">BracketsRequired</span> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation">WrappedNegation</span>[<a href="Intersection.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.Intersection">Intersection</a>]</span>
       </span>
       </h4>
       <p class="comment cmt">Character class representing the intersection of two or more character
 classes.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.MultiChar" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.MultiChar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MultiCharextendsCharClasswithBracketsRequiredwithWrappedNegation[net.sourceforge.reb4j.scala.charclass.MultiChar]"></a>
       <a id="MultiChar:MultiChar"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -94,11 +113,12 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MultiChar.html"><span class="name">MultiChar</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[MultiChar]</span>
+        <a href="MultiChar.html"><span class="name">MultiChar</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.BracketsRequired">BracketsRequired</span> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation">WrappedNegation</span>[<a href="MultiChar.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.MultiChar">MultiChar</a>]</span>
       </span>
       </h4>
       <p class="comment cmt">Character class that matches any of the specified characters.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.NamedPredefinedClass" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.NamedPredefinedClass" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NamedPredefinedClassextendsPredefinedClass"></a>
       <a id="NamedPredefinedClass:NamedPredefinedClass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -106,23 +126,25 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="NamedPredefinedClass.html"><span class="name">NamedPredefinedClass</span></a><span class="result"> extends PredefinedClass</span>
+        <a href="NamedPredefinedClass.html"><span class="name">NamedPredefinedClass</span></a><span class="result"> extends <a href="PredefinedClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.PredefinedClass">PredefinedClass</a></span>
       </span>
       </h4>
       <p class="comment cmt">Class representing a predefined character class referenced by name.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.Negated" data-isabs="false">
-      <a id="Negated:Negated[T]"></a>
+    </li><li name="net.sourceforge.reb4j.scala.charclass.Negated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Negated[T&lt;:net.sourceforge.reb4j.scala.charclass.WrappedNegation[T]]extendsCharClasswithSelfContained"></a>
+      <a id="Negated[T&lt;:WrappedNegation[T]]:Negated[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Negated.html"><span class="name">Negated</span></a><span class="tparams">[<span name="T">T &lt;: WrappedNegation[T]</span>]</span><span class="result"> extends CharClass with SelfContained</span>
+        <a href="Negated.html"><span class="name">Negated</span></a><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation">WrappedNegation</span>[<span class="extype" name="net.sourceforge.reb4j.scala.charclass.Negated.T">T</span>]</span>]</span><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <a href="SelfContained.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.SelfContained">SelfContained</a></span>
       </span>
       </h4>
       <p class="comment cmt">Character class representing the negation of another character class.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.PredefinedClass" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.PredefinedClass" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PredefinedClassextendsCharClasswithSelfContained"></a>
       <a id="PredefinedClass:PredefinedClass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -130,11 +152,12 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PredefinedClass.html"><span class="name">PredefinedClass</span></a><span class="result"> extends CharClass with SelfContained</span>
+        <a href="PredefinedClass.html"><span class="name">PredefinedClass</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <a href="SelfContained.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.SelfContained">SelfContained</a></span>
       </span>
       </h4>
       <p class="comment cmt">Class representing a predefined character class.</p>
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.SelfContained" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.SelfContained" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SelfContainedextendsCharClass"></a>
       <a id="SelfContained:SelfContained"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -142,11 +165,12 @@ classes.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SelfContained.html"><span class="name">SelfContained</span></a><span class="result"> extends CharClass</span>
+        <a href="SelfContained.html"><span class="name">SelfContained</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.SingleChar" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.SingleChar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SingleCharextendsCharClasswithWrappedNegation[net.sourceforge.reb4j.scala.charclass.SingleChar]withSelfContained"></a>
       <a id="SingleChar:SingleChar"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -154,11 +178,12 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SingleChar.html"><span class="name">SingleChar</span></a><span class="result"> extends CharClass with WrappedNegation[SingleChar] with SelfContained</span>
+        <a href="SingleChar.html"><span class="name">SingleChar</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation">WrappedNegation</span>[<a href="SingleChar.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.SingleChar">SingleChar</a>] with <a href="SelfContained.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.SelfContained">SelfContained</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.Union" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.scala.charclass.Union" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UnionextendsCharClasswithBracketsRequiredwithWrappedNegation[net.sourceforge.reb4j.scala.charclass.Union]"></a>
       <a id="Union:Union"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -166,7 +191,7 @@ classes.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Union.html"><span class="name">Union</span></a><span class="result"> extends CharClass with BracketsRequired with WrappedNegation[Union]</span>
+        <a href="Union.html"><span class="name">Union</span></a><span class="result"> extends <a href="CharClass.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.CharClass">CharClass</a> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.BracketsRequired">BracketsRequired</span> with <span class="extype" name="net.sourceforge.reb4j.scala.charclass.WrappedNegation">WrappedNegation</span>[<a href="Union.html" class="extype" name="net.sourceforge.reb4j.scala.charclass.Union">Union</a>]</span>
       </span>
       </h4>
       
@@ -175,9 +200,10 @@ classes.</p>
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.scala.charclass.CharClass" data-isabs="false">
+              <ol><li name="net.sourceforge.reb4j.scala.charclass.CharClass" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CharClass"></a>
       <a id="CharClass:CharClass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -185,7 +211,7 @@ classes.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="CharClass$.html"><span class="name">CharClass</span></a><span class="result"> extends Serializable</span>
+        <a href="CharClass$.html"><span class="name">CharClass</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Factory object for creating character class expressions.</p>
@@ -193,10 +219,20 @@ classes.</p>
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>
