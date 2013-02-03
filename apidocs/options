@@ -1,24 +1,24 @@
 -classpath
-'c:/Users/Rich/git/reb4j/target/classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/target/classes;C:/Users/Rich/git/reb4j/net.sourceforge.reb4j.scala/target/classes;C:/Users/Rich/.m2/repository/org/scala-lang/scala-library/2.10.0/scala-library-2.10.0.jar;C:/Users/Rich/.m2/repository/org/functionaljava/functionaljava/3.1/functionaljava-3.1.jar'
+'C:/Users/Rich/git/reb4j/target/checkout/target/classes;C:/Users/Rich/git/reb4j/target/checkout/net.sourceforge.reb4j/target/classes;C:/Users/Rich/git/reb4j/target/checkout/net.sourceforge.reb4j.scala/target/classes;C:/Users/Rich/.m2/repository/org/scala-lang/scala-library/2.10.0/scala-library-2.10.0.jar;C:/Users/Rich/.m2/repository/org/functionaljava/functionaljava/3.1/functionaljava-3.1.jar'
 -encoding
 'UTF-8'
 -public
 -sourcepath
-'C:/Users/Rich/git/reb4j/net.sourceforge.reb4j/src/main/java'
+'C:/Users/Rich/git/reb4j/target/checkout/net.sourceforge.reb4j/src/main/java'
 -author
 -bottom
 'Copyright &#169; 2013 <a href="https://github.com/reggert">Richard W. Eggert II</a>. All Rights Reserved.'
 -charset
 'UTF-8'
 -d
-'c:/Users/Rich/git/reb4j/target/site/apidocs'
+'C:/Users/Rich/git/reb4j/target/checkout/target/site/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
-'Regular Expression Builder for Java 2.1.0-SNAPSHOT API'
+'Regular Expression Builder for Java 2.1.0 API'
 -linkoffline
-'http://download.oracle.com/javase/6/docs/api' 'c:/Users/Rich/git/reb4j/target/javadoc-bundle-options'
+'http://download.oracle.com/javase/6/docs/api' 'C:/Users/Rich/git/reb4j/target/checkout/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'Regular Expression Builder for Java 2.1.0-SNAPSHOT API'
+'Regular Expression Builder for Java 2.1.0 API'
