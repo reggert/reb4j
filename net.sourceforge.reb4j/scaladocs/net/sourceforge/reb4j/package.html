@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>net.sourceforge.reb4j</title>
+          <title>reb4j - reb4j Java Library 2.1.0-SNAPSHOT API - net.sourceforge.reb4j</title>
+          <meta name="description" content="reb4j - reb4j Java Library 2.1.0 - SNAPSHOT API - net.sourceforge.reb4j" />
+          <meta name="keywords" content="reb4j reb4j Java Library 2.1.0 SNAPSHOT API net.sourceforge.reb4j" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
-      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'net.sourceforge.reb4j.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../../lib/package_big.png" />
-        <p id="owner"><a name="net" class="extype" href="../../package.html">net</a>.<a name="net.sourceforge" class="extype" href="../package.html">sourceforge</a></p>
+        <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.sourceforge">sourceforge</a></p>
         <h1>reb4j</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.AbstractAlternative" data-isabs="true">
+              <ol><li name="net.sourceforge.reb4j.AbstractAlternative" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractAlternativeextendsAbstractExpressionwithAlternative"></a>
       <a id="AbstractAlternative:AbstractAlternative"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="AbstractAlternative.html"><span class="name">AbstractAlternative</span></a><span class="result"> extends AbstractExpression with Alternative</span>
+        <a href="AbstractAlternative.html"><span class="name">AbstractAlternative</span></a><span class="result"> extends <a href="AbstractExpression.html" class="extype" name="net.sourceforge.reb4j.AbstractExpression">AbstractExpression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.Alternative">Alternative</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.AbstractExpression" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.AbstractExpression" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractExpressionextendsExpression"></a>
       <a id="AbstractExpression:AbstractExpression"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,11 +85,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="AbstractExpression.html"><span class="name">AbstractExpression</span></a><span class="result"> extends Expression</span>
+        <a href="AbstractExpression.html"><span class="name">AbstractExpression</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.Expression">Expression</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.AbstractQuantifiableSequenceableAlternative" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.AbstractQuantifiableSequenceableAlternative" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractQuantifiableSequenceableAlternativeextendsAbstractSequenceableAlternativewithQuantifiable"></a>
       <a id="AbstractQuantifiableSequenceableAlternative:AbstractQuantifiableSequenceableAlternative"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,11 +98,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="AbstractQuantifiableSequenceableAlternative.html"><span class="name">AbstractQuantifiableSequenceableAlternative</span></a><span class="result"> extends AbstractSequenceableAlternative with Quantifiable</span>
+        <a href="AbstractQuantifiableSequenceableAlternative.html"><span class="name">AbstractQuantifiableSequenceableAlternative</span></a><span class="result"> extends <a href="AbstractSequenceableAlternative.html" class="extype" name="net.sourceforge.reb4j.AbstractSequenceableAlternative">AbstractSequenceableAlternative</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.Quantifiable">Quantifiable</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.AbstractSequenceableAlternative" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.AbstractSequenceableAlternative" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractSequenceableAlternativeextendsAbstractAlternativewithSequenceable"></a>
       <a id="AbstractSequenceableAlternative:AbstractSequenceableAlternative"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,11 +111,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="AbstractSequenceableAlternative.html"><span class="name">AbstractSequenceableAlternative</span></a><span class="result"> extends AbstractAlternative with Sequenceable</span>
+        <a href="AbstractSequenceableAlternative.html"><span class="name">AbstractSequenceableAlternative</span></a><span class="result"> extends <a href="AbstractAlternative.html" class="extype" name="net.sourceforge.reb4j.AbstractAlternative">AbstractAlternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.Sequenceable">Sequenceable</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Adopted" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Adopted" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AdoptedextendsAbstractExpression"></a>
       <a id="Adopted:Adopted"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -104,11 +124,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Adopted.html"><span class="name">Adopted</span></a><span class="result"> extends AbstractExpression</span>
+        <a href="Adopted.html"><span class="name">Adopted</span></a><span class="result"> extends <a href="AbstractExpression.html" class="extype" name="net.sourceforge.reb4j.AbstractExpression">AbstractExpression</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Alternation" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Alternation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AlternationextendsAbstractExpressionwithAlternative"></a>
       <a id="Alternation:Alternation"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -116,11 +137,25 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Alternation.html"><span class="name">Alternation</span></a><span class="result"> extends AbstractExpression with AlternationOps</span>
+        <a href="Alternation.html"><span class="name">Alternation</span></a><span class="result"> extends <a href="AbstractExpression.html" class="extype" name="net.sourceforge.reb4j.AbstractExpression">AbstractExpression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.Alternative">Alternative</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.CharLiteral" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Alternative" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AlternativeextendsExpression"></a>
+      <a id="Alternative:Alternative"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Alternative.html"><span class="name">Alternative</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.Expression">Expression</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.sourceforge.reb4j.CharLiteral" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CharLiteralextendsLiteralwithQuantifiable"></a>
       <a id="CharLiteral:CharLiteral"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -128,11 +163,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CharLiteral.html"><span class="name">CharLiteral</span></a><span class="result"> extends Literal with Quantifiable</span>
+        <a href="CharLiteral.html"><span class="name">CharLiteral</span></a><span class="result"> extends <a href="Literal.html" class="extype" name="net.sourceforge.reb4j.Literal">Literal</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.Quantifiable">Quantifiable</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Entity" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Entity" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EntityextendsRawwithQuantifiable"></a>
       <a id="Entity:Entity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -140,11 +176,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Entity.html"><span class="name">Entity</span></a><span class="result"> extends Raw with Quantifiable</span>
+        <a href="Entity.html"><span class="name">Entity</span></a><span class="result"> extends <a href="Raw.html" class="extype" name="net.sourceforge.reb4j.Raw">Raw</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.Quantifiable">Quantifiable</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Expression" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.Expression" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExpressionextendsSerializable"></a>
       <a id="Expression:Expression"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -152,11 +189,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Expression.html"><span class="name">Expression</span></a><span class="result"> extends Serializable</span>
+        <a href="Expression.html"><span class="name">Expression</span></a><span class="result"> extends <span class="extype" name="java.io.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Flag" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Flag" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlagextendsEnum[net.sourceforge.reb4j.Flag]"></a>
       <a id="Flag:Flag"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -164,11 +202,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Flag.html"><span class="name">Flag</span></a><span class="result"> extends Enum[Flag]</span>
+        <a href="Flag.html"><span class="name">Flag</span></a><span class="result"> extends <span class="extype" name="java.lang.Enum">Enum</span>[<a href="Flag.html" class="extype" name="net.sourceforge.reb4j.Flag">Flag</a>]</span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Group" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Group" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="GroupextendsAbstractQuantifiableSequenceableAlternativewithQuantifiable"></a>
       <a id="Group:Group"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -176,11 +215,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Group.html"><span class="name">Group</span></a><span class="result"> extends AbstractQuantifiableSequenceableAlternative with Quantifiable</span>
+        <a href="Group.html"><span class="name">Group</span></a><span class="result"> extends <a href="AbstractQuantifiableSequenceableAlternative.html" class="extype" name="net.sourceforge.reb4j.AbstractQuantifiableSequenceableAlternative">AbstractQuantifiableSequenceableAlternative</a> with <a href="Quantifiable.html" class="extype" name="net.sourceforge.reb4j.Quantifiable">Quantifiable</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Literal" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.Literal" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LiteralextendsAbstractSequenceableAlternative"></a>
       <a id="Literal:Literal"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -188,11 +228,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Literal.html"><span class="name">Literal</span></a><span class="result"> extends AbstractSequenceableAlternative</span>
+        <a href="Literal.html"><span class="name">Literal</span></a><span class="result"> extends <a href="AbstractSequenceableAlternative.html" class="extype" name="net.sourceforge.reb4j.AbstractSequenceableAlternative">AbstractSequenceableAlternative</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Quantifiable" data-isabs="true">
+    </li><li name="net.sourceforge.reb4j.Quantifiable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="QuantifiableextendsExpression"></a>
       <a id="Quantifiable:Quantifiable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -200,11 +241,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Quantifiable.html"><span class="name">Quantifiable</span></a><span class="result"> extends Expression</span>
+        <a href="Quantifiable.html"><span class="name">Quantifiable</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.Expression">Expression</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Quantified" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Quantified" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QuantifiedextendsAbstractSequenceableAlternative"></a>
       <a id="Quantified:Quantified"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -212,11 +254,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Quantified.html"><span class="name">Quantified</span></a><span class="result"> extends AbstractSequenceableAlternative</span>
+        <a href="Quantified.html"><span class="name">Quantified</span></a><span class="result"> extends <a href="AbstractSequenceableAlternative.html" class="extype" name="net.sourceforge.reb4j.AbstractSequenceableAlternative">AbstractSequenceableAlternative</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Raw" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Raw" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RawextendsAbstractSequenceableAlternative"></a>
       <a id="Raw:Raw"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -224,11 +267,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Raw.html"><span class="name">Raw</span></a><span class="result"> extends AbstractSequenceableAlternative</span>
+        <a href="Raw.html"><span class="name">Raw</span></a><span class="result"> extends <a href="AbstractSequenceableAlternative.html" class="extype" name="net.sourceforge.reb4j.AbstractSequenceableAlternative">AbstractSequenceableAlternative</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Sequence" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Sequence" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SequenceextendsAbstractExpressionwithAlternativewithSequenceable"></a>
       <a id="Sequence:Sequence"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -236,11 +280,25 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Sequence.html"><span class="name">Sequence</span></a><span class="result"> extends AbstractExpression with Alternative with SequenceOps</span>
+        <a href="Sequence.html"><span class="name">Sequence</span></a><span class="result"> extends <a href="AbstractExpression.html" class="extype" name="net.sourceforge.reb4j.AbstractExpression">AbstractExpression</a> with <a href="Alternative.html" class="extype" name="net.sourceforge.reb4j.Alternative">Alternative</a> with <a href="Sequenceable.html" class="extype" name="net.sourceforge.reb4j.Sequenceable">Sequenceable</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.sourceforge.reb4j.StringLiteral" data-isabs="false">
+    </li><li name="net.sourceforge.reb4j.Sequenceable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SequenceableextendsExpression"></a>
+      <a id="Sequenceable:Sequenceable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Sequenceable.html"><span class="name">Sequenceable</span></a><span class="result"> extends <a href="Expression.html" class="extype" name="net.sourceforge.reb4j.Expression">Expression</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.sourceforge.reb4j.StringLiteral" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StringLiteralextendsLiteral"></a>
       <a id="StringLiteral:StringLiteral"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -248,7 +306,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="StringLiteral.html"><span class="name">StringLiteral</span></a><span class="result"> extends Literal</span>
+        <a href="StringLiteral.html"><span class="name">StringLiteral</span></a><span class="result"> extends <a href="Literal.html" class="extype" name="net.sourceforge.reb4j.Literal">Literal</a></span>
       </span>
       </h4>
       
@@ -257,117 +315,10 @@
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="net.sourceforge.reb4j.Adopted" data-isabs="false">
-      <a id="Adopted:Adopted"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Adopted$.html"><span class="name">Adopted</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Alternation" data-isabs="false">
-      <a id="Alternation:Alternation"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Alternation$.html"><span class="name">Alternation</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Entity" data-isabs="false">
-      <a id="Entity:Entity"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Entity$.html"><span class="name">Entity</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Flag" data-isabs="false">
-      <a id="Flag:Flag"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Flag$.html"><span class="name">Flag</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Group" data-isabs="false">
-      <a id="Group:Group"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Group$.html"><span class="name">Group</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Literal" data-isabs="false">
-      <a id="Literal:Literal"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Literal$.html"><span class="name">Literal</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Quantified" data-isabs="false">
-      <a id="Quantified:Quantified"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Quantified$.html"><span class="name">Quantified</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Raw" data-isabs="false">
-      <a id="Raw:Raw"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Raw$.html"><span class="name">Raw</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.Sequence" data-isabs="false">
-      <a id="Sequence:Sequence"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Sequence$.html"><span class="name">Sequence</span></a><span class="result"> extends </span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="net.sourceforge.reb4j.charclass" data-isabs="false">
+              <ol><li name="net.sourceforge.reb4j.charclass" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="charclass"></a>
       <a id="charclass:charclass"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -383,10 +334,20 @@
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>
