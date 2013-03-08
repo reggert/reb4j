@@ -141,7 +141,7 @@ final Quantified zeroOrMore_abc = Group.nonCapturing(abc).anyTimes();
 	method.
 				
 -------------------------------------------------------------------------------
-final CharLiteral a = Regex.literal('a');
+final CharLiteral a = Literal.literal('a');
 final Quantified a_repeating = a.atLeastOnce();
 -------------------------------------------------------------------------------
 			
@@ -206,7 +206,7 @@ final Quantified a_at_most_twice = a.repeat(0, 2);
 		
 -------------------------------------------------------------------------------
 final Quantified ABCs = Group.nonCapturing(Literal.literal("ABC")).atLeastOnce();
-final Quantified oneTwoThrees = Regex.literal("123").atLeastOnce();
+final Quantified oneTwoThrees = Literal.literal("123").atLeastOnce();
 final Sequence ABCsAndOneTwoThrees = Group.capture(ABCs).andThen(oneTwoThrees);
 final Pattern pattern = ABCsAndOneTwoThrees.toPattern();
 final Matcher matcher = pattern.matcher("ABCABCABC123123123");
