@@ -22,10 +22,6 @@ Of course, this comes at the cost of a modest performance penalty at startup as 
 
 As a quick example, here's one way to use **reb4j** to describe a pattern that validates the format of a dotted decimal IP address (ensuring that each octet is a decimal value between 0 and 255) and extracts the octets.  First, using the Java API (imports omitted for clarity):
 	
-	final Pattern pattern = dottedDecimalIPAddress.toPattern();
-	String input = "10.10.1.204";
-	boolean valid = pattern.matcher(input).matches();
-	
 	final Alternative oneDigitOctet = 
 		Perl.DIGIT;
 	final Alternative twoDigitOctet = 
