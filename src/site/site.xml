@@ -10,12 +10,13 @@
 	<body>
 		<menu name="Overview">
 			<item name="Introduction" href="index.html" />
+			<item name="Usage" href="usage.html" />
+			<item name="API Documentation" href="apidocs/index.html" />
 			<item name="Download" href="download.html" />
 			<item name="GitHub Project" href="https://github.com/reggert/reb4j/" />
 			<item name="Wiki" href="https://github.com/reggert/reb4j/wiki" />
 			<item name="SourceForge Project" href="https://sourceforge.net/projects/reb4j/" />
 		</menu>
-		<menu ref="modules" />
 		<menu ref="reports" />
 	</body>
 </project>
