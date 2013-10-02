@@ -1,4 +1,7 @@
 /target
 .project
+.classpath
 .settings
+.cache
+META-INF
 *.swp
