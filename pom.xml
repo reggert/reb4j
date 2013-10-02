@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.sourceforge.reb4j</groupId>
+	<groupId>com.github.reggert</groupId>
 	<artifactId>reb4j</artifactId>
-	<version>2.1.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<version>3.0.0-SNAPSHOT</version>
+	<packaging>bundle</packaging>
 	<name>Regular Expression Builder for Java</name>
 	<url>http://reggert.github.com/reb4j</url>
 	<description>
@@ -174,6 +174,24 @@
 		</pluginManagement>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Bundle-SymbolicName>
+							${project.artifactId}
+						</Bundle-SymbolicName>
+						<Bundle-RequiredExecutionEnvironment>
+							JavaSE-1.6
+						</Bundle-RequiredExecutionEnvironment>
+						<Export-Package>
+							net.sourceforge.reb4j;version="${packageVersion}"
+						</Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.0</version>
@@ -198,6 +216,15 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>${basedir}</directory>
+				<includes>
+					<include>COPYING</include>
+					<include>COPYING.LESSER</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<reporting>
@@ -250,39 +277,20 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.scala-lang</groupId>
-				<artifactId>scala-library</artifactId>
-				<version>2.10.0</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.scalatest</groupId>
-				<artifactId>scalatest_2.10</artifactId>
-				<version>1.9.1</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.functionaljava</groupId>
-				<artifactId>functionaljava</artifactId>
-				<version>3.1</version>
-				<scope>compile</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
-	<modules>
-		<module>net.sourceforge.reb4j</module>
-		<module>net.sourceforge.reb4j.scala</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.functionaljava</groupId>
+			<artifactId>functionaljava</artifactId>
+			<version>3.1</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
 
 </project>
