@@ -4,12 +4,13 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import io.github.reggert.reb4j.Adopted;
+import io.github.reggert.reb4j.Literal;
+
 import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-import com.github.reggert.reb4j.Adopted;
-import com.github.reggert.reb4j.Literal;
 
 public class AdoptTest
 {

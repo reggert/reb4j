@@ -3,14 +3,15 @@ package net.sourceforge.reb4j;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import io.github.reggert.reb4j.Alternation;
+import io.github.reggert.reb4j.CharLiteral;
+import io.github.reggert.reb4j.Expression;
+import io.github.reggert.reb4j.Literal;
+
 import java.util.HashSet;
 
 import org.junit.Test;
 
-import com.github.reggert.reb4j.Alternation;
-import com.github.reggert.reb4j.CharLiteral;
-import com.github.reggert.reb4j.Expression;
-import com.github.reggert.reb4j.Literal;
 
 
 public class AlternationTest
