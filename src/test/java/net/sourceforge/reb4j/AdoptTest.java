@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
+import com.github.reggert.reb4j.Adopted;
+import com.github.reggert.reb4j.Literal;
+
 public class AdoptTest
 {
 	@Test

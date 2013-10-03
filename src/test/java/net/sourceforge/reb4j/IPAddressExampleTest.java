@@ -6,10 +6,17 @@ import static org.junit.Assert.assertThat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.sourceforge.reb4j.charclass.CharClass;
-import net.sourceforge.reb4j.charclass.CharClass.Perl;
 
 import org.junit.Test;
+
+import com.github.reggert.reb4j.Alternation;
+import com.github.reggert.reb4j.Alternative;
+import com.github.reggert.reb4j.CharLiteral;
+import com.github.reggert.reb4j.Group;
+import com.github.reggert.reb4j.Literal;
+import com.github.reggert.reb4j.Sequence;
+import com.github.reggert.reb4j.charclass.CharClass;
+import com.github.reggert.reb4j.charclass.CharClass.Perl;
 
 import fj.Effect;
 import fj.F;

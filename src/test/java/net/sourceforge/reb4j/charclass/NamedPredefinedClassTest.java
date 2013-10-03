@@ -5,10 +5,12 @@ import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
 
-import net.sourceforge.reb4j.Entity;
-import net.sourceforge.reb4j.Expression;
 
 import org.junit.Test;
+
+import com.github.reggert.reb4j.Entity;
+import com.github.reggert.reb4j.Expression;
+import com.github.reggert.reb4j.charclass.CharClass;
 
 public class NamedPredefinedClassTest
 {

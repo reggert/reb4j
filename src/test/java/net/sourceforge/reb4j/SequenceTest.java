@@ -7,6 +7,11 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
+import com.github.reggert.reb4j.CharLiteral;
+import com.github.reggert.reb4j.Expression;
+import com.github.reggert.reb4j.Literal;
+import com.github.reggert.reb4j.Sequence;
+
 
 public class SequenceTest
 {

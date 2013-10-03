@@ -186,7 +186,7 @@
 							JavaSE-1.6
 						</Bundle-RequiredExecutionEnvironment>
 						<Export-Package>
-							net.sourceforge.reb4j;version="${packageVersion}"
+							*;version="${packageVersion}"
 						</Export-Package>
 					</instructions>
 				</configuration>
