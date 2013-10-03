@@ -3,6 +3,8 @@
 The purpose of **reb4j** is to provide a pure Java wrapper around
 the regular expression syntax provided by the JRE's 
 [java.util.regex.Pattern](http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html) class.
+An offshoot project, [**reb4s**](https://github.com/reggert/reb4s), provides
+same functionality with a pure Scala API.
 
 **reb4j** provides the following benefits over writing regular expressions directly:
 
@@ -18,7 +20,7 @@ the regular expression syntax provided by the JRE's
 
 Of course, this comes at the cost of a modest performance penalty at startup as **reb4j** builds strings to pass into the pattern compiler, but the time required for this processing is dwarfed by the time spent by the compiler itself and should not be noticeable.
 
-**reb4j** currently provides two API's: one in Java and one in Scala.  They each function in roughly the same way.  However, the Scala API takes advantage of several language features of Scala to make its use easier and more readable when invoked from Scala code.  The Scala API depends only upon the standard Scala library.  The Java API depends upon the [Functional Java](http://functionaljava.org) library in order to achieve some performance optimizations and make use of functional idioms.
+**reb4j** depends upon the [Functional Java](http://functionaljava.org) library in order to achieve some performance optimizations and make use of functional idioms.
 
 As a quick example, here's one way to use **reb4j** to describe a pattern that validates the format of a dotted decimal IP address (ensuring that each octet is a decimal value between 0 and 255) and extracts the octets.  First, using the Java API (imports omitted for clarity):
 	
@@ -70,28 +72,3 @@ As a quick example, here's one way to use **reb4j** to describe a pattern that v
 For reference, the generated regular expression looks like this:
 	
 	(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])
-
-Here's the same example again in Scala (imports again omitted):
-
-	val oneDigitOctet = Perl.Digit
-	val twoDigitOctet = range('1', '9') ~~ Perl.Digit
-	val oneHundredsOctet = '1' ~~ (Perl.Digit repeat 2)
-	val lowTwoHundredsOctet = '2' ~~ range('0', '4') ~~ Perl.Digit
-	val highTwoHundredsOctet = "25" ~~ range('0', '5')
-	val octet = oneDigitOctet||twoDigitOctet||oneHundredsOctet||lowTwoHundredsOctet||highTwoHundredsOctet
-	val dottedDecimalIPAddress = 
-		Capture(octet) ~~ '.' ~~ 
-		Capture(octet) ~~ '.' ~~ 
-		Capture(octet) ~~ '.' ~~ 
-		Capture(octet)
-	
-	val regex = dottedDecimalIPAddress.toRegex()
-	val input = "10.10.1.204"
-	val octets = input match {
-		case regex(first, second, third, fourth) => 
-			Some(Array(first.toInt, second.toInt, third.toInt, fourth.toInt))
-		case _ => None
-	}
-
-The generated expression is identical.
-	
