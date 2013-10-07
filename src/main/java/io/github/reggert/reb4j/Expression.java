@@ -17,8 +17,7 @@ import fj.data.LazyString;
 public interface Expression extends Serializable 
 {
 	/**
-	 * Returns the regular expression represented by this object, in a form 
-	 * suitable to passing to the {@link java.util.regex.Pattern} class.
+	 * Returns the regular expression represented by this object.
 	 */
 	LazyString expression();
 	
