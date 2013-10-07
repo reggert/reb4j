@@ -10,7 +10,7 @@
 	<body>
 		<menu name="Overview">
 			<item name="Introduction" href="index.html" />
-			<item name="Usage" href="usage.html" />
+			<item name="Usage" href="https://github.com/reggert/reb4j/wiki/Usage" />
 			<item name="API Documentation" href="apidocs/index.html" />
 			<item name="Download" href="download.html" />
 			<item name="GitHub Project" href="https://github.com/reggert/reb4j/" />
