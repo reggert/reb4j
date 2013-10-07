@@ -2,19 +2,16 @@
 
 The purpose of **reb4j** is to provide a pure Java wrapper around
 the regular expression syntax provided by the JRE's 
-[java.util.regex.Pattern](http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html) class.
+[`java.util.regex.Pattern`](http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html) class.
 An offshoot project, [**reb4s**](https://github.com/reggert/reb4s), provides
 same functionality with a pure Scala API.
 
 **reb4j** provides the following benefits over writing regular expressions directly:
 
-*	The **reb4j** API guarantees proper expression syntax.
-	If the Java code compiles, the regular expression will compile at runtime.  
-	In other words, it is not necessary to deal with [PatternSyntaxException](http://java.sun.com/javase/6/docs/api/java/util/regex/PatternSyntaxException.html)s.
-	You will know right away if there is a syntax error in your regular expression, rather than having to wait until runtime to find out. 
-*	The **reb4j** API enables composition of subexpressions.  Complex expressions can be broken into manageable pieces, each of which can be independently tested and reused.
-*	Patterns built using **reb4j** are inherently self-documenting (at least, moreso than regular expression syntax).
-	Since composition is supported, each subexpression can be given a meaningful name that describes what it represents.
+*	The **reb4j** API guarantees proper expression syntax. If the Java code compiles, the regular expression will compile at runtime. In other words, it is not necessary to deal with [`PatternSyntaxException`](http://java.sun.com/javase/6/docs/api/java/util/regex/PatternSyntaxException.html)s. You will know right away if there is a syntax error in your regular expression, rather than having to wait until runtime to find out. 
+*	The **reb4j** API enables composition of subexpressions.  
+*	Complex expressions can be broken into manageable pieces, each of which can be independently tested and reused.
+*	Patterns built using **reb4j** are inherently self-documenting (at least, moreso than regular expression syntax). Since composition is supported, each subexpression can be given a meaningful name that describes what it represents.
 *	Since **reb4j** hides regular expression syntax from the developer, there is no need to memorize (or repeatedly look up) what symbols represent which expression constructs, nor is it necessary to "double-escape" strings (i.e., escaped once to override how the pattern compiler interprets special characters, and escaped again to fit into Java string literals).
 	
 
