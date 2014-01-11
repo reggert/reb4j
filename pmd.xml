@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2013-10-05T16:10:29.325">
-<file name="c:\Users\Rich\git\reb4j\src\main\java\io\github\reggert\reb4j\charclass\CharClass.java">
+<pmd version="4.3" timestamp="2014-01-11T13:40:27.651">
+<file name="C:\Users\Rich\git\reb4j\target\checkout\src\main\java\io\github\reggert\reb4j\charclass\CharClass.java">
 <violation beginline="11" endline="11" begincolumn="1" endcolumn="40" rule="DontImportJavaLang" ruleset="Import Statement Rules" package="io.github.reggert.reb4j.charclass" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DontImportJavaLang" priority="4">
 Avoid importing anything from the package 'java.lang'
 </violation>

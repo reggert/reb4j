@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
 <duplication lines="73" tokens="352">
-<file line="14" path="c:\Users\Rich\git\reb4j\src\main\java\io\github\reggert\reb4j\CharLiteral.java"/>
-<file line="13" path="c:\Users\Rich\git\reb4j\src\main\java\io\github\reggert\reb4j\Entity.java"/>
+<file line="14" path="C:\Users\Rich\git\reb4j\target\checkout\src\main\java\io\github\reggert\reb4j\CharLiteral.java"/>
+<file line="13" path="C:\Users\Rich\git\reb4j\target\checkout\src\main\java\io\github\reggert\reb4j\Entity.java"/>
 <codefragment>
 <![CDATA[
 	{this.unescapedChar = unescapedChar;}
