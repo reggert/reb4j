@@ -1,4 +1,4 @@
-package net.sourceforge.reb4j;
+package io.github.reggert.reb4j;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;

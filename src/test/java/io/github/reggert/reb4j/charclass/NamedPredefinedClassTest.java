@@ -1,4 +1,4 @@
-package net.sourceforge.reb4j.charclass;
+package io.github.reggert.reb4j.charclass;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
