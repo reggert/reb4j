@@ -29,6 +29,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<packageVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</packageVersion>
+		<scala.version>2.10</scala.version>
 	</properties>
 
 	<licenses>
@@ -155,7 +156,6 @@
 										<artifactId>scala-maven-plugin</artifactId>
 										<versionRange>[3.1,)</versionRange>
 										<goals>
-											<goal>compile</goal>
 											<goal>testCompile</goal>
 										</goals>
 									</pluginExecutionFilter>
@@ -191,6 +191,16 @@
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<scalaVersion>${scala.version}</scalaVersion>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -220,13 +230,24 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.16</version>
+			</plugin>
+			<plugin>
+				<groupId>org.scalatest</groupId>
+				<artifactId>scalatest-maven-plugin</artifactId>
+				<version>1.0-RC2</version>
 				<configuration>
-					<includes>
-						<include>**/*Test.java</include>
-						<include>**/*Test.scala</include>
-						<include>**/*Props.scala</include>
-					</includes>
+					<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+					<junitxml>.</junitxml>
+					<filereports>WDF TestSuite.txt</filereports>
 				</configuration>
+				<executions>
+					<execution>
+						<id>test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<resources>
@@ -306,13 +327,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.scalacheck</groupId>
-			<artifactId>scalacheck_2.10</artifactId>
+			<artifactId>scalacheck_${scala.version}</artifactId>
 			<version>1.10.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_2.10</artifactId>
+			<artifactId>scalatest_${scala.version}</artifactId>
 			<version>2.0</version>
 			<scope>test</scope>
 		</dependency>
