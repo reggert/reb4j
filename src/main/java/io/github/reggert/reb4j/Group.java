@@ -1,11 +1,14 @@
 package io.github.reggert.reb4j;
 
+import java.util.Arrays;
+
 import fj.data.LazyString;
+import fj.data.List;
 
 /**
  * Expression that has been grouped in parentheses.
  */
-public final class Group extends AbstractQuantifiableSequenceableAlternative 
+public abstract class Group extends AbstractQuantifiableSequenceableAlternative 
 	implements Quantifiable
 {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +34,17 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 		return expression;
 	}
 	
+	public final static class Capture extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(");
+		
+		public Capture(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
+	}
+	
 	/**
 	 * Constructs a capturing group.
 	 * 
@@ -40,9 +54,20 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group capture(final Expression nested)
+	public static Capture capture(final Expression nested)
 	{
-		return new Group(nested, LazyString.str("("));
+		return new Capture(nested);
+	}
+	
+	public final static class NonCapturing extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(?:");
+		
+		public NonCapturing(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
 	}
 	
 	/**
@@ -54,9 +79,20 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group nonCapturing(final Expression nested)
+	public static NonCapturing nonCapturing(final Expression nested)
 	{
-		return new Group(nested, LazyString.str("(?:"));
+		return new NonCapturing(nested);
+	}
+	
+	public final static class Independent extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(?>");
+		
+		public Independent(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
 	}
 	
 	/**
@@ -68,9 +104,20 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group independent(final Expression nested) 
+	public static Independent independent(final Expression nested) 
 	{
-		return new Group(nested, LazyString.str("(?>"));
+		return new Independent(nested);
+	}
+	
+	public final static class PositiveLookAhead extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(?=");
+		
+		public PositiveLookAhead(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
 	}
 	
 	/**
@@ -82,9 +129,20 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group positiveLookAhead(final Expression nested) 
+	public static PositiveLookAhead positiveLookAhead(final Expression nested) 
 	{
-		return new Group(nested, LazyString.str("(?="));
+		return new PositiveLookAhead(nested);
+	}
+	
+	public final static class NegativeLookAhead extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(?!");
+		
+		public NegativeLookAhead(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
 	}
 	
 	/**
@@ -96,9 +154,20 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group negativeLookAhead(final Expression nested) 
+	public static NegativeLookAhead negativeLookAhead(final Expression nested) 
 	{
-		return new Group(nested, LazyString.str("(?!"));
+		return new NegativeLookAhead(nested);
+	}
+	
+	public final static class PositiveLookBehind extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(?<=");
+		
+		public PositiveLookBehind(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
 	}
 	
 	/**
@@ -110,9 +179,20 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group positiveLookBehind(final Expression nested) 
+	public static PositiveLookBehind positiveLookBehind(final Expression nested) 
 	{
-		return new Group(nested, LazyString.str("(?<="));
+		return new PositiveLookBehind(nested);
+	}
+	
+	public final static class NegativeLookBehind extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString OPENING = LazyString.str("(?<!");
+		
+		public NegativeLookBehind(final Expression nested)
+		{
+			super(nested, OPENING);
+		}
 	}
 	
 	/**
@@ -124,9 +204,26 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group negativeLookBehind(final Expression nested) 
+	public static NegativeLookBehind negativeLookBehind(final Expression nested) 
 	{
-		return new Group(nested, LazyString.str("(?<!"));
+		return new NegativeLookBehind(nested);
+	}
+	
+	public final static class EnableFlags extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		public final List<Flag> flags;
+		
+		private static LazyString opening(final Flag... flags)
+		{
+			return LazyString.str("(?").append(Flag.toString(flags)).append(":");
+		}
+		
+		public EnableFlags(final Expression nested, final Flag... flags)
+		{
+			super(nested, opening(flags));
+			this.flags = List.iterableList(Arrays.asList(flags));
+		}
 	}
 	
 	/**
@@ -140,11 +237,27 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group enableFlags(final Expression nested, final Flag... flags) 
+	public static EnableFlags enableFlags(final Expression nested, final Flag... flags) 
 	{
-		return new Group(nested, LazyString.str("(?").append(Flag.toString(flags)).append(":"));
+		return new EnableFlags(nested, flags);
 	}
 	
+	public final static class DisableFlags extends Group
+	{
+		private static final long serialVersionUID = 1L;
+		public final List<Flag> flags;
+		
+		private static LazyString opening(final Flag... flags)
+		{
+			return LazyString.str("(?-").append(Flag.toString(flags)).append(":");
+		}
+		
+		public DisableFlags(final Expression nested, final Flag... flags)
+		{
+			super(nested, opening(flags));
+			this.flags = List.iterableList(Arrays.asList(flags));
+		}
+	}
 	/**
 	 * Constructs a group that disables the specified matcher flags.
 	 * 
@@ -156,9 +269,9 @@ public final class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static Group disableFlags(final Expression nested, final Flag... flags) 
+	public static DisableFlags disableFlags(final Expression nested, final Flag... flags) 
 	{
-		return new Group(nested, LazyString.str("(?-").append(Flag.toString(flags)).append(":"));
+		return new DisableFlags(nested, flags);
 	}
 
 	@Override
