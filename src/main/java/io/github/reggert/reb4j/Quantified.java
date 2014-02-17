@@ -5,11 +5,12 @@ import fj.data.LazyString;
 /**
  * Expression that has a quantifier attached to it.
  */
-public final class Quantified extends AbstractSequenceableAlternative
+public abstract class Quantified extends AbstractSequenceableAlternative
 {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	public final Quantifiable base;
 	private final LazyString quantifier;
+	public final Mode mode;
 	
 	public static enum Mode
 	{
@@ -23,211 +24,193 @@ public final class Quantified extends AbstractSequenceableAlternative
 		{this.symbol = symbol;}
 	}
 	
-	private Quantified(final Quantifiable base, final LazyString quantifier)
+	private Quantified(final Quantifiable base, final Mode mode, final LazyString quantifier)
 	{
 		if (base == null) throw new NullPointerException("base");
 		if (quantifier == null) throw new NullPointerException("quantifier");
 		this.base = base;
 		this.quantifier = quantifier;
+		this.mode = mode;
 	}
 	
 	public String quantifier()
 	{return quantifier.toString();}
 	
-	public static Quantified anyTimes(final Quantifiable base, final Mode mode)
+	
+	public static final class AnyTimes extends Quantified
 	{
-		return new Quantified(base, mode.symbol);
+		private static final long serialVersionUID = 1L;
+		private static final LazyString SYMBOL = LazyString.str("*");
+
+		public AnyTimes(final Quantifiable base, final Mode mode)
+		{
+			super(base, mode, SYMBOL.append(mode.symbol));
+		}
 	}
 	
-	/**
-	 * @see Quantifiable#anyTimes()
-	 */
-	public static Quantified anyTimes(final Quantifiable base)
-	{
-		return anyTimes(base, Mode.GREEDY);
-	}
-	
-	/**
-	 * @see Quantifiable#anyTimesReluctantly()
-	 */
 	@Deprecated
-	public static Quantified anyTimesReluctantly(final Quantifiable base)
+	public static AnyTimes anyTimes(final Quantifiable base)
 	{
-		return anyTimes(base, Mode.RELUCTANT);
+		return new AnyTimes(base, Mode.GREEDY);
 	}
 	
-	/**
-	 * @see Quantifiable#anyTimesPossessively()
-	 */
 	@Deprecated
-	public static Quantified anyTimesPossessively(final Quantifiable base)
+	public static AnyTimes anyTimesReluctantly(final Quantifiable base)
 	{
-		return anyTimes(base, Mode.POSSESSIVE);
+		return new AnyTimes(base, Mode.RELUCTANT);
 	}
 	
-	
-	public static Quantified atLeastOnce(final Quantifiable base, final Mode mode)
-	{
-		return new Quantified(base, mode.symbol);
-	}
-	
-	/**
-	 * @see Quantifiable#atLeastOnce()
-	 */
-	public static Quantified atLeastOnce(final Quantifiable base)
-	{
-		return atLeastOnce(base, Mode.GREEDY);
-	}
-	
-	/**
-	 * @see Quantifiable#atLeastOnceReluctantly()
-	 */
 	@Deprecated
-	public static Quantified atLeastOnceReluctantly(final Quantifiable base)
+	public static AnyTimes anyTimesPossessively(final Quantifiable base)
 	{
-		return atLeastOnce(base, Mode.RELUCTANT);
+		return new AnyTimes(base, Mode.POSSESSIVE);
 	}
 	
-	/**
-	 * @see Quantifiable#atLeastOncePossessively()
-	 */
+	public static final class AtLeastOnce extends Quantified
+	{
+		private static final long serialVersionUID = 1L;
+		private static final LazyString SYMBOL = LazyString.str("+");
+
+		public AtLeastOnce(final Quantifiable base, final Mode mode)
+		{
+			super(base, mode, SYMBOL.append(mode.symbol));
+		}
+	}
+	
 	@Deprecated
-	public static Quantified atLeastOncePossessively(final Quantifiable base)
+	public static AtLeastOnce atLeastOnce(final Quantifiable base)
 	{
-		return atLeastOnce(base, Mode.POSSESSIVE);
+		return new AtLeastOnce(base, Mode.GREEDY);
 	}
 	
-	public static Quantified optional(final Quantifiable base, final Mode mode)
-	{
-		return new Quantified(base, mode.symbol);
-	}
-	
-	/**
-	 * @see Quantifiable#optional()
-	 */
-	public static Quantified optional(final Quantifiable base)
-	{
-		return optional(base, Mode.GREEDY);
-	}
-	
-	/**
-	 * @see Quantifiable#optionalReluctantly()
-	 */
 	@Deprecated
-	public static Quantified optionalReluctantly(final Quantifiable base)
+	public static AtLeastOnce atLeastOnceReluctantly(final Quantifiable base)
 	{
-		return optional(base, Mode.RELUCTANT);
+		return new AtLeastOnce(base, Mode.RELUCTANT);
 	}
 	
-	/**
-	 * @see Quantifiable#optionalPossessively()
-	 */
 	@Deprecated
-	public static Quantified optionalPossessively(final Quantifiable base)
+	public static AtLeastOnce atLeastOncePossessively(final Quantifiable base)
 	{
-		return optional(base, Mode.POSSESSIVE);
+		return new AtLeastOnce(base, Mode.POSSESSIVE);
 	}
 	
-	
-	public static Quantified repeat(final Quantifiable base, final int n, final Mode mode)
+	public static final class Optional extends Quantified
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append("}").append(mode.symbol));
+		private static final long serialVersionUID = 1L;
+		private static final LazyString SYMBOL = LazyString.str("?");
+
+		public Optional(final Quantifiable base, final Mode mode)
+		{
+			super(base, mode, SYMBOL.append(mode.symbol));
+		}
 	}
 	
-	/**
-	 * @see Quantifiable#repeat(int)
-	 */
-	public static Quantified repeat(final Quantifiable base, final int n)
-	{
-		return repeat(base, n, Mode.GREEDY);
-	}
-	
-	/**
-	 * @see Quantifiable#repeatReluctantly(int)
-	 */
 	@Deprecated
-	public static Quantified repeatReluctantly(final Quantifiable base, final int n)
+	public static Optional optional(final Quantifiable base)
 	{
-		return repeat(base, n, Mode.RELUCTANT);
+		return new Optional(base, Mode.GREEDY);
 	}
 	
-	/**
-	 * @see Quantifiable#repeatPossessively(int)
-	 */
 	@Deprecated
-	public static Quantified repeatPossessively(final Quantifiable base, final int n)
+	public static Optional optionalReluctantly(final Quantifiable base)
 	{
-		return repeat(base, n, Mode.POSSESSIVE);
+		return new Optional(base, Mode.RELUCTANT);
 	}
 	
-	public static Quantified repeat(final Quantifiable base, final int min, final int max, final Mode mode)
-	{
-		return new Quantified(
-				base, 
-				LazyString.str("{")
-					.append(Integer.toString(min))
-					.append(",")
-					.append(Integer.toString(max))
-					.append("}")
-					.append(mode.symbol)
-			); 
-	}
-	
-	/**
-	 * @see Quantifiable#repeat(int, int)
-	 */
-	public static Quantified repeat(final Quantifiable base, final int min, final int max)
-	{
-		return repeat(base, min, max, Mode.GREEDY); 
-	}
-	
-	/**
-	 * @see Quantifiable#repeatReluctantly(int, int)
-	 */
 	@Deprecated
-	public static Quantified repeatReluctantly(final Quantifiable base, final int min, final int max)
+	public static Optional optionalPossessively(final Quantifiable base)
 	{
-		return repeat(base, min, max, Mode.RELUCTANT);
+		return new Optional(base, Mode.POSSESSIVE);
 	}
 	
-	/**
-	 * @see Quantifiable#repeatPossessively(int, int)
-	 */
+	public static final class RepeatExactly extends Quantified
+	{
+		private static final long serialVersionUID = 1L;
+		public final int repetitions;
+
+		public RepeatExactly(final Quantifiable base, final int n, final Mode mode)
+		{
+			super(base, mode, LazyString.str("{").append(Integer.toString(n)).append("}").append(mode.symbol));
+			this.repetitions = n;
+		}
+	}
+	
 	@Deprecated
-	public static Quantified repeatPossessively(final Quantifiable base, final int min, final int max)
+	public static RepeatExactly repeat(final Quantifiable base, final int n)
 	{
-		return repeat(base, min, max, Mode.POSSESSIVE);
+		return new RepeatExactly(base, n, Mode.GREEDY);
 	}
 	
-	public static Quantified atLeast(final Quantifiable base, final int n, final Mode mode)
-	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append(",}").append(mode.symbol));
-	}
-	
-	/**
-	 * @see Quantifiable#atLeast(int)
-	 */
-	public static Quantified atLeast(final Quantifiable base, final int n)
-	{
-		return atLeast(base, n, Mode.GREEDY);
-	}
-	
-	/**
-	 * @see Quantifiable#atLeastReluctantly(int)
-	 */
 	@Deprecated
-	public static Quantified atLeastReluctantly(final Quantifiable base, final int n)
+	public static RepeatExactly repeatReluctantly(final Quantifiable base, final int n)
 	{
-		return atLeast(base, n, Mode.RELUCTANT);
+		return new RepeatExactly(base, n, Mode.RELUCTANT);
 	}
 	
-	/**
-	 * @see Quantifiable#atLeastPossessively(int)
-	 */
 	@Deprecated
-	public static Quantified atLeastPossessively(final Quantifiable base, final int n)
+	public static RepeatExactly repeatPossessively(final Quantifiable base, final int n)
 	{
-		return atLeast(base, n, Mode.POSSESSIVE);
+		return new RepeatExactly(base, n, Mode.POSSESSIVE);
+	}
+	
+	public static final class RepeatRange extends Quantified
+	{
+		private static final long serialVersionUID = 1L;
+		public final int minRepetitions;
+		public final Integer maxRepetitions;
+
+		public RepeatRange(final Quantifiable base, final int min, final Integer max, final Mode mode)
+		{
+			super(
+					base, 
+					mode,
+					LazyString.str("{")
+						.append(Integer.toString(min))
+						.append(",")
+						.append(max == null ? "" : max.toString())
+						.append("}")
+						.append(mode.symbol)
+				);
+			this.minRepetitions = min;
+			this.maxRepetitions = max;
+		}
+	}
+	
+	@Deprecated
+	public static RepeatRange repeat(final Quantifiable base, final int min, final int max)
+	{
+		return new RepeatRange(base, min, max, Mode.GREEDY); 
+	}
+	
+	@Deprecated
+	public static RepeatRange repeatReluctantly(final Quantifiable base, final int min, final int max)
+	{
+		return new RepeatRange(base, min, max, Mode.RELUCTANT);
+	}
+	
+	@Deprecated
+	public static RepeatRange repeatPossessively(final Quantifiable base, final int min, final int max)
+	{
+		return new RepeatRange(base, min, max, Mode.POSSESSIVE);
+	}
+	
+	@Deprecated
+	public static RepeatRange atLeast(final Quantifiable base, final int n)
+	{
+		return new RepeatRange(base, n, null, Mode.GREEDY);
+	}
+	
+	@Deprecated
+	public static RepeatRange atLeastReluctantly(final Quantifiable base, final int n)
+	{
+		return new RepeatRange(base, n, null, Mode.RELUCTANT);
+	}
+	
+	@Deprecated
+	public static RepeatRange atLeastPossessively(final Quantifiable base, final int n)
+	{
+		return new RepeatRange(base, n, null, Mode.POSSESSIVE);
 	}
 
 	@Override

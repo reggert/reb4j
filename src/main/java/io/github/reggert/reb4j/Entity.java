@@ -14,112 +14,112 @@ public final class Entity extends Raw implements Quantifiable
 	{super(LazyString.str(rawExpression));}
 	
 	@Override
-	public final Quantified anyTimes(final Mode mode)
-	{return Quantified.anyTimes(this, mode);}
+	public final Quantified.AnyTimes anyTimes(final Mode mode)
+	{return new Quantified.AnyTimes(this, mode);}
 	
 	@Override
-	public final Quantified anyTimes()
-	{return Quantified.anyTimes(this);}
+	public final Quantified.AnyTimes anyTimes()
+	{return anyTimes(Mode.GREEDY);}
 
 	@Override
 	@Deprecated
-	public final Quantified anyTimesReluctantly()
+	public final Quantified.AnyTimes anyTimesReluctantly()
 	{return Quantified.anyTimesReluctantly(this);}
 
 	@Override
 	@Deprecated
-	public final Quantified anyTimesPossessively()
+	public final Quantified.AnyTimes anyTimesPossessively()
 	{return Quantified.anyTimesPossessively(this);}
 
 	@Override
-	public final Quantified atLeastOnce(final Mode mode)
-	{return Quantified.atLeastOnce(this, mode);}
+	public final Quantified.AtLeastOnce atLeastOnce(final Mode mode)
+	{return new Quantified.AtLeastOnce(this, mode);}
 	
 	@Override
-	public final Quantified atLeastOnce()
-	{return Quantified.atLeastOnce(this);}
+	public final Quantified.AtLeastOnce atLeastOnce()
+	{return atLeastOnce(Mode.GREEDY);}
 
 	@Override
 	@Deprecated
-	public final Quantified atLeastOnceReluctantly()
-	{return Quantified.atLeastOnceReluctantly(this);}
+	public final Quantified.AtLeastOnce atLeastOnceReluctantly()
+	{return atLeastOnce(Mode.RELUCTANT);}
 
 	@Override
 	@Deprecated
-	public final Quantified atLeastOncePossessively()
-	{return Quantified.atLeastOncePossessively(this);}
+	public final Quantified.AtLeastOnce atLeastOncePossessively()
+	{return atLeastOnce(Mode.POSSESSIVE);}
 
 	@Override
-	public final Quantified optional(final Mode mode)
-	{return Quantified.optional(this, mode);}
+	public final Quantified.Optional optional(final Mode mode)
+	{return new Quantified.Optional(this, mode);}
 	
 	@Override
-	public final Quantified optional()
-	{return Quantified.optional(this);}
+	public final Quantified.Optional optional()
+	{return optional(Mode.GREEDY);}
 
 	@Override
 	@Deprecated
-	public final Quantified optionalReluctantly()
-	{return Quantified.optionalReluctantly(this);}
+	public final Quantified.Optional optionalReluctantly()
+	{return optional(Mode.RELUCTANT);}
 
 	@Override
 	@Deprecated
-	public final Quantified optionalPossessively()
-	{return Quantified.optionalPossessively(this);}
+	public final Quantified.Optional optionalPossessively()
+	{return optional(Mode.POSSESSIVE);}
 
 	@Override
-	public final Quantified repeat(final int n, final Mode mode)
-	{return Quantified.repeat(this, n, mode);}
+	public final Quantified.RepeatExactly repeat(final int n, final Mode mode)
+	{return new Quantified.RepeatExactly(this, n, mode);}
 	
 	@Override
-	public final Quantified repeat(final int n)
-	{return Quantified.repeat(this, n);}
+	public final Quantified.RepeatExactly repeat(final int n)
+	{return repeat(n, Mode.GREEDY);}
 
 	@Override
 	@Deprecated
-	public final Quantified repeatReluctantly(final int n)
-	{return Quantified.repeatReluctantly(this, n);}
+	public final Quantified.RepeatExactly repeatReluctantly(final int n)
+	{return repeat(n, Mode.RELUCTANT);}
 
 	@Override
 	@Deprecated
-	public final Quantified repeatPossessively(final int n)
-	{return Quantified.repeatPossessively(this, n);}
+	public final Quantified.RepeatExactly repeatPossessively(final int n)
+	{return repeat(n, Mode.POSSESSIVE);}
 
 	@Override
-	public final Quantified repeat(final int min, final int max, final Mode mode)
-	{return Quantified.repeat(this, min, max, mode);}
+	public final Quantified.RepeatRange repeat(final int min, final int max, final Mode mode)
+	{return new Quantified.RepeatRange(this, min, max, mode);}
 	
 	@Override
-	public final Quantified repeat(final int min, final int max)
-	{return Quantified.repeat(this, min, max);}
+	public final Quantified.RepeatRange repeat(final int min, final int max)
+	{return repeat(min, max, Mode.GREEDY);}
 
 	@Override
 	@Deprecated
-	public final Quantified repeatReluctantly(final int min, final int max)
-	{return Quantified.repeatReluctantly(this, min, max);}
+	public final Quantified.RepeatRange repeatReluctantly(final int min, final int max)
+	{return repeat(min, max, Mode.RELUCTANT);}
 
 	@Override
 	@Deprecated
-	public final Quantified repeatPossessively(final int min, final int max)
-	{return Quantified.repeatPossessively(this, min, max);}
+	public final Quantified.RepeatRange repeatPossessively(final int min, final int max)
+	{return repeat(min, max, Mode.POSSESSIVE);}
 
 	@Override
-	public final Quantified atLeast(final int n, final Mode mode)
-	{return Quantified.atLeast(this, n, mode);}
+	public final Quantified.RepeatRange atLeast(final int n, final Mode mode)
+	{return new Quantified.RepeatRange(this, n, null, mode);}
 	
 	@Override
-	public final Quantified atLeast(final int n)
-	{return Quantified.atLeast(this, n);}
+	public final Quantified.RepeatRange atLeast(final int n)
+	{return atLeast(n, Mode.GREEDY);}
 
 	@Override
 	@Deprecated
-	public final Quantified atLeastReluctantly(final int n)
-	{return Quantified.atLeastReluctantly(this, n);}
+	public final Quantified.RepeatRange atLeastReluctantly(final int n)
+	{return atLeast(n, Mode.RELUCTANT);}
 
 	@Override
 	@Deprecated
-	public final Quantified atLeastPossessively(final int n)
-	{return Quantified.atLeastPossessively(this, n);}
+	public final Quantified.RepeatRange atLeastPossessively(final int n)
+	{return atLeast(n, Mode.POSSESSIVE);}
 	
 	/**
 	 * Matches any single character.
