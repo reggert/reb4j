@@ -1,6 +1,5 @@
 package io.github.reggert.reb4j.test
 
-import org.scalacheck.Properties
 import io.github.reggert.reb4j.charclass.CharClass
 import org.scalacheck.Arbitrary.arbitrary
 import io.github.reggert.reb4j.charclass.SingleChar
