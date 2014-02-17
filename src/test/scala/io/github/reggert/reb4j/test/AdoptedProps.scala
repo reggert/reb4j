@@ -9,5 +9,5 @@ import org.junit.Test
 class AdoptedProps extends JUnitSuite with Checkers 
 	with ExpressionProperties[Adopted] with AdoptedGenerators 
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[Adopted])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[Adopted]))
 }

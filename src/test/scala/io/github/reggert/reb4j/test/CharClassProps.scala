@@ -17,8 +17,8 @@ class CharClassProps extends JUnitSuite with Checkers
 	with CharClassProperties[CharClass]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[CharClass])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[CharClass])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[CharClass]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[CharClass]))
 }
 
 
@@ -27,8 +27,8 @@ class SingleCharProps extends JUnitSuite with Checkers
 	with CharClassProperties[SingleChar]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[SingleChar])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[SingleChar])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[SingleChar]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[SingleChar]))
 }
 
 
@@ -38,8 +38,8 @@ class MultiCharProps extends JUnitSuite with Checkers
 	with CharClassGenerators 
 	with CharClassShrinkers
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[MultiChar])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[MultiChar])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[MultiChar]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[MultiChar]))
 }
 
 
@@ -48,8 +48,8 @@ class CharRangeProps extends JUnitSuite with Checkers
 	with CharClassProperties[CharRange]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[CharRange])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[CharRange])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[CharRange]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[CharRange]))
 }
 
 
@@ -59,8 +59,8 @@ class IntersectionProps extends JUnitSuite with Checkers
 	with CharClassGenerators
 	with CharClassShrinkers
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[Intersection])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[Intersection])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[Intersection]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[Intersection]))
 }
 
 
@@ -70,8 +70,8 @@ class UnionProps extends JUnitSuite with Checkers
 	with CharClassGenerators
 	with CharClassShrinkers
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[Union])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[Union])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[Union]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[Union]))
 }
 
 
@@ -80,6 +80,6 @@ class PredefinedClassProps extends JUnitSuite with Checkers
 	with CharClassProperties[PredefinedClass]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[PredefinedClass])
-	@Test def symmetricNegation : Unit = symmetricNegation(arbitrary[PredefinedClass])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[PredefinedClass]))
+	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[PredefinedClass]))
 }

@@ -13,7 +13,7 @@ class ExpressionProps extends JUnitSuite with Checkers
 	with ExpressionProperties[Expression] 
 	with ExpressionGenerators with ExpressionShrinkers
 {
-	@Test def toPattern : Unit = toPattern(arbitrary[Expression])
+	@Test def toPattern : Unit = check(toPattern(arbitrary[Expression]))
 }
 
 
