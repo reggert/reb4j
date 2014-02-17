@@ -11,6 +11,18 @@ public final class Quantified extends AbstractSequenceableAlternative
 	public final Quantifiable base;
 	private final LazyString quantifier;
 	
+	public static enum Mode
+	{
+		GREEDY(LazyString.empty),
+		RELUCTANT(LazyString.str("?")),
+		POSSESSIVE(LazyString.str("+"));
+		
+		public final LazyString symbol;
+		
+		private Mode(final LazyString symbol)
+		{this.symbol = symbol;}
+	}
+	
 	private Quantified(final Quantifiable base, final LazyString quantifier)
 	{
 		if (base == null) throw new NullPointerException("base");
@@ -22,28 +34,41 @@ public final class Quantified extends AbstractSequenceableAlternative
 	public String quantifier()
 	{return quantifier.toString();}
 	
+	public static Quantified anyTimes(final Quantifiable base, final Mode mode)
+	{
+		return new Quantified(base, mode.symbol);
+	}
+	
 	/**
 	 * @see Quantifiable#anyTimes()
 	 */
 	public static Quantified anyTimes(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("*"));
+		return anyTimes(base, Mode.GREEDY);
 	}
 	
 	/**
 	 * @see Quantifiable#anyTimesReluctantly()
 	 */
+	@Deprecated
 	public static Quantified anyTimesReluctantly(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("*?"));
+		return anyTimes(base, Mode.RELUCTANT);
 	}
 	
 	/**
 	 * @see Quantifiable#anyTimesPossessively()
 	 */
+	@Deprecated
 	public static Quantified anyTimesPossessively(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("*+"));
+		return anyTimes(base, Mode.POSSESSIVE);
+	}
+	
+	
+	public static Quantified atLeastOnce(final Quantifiable base, final Mode mode)
+	{
+		return new Quantified(base, mode.symbol);
 	}
 	
 	/**
@@ -51,23 +76,30 @@ public final class Quantified extends AbstractSequenceableAlternative
 	 */
 	public static Quantified atLeastOnce(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("+"));
+		return atLeastOnce(base, Mode.GREEDY);
 	}
 	
 	/**
 	 * @see Quantifiable#atLeastOnceReluctantly()
 	 */
+	@Deprecated
 	public static Quantified atLeastOnceReluctantly(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("+?"));
+		return atLeastOnce(base, Mode.RELUCTANT);
 	}
 	
 	/**
 	 * @see Quantifiable#atLeastOncePossessively()
 	 */
+	@Deprecated
 	public static Quantified atLeastOncePossessively(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("++"));
+		return atLeastOnce(base, Mode.POSSESSIVE);
+	}
+	
+	public static Quantified optional(final Quantifiable base, final Mode mode)
+	{
+		return new Quantified(base, mode.symbol);
 	}
 	
 	/**
@@ -75,23 +107,31 @@ public final class Quantified extends AbstractSequenceableAlternative
 	 */
 	public static Quantified optional(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("?"));
+		return optional(base, Mode.GREEDY);
 	}
 	
 	/**
 	 * @see Quantifiable#optionalReluctantly()
 	 */
+	@Deprecated
 	public static Quantified optionalReluctantly(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("??"));
+		return optional(base, Mode.RELUCTANT);
 	}
 	
 	/**
 	 * @see Quantifiable#optionalPossessively()
 	 */
+	@Deprecated
 	public static Quantified optionalPossessively(final Quantifiable base)
 	{
-		return new Quantified(base, LazyString.str("?+"));
+		return optional(base, Mode.POSSESSIVE);
+	}
+	
+	
+	public static Quantified repeat(final Quantifiable base, final int n, final Mode mode)
+	{
+		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append("}").append(mode.symbol));
 	}
 	
 	/**
@@ -99,23 +139,38 @@ public final class Quantified extends AbstractSequenceableAlternative
 	 */
 	public static Quantified repeat(final Quantifiable base, final int n)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append("}"));
+		return repeat(base, n, Mode.GREEDY);
 	}
 	
 	/**
 	 * @see Quantifiable#repeatReluctantly(int)
 	 */
+	@Deprecated
 	public static Quantified repeatReluctantly(final Quantifiable base, final int n)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append("}?"));
+		return repeat(base, n, Mode.RELUCTANT);
 	}
 	
 	/**
 	 * @see Quantifiable#repeatPossessively(int)
 	 */
+	@Deprecated
 	public static Quantified repeatPossessively(final Quantifiable base, final int n)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append("}+"));
+		return repeat(base, n, Mode.POSSESSIVE);
+	}
+	
+	public static Quantified repeat(final Quantifiable base, final int min, final int max, final Mode mode)
+	{
+		return new Quantified(
+				base, 
+				LazyString.str("{")
+					.append(Integer.toString(min))
+					.append(",")
+					.append(Integer.toString(max))
+					.append("}")
+					.append(mode.symbol)
+			); 
 	}
 	
 	/**
@@ -123,23 +178,30 @@ public final class Quantified extends AbstractSequenceableAlternative
 	 */
 	public static Quantified repeat(final Quantifiable base, final int min, final int max)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(min)).append(",").append(Integer.toString(max)).append("}")); 
+		return repeat(base, min, max, Mode.GREEDY); 
 	}
 	
 	/**
 	 * @see Quantifiable#repeatReluctantly(int, int)
 	 */
+	@Deprecated
 	public static Quantified repeatReluctantly(final Quantifiable base, final int min, final int max)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(min)).append(",").append(Integer.toString(max)).append("}?"));
+		return repeat(base, min, max, Mode.RELUCTANT);
 	}
 	
 	/**
 	 * @see Quantifiable#repeatPossessively(int, int)
 	 */
+	@Deprecated
 	public static Quantified repeatPossessively(final Quantifiable base, final int min, final int max)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(min)).append(",").append(Integer.toString(max)).append("}+"));
+		return repeat(base, min, max, Mode.POSSESSIVE);
+	}
+	
+	public static Quantified atLeast(final Quantifiable base, final int n, final Mode mode)
+	{
+		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append(",}").append(mode.symbol));
 	}
 	
 	/**
@@ -147,23 +209,25 @@ public final class Quantified extends AbstractSequenceableAlternative
 	 */
 	public static Quantified atLeast(final Quantifiable base, final int n)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append(",}"));
+		return atLeast(base, n, Mode.GREEDY);
 	}
 	
 	/**
 	 * @see Quantifiable#atLeastReluctantly(int)
 	 */
+	@Deprecated
 	public static Quantified atLeastReluctantly(final Quantifiable base, final int n)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append(",}?"));
+		return atLeast(base, n, Mode.RELUCTANT);
 	}
 	
 	/**
 	 * @see Quantifiable#atLeastPossessively(int)
 	 */
+	@Deprecated
 	public static Quantified atLeastPossessively(final Quantifiable base, final int n)
 	{
-		return new Quantified(base, LazyString.str("{").append(Integer.toString(n)).append(",}+"));
+		return atLeast(base, n, Mode.POSSESSIVE);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package io.github.reggert.reb4j;
 
+import io.github.reggert.reb4j.Quantified.Mode;
 import fj.data.LazyString;
 
 /**
@@ -13,75 +14,111 @@ public final class Entity extends Raw implements Quantifiable
 	{super(LazyString.str(rawExpression));}
 	
 	@Override
-	public Quantified anyTimes()
+	public final Quantified anyTimes(final Mode mode)
+	{return Quantified.anyTimes(this, mode);}
+	
+	@Override
+	public final Quantified anyTimes()
 	{return Quantified.anyTimes(this);}
 
 	@Override
-	public Quantified anyTimesReluctantly()
+	@Deprecated
+	public final Quantified anyTimesReluctantly()
 	{return Quantified.anyTimesReluctantly(this);}
 
 	@Override
-	public Quantified anyTimesPossessively()
+	@Deprecated
+	public final Quantified anyTimesPossessively()
 	{return Quantified.anyTimesPossessively(this);}
 
 	@Override
-	public Quantified atLeastOnce()
+	public final Quantified atLeastOnce(final Mode mode)
+	{return Quantified.atLeastOnce(this, mode);}
+	
+	@Override
+	public final Quantified atLeastOnce()
 	{return Quantified.atLeastOnce(this);}
 
 	@Override
-	public Quantified atLeastOnceReluctantly()
+	@Deprecated
+	public final Quantified atLeastOnceReluctantly()
 	{return Quantified.atLeastOnceReluctantly(this);}
 
 	@Override
-	public Quantified atLeastOncePossessively()
+	@Deprecated
+	public final Quantified atLeastOncePossessively()
 	{return Quantified.atLeastOncePossessively(this);}
 
 	@Override
-	public Quantified optional()
+	public final Quantified optional(final Mode mode)
+	{return Quantified.optional(this, mode);}
+	
+	@Override
+	public final Quantified optional()
 	{return Quantified.optional(this);}
 
 	@Override
-	public Quantified optionalReluctantly()
+	@Deprecated
+	public final Quantified optionalReluctantly()
 	{return Quantified.optionalReluctantly(this);}
 
 	@Override
-	public Quantified optionalPossessively()
+	@Deprecated
+	public final Quantified optionalPossessively()
 	{return Quantified.optionalPossessively(this);}
 
 	@Override
-	public Quantified repeat(final int n)
+	public final Quantified repeat(final int n, final Mode mode)
+	{return Quantified.repeat(this, n, mode);}
+	
+	@Override
+	public final Quantified repeat(final int n)
 	{return Quantified.repeat(this, n);}
 
 	@Override
-	public Quantified repeatReluctantly(final int n)
+	@Deprecated
+	public final Quantified repeatReluctantly(final int n)
 	{return Quantified.repeatReluctantly(this, n);}
 
 	@Override
-	public Quantified repeatPossessively(final int n)
+	@Deprecated
+	public final Quantified repeatPossessively(final int n)
 	{return Quantified.repeatPossessively(this, n);}
 
 	@Override
-	public Quantified repeat(final int min, final int max)
+	public final Quantified repeat(final int min, final int max, final Mode mode)
+	{return Quantified.repeat(this, min, max, mode);}
+	
+	@Override
+	public final Quantified repeat(final int min, final int max)
 	{return Quantified.repeat(this, min, max);}
 
 	@Override
-	public Quantified repeatReluctantly(final int min, final int max)
+	@Deprecated
+	public final Quantified repeatReluctantly(final int min, final int max)
 	{return Quantified.repeatReluctantly(this, min, max);}
 
 	@Override
-	public Quantified repeatPossessively(final int min, final int max)
+	@Deprecated
+	public final Quantified repeatPossessively(final int min, final int max)
 	{return Quantified.repeatPossessively(this, min, max);}
 
 	@Override
-	public Quantified atLeast(final int n)
+	public final Quantified atLeast(final int n, final Mode mode)
+	{return Quantified.atLeast(this, n, mode);}
+	
+	@Override
+	public final Quantified atLeast(final int n)
 	{return Quantified.atLeast(this, n);}
 
 	@Override
-	public Quantified atLeastReluctantly(final int n)
+	@Deprecated
+	public final Quantified atLeastReluctantly(final int n)
 	{return Quantified.atLeastReluctantly(this, n);}
 
 	@Override
-	public Quantified atLeastPossessively(final int n)
+	@Deprecated
+	public final Quantified atLeastPossessively(final int n)
 	{return Quantified.atLeastPossessively(this, n);}
 	
 	/**
