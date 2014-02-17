@@ -14,7 +14,7 @@ public final class MultiChar extends CharClass
 	private static final long serialVersionUID = 1L;
 	public final Set<Character> characters;
 	
-	MultiChar(final Set<Character> characters)
+	public MultiChar(final Set<Character> characters)
 	{
 		if (characters == null) throw new NullPointerException("characters");
 		this.characters = characters;
