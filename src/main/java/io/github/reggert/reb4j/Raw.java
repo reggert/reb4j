@@ -157,7 +157,7 @@ public class Raw extends AbstractSequenceableAlternative
 		private static final long serialVersionUID = 1L;
 		public final Literal literal;
 		
-		private EscapedLiteral(final Literal literal)
+		public EscapedLiteral(final Literal literal)
 		{
 			super(literal.escaped());
 			this.literal = literal;
