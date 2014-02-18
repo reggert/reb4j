@@ -12,7 +12,7 @@ public final class CharRange extends CharClass
 	
 	CharRange(final char first, final char last)
 	{
-		if (first >= last) throw new IllegalArgumentException("first must be < last");
+		if (first > last) throw new IllegalArgumentException("first must be <= last");
 		this.first = first;
 		this.last = last;
 	}
