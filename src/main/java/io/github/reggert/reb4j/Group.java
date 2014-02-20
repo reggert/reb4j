@@ -172,9 +172,11 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 		private static final long serialVersionUID = 1L;
 		private static final LazyString OPENING = LazyString.str("(?<=");
 		
-		public PositiveLookBehind(final Expression nested)
+		public PositiveLookBehind(final Expression nested) throws UnboundedLookBehindException
 		{
 			super(nested, OPENING);
+			if (nested.boundedLength() == null)
+				throw new UnboundedLookBehindException(nested);
 		}
 	}
 	
@@ -184,10 +186,12 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @param nested
 	 * 	the expression to enclose; must not be <code>null</code>.
 	 * @return a new Group.
+	 * @throws UnboundedLookBehindException 
+	 *  if <var>nested</var> does not have a maximum length.
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
-	public static PositiveLookBehind positiveLookBehind(final Expression nested) 
+	public static PositiveLookBehind positiveLookBehind(final Expression nested) throws UnboundedLookBehindException 
 	{
 		return new PositiveLookBehind(nested);
 	}
@@ -197,9 +201,11 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 		private static final long serialVersionUID = 1L;
 		private static final LazyString OPENING = LazyString.str("(?<!");
 		
-		public NegativeLookBehind(final Expression nested)
+		public NegativeLookBehind(final Expression nested) throws UnboundedLookBehindException
 		{
 			super(nested, OPENING);
+			if (nested.boundedLength() == null)
+				throw new UnboundedLookBehindException(nested);
 		}
 	}
 	
@@ -209,10 +215,13 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	 * @param nested
 	 * 	the expression to enclose; must not be <code>null</code>.
 	 * @return a new Group.
+	 * @throws UnboundedLookBehindException 
+	 * 	if <var>nested</var> does not have a maximum length.
 	 * @throws NullPointerException
 	 * 	if <var>nested</var> is <code>null</code>.
 	 */
 	public static NegativeLookBehind negativeLookBehind(final Expression nested) 
+		throws UnboundedLookBehindException 
 	{
 		return new NegativeLookBehind(nested);
 	}
