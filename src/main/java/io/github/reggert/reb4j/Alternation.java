@@ -158,5 +158,20 @@ public final class Alternation extends AbstractExpression
 		final Alternation other = (Alternation) obj;
 		return alternatives.equals(other.alternatives);
 	}
+
+	@Override
+	public Integer boundedLength() 
+	{
+		int maximumLength = 0;
+		for (final Alternative alternative : alternatives)
+		{
+			final Integer alternativeLength = alternative.boundedLength();
+			if (alternativeLength == null)
+				return null;
+			if (alternativeLength > maximumLength)
+				maximumLength = alternativeLength;
+		}
+		return maximumLength;
+	}
 }
 

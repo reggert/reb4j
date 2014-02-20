@@ -121,6 +121,12 @@ public final class Entity extends Raw implements Quantifiable
 	public final Quantified.RepeatRange atLeastPossessively(final int n)
 	{return atLeast(n, Mode.POSSESSIVE);}
 	
+	@Override
+	public Integer boundedLength() 
+	{
+		return 1;
+	}
+	
 	/**
 	 * Matches any single character.
 	 */
@@ -165,5 +171,5 @@ public final class Entity extends Raw implements Quantifiable
 	 * Matches the end of input.
 	 */
 	public static final Entity INPUT_END = new Entity("\\z");
-	
+
 }

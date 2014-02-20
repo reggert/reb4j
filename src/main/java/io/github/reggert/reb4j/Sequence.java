@@ -138,5 +138,21 @@ public final class Sequence extends AbstractExpression
 		final Sequence other = (Sequence) obj;
 		return components.equals(other.components);
 	}
+
+	@Override
+	public Integer boundedLength() 
+	{
+		long maximumLength = 0;
+		for (final Sequenceable component : components)
+		{
+			final Integer componentLength = component.boundedLength();
+			if (componentLength == null)
+				return null;
+			maximumLength += componentLength;
+		}
+		if (maximumLength <= 0xfffffffL) // arbitrary large value that appears in Pattern source code.
+			return (int)maximumLength;
+		return null;
+	}
 }
 

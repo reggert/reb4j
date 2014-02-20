@@ -34,6 +34,14 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 		return expression;
 	}
 	
+	
+	@Override
+	public Integer boundedLength() 
+	{
+		return nested.boundedLength();
+	}
+	
+	
 	public final static class Capture extends Group
 	{
 		private static final long serialVersionUID = 1L;

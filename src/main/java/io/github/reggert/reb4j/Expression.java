@@ -26,4 +26,12 @@ public interface Expression extends Serializable
 	 * {@link java.util.regex.Pattern} and returns the result.
 	 */
 	Pattern toPattern();
+	
+	/**
+	 * Indicates the computed maximum length of the expression, if one can be 
+	 * determined.
+	 * 
+	 * @return the computed maximum length, or null if it is unbounded.
+	 */
+	Integer boundedLength();
 }

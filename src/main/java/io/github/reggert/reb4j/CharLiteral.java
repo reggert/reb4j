@@ -148,4 +148,10 @@ public final class CharLiteral extends Literal implements Quantifiable
 		final CharLiteral other = (CharLiteral) obj;
 		return unescapedChar == other.unescapedChar;
 	}
+
+	@Override
+	public Integer boundedLength() 
+	{
+		return 1;
+	}
 }

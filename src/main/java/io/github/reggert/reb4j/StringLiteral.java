@@ -42,4 +42,10 @@ public final class StringLiteral extends Literal
 		return unescaped.equals(other.unescaped);
 	}
 
+	@Override
+	public Integer boundedLength() 
+	{
+		return unescaped.length();
+	}
+
 }

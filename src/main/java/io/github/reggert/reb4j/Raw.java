@@ -13,7 +13,7 @@ import fj.data.List;
  * This class mainly exists so that long sequences of such expressions can be flattened rather
  * than causing the construction of deep trees.
  */
-public class Raw extends AbstractSequenceableAlternative
+public abstract class Raw extends AbstractSequenceableAlternative
 {
 	private static final long serialVersionUID = 1L;
 	private final LazyString rawExpression;
@@ -144,6 +144,22 @@ public class Raw extends AbstractSequenceableAlternative
 		{
 			return new Compound(components.append(right.components));
 		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			long maximumLength = 0;
+			for (final Raw component : components)
+			{
+				final Integer componentLength = component.boundedLength();
+				if (componentLength == null)
+					return null;
+				maximumLength += componentLength;
+			}
+			if (maximumLength <= 0xfffffffL) // arbitrary large value that appears in Pattern source code.
+				return (int)maximumLength;
+			return null;
+		}
 		
 	}
 	
@@ -161,6 +177,12 @@ public class Raw extends AbstractSequenceableAlternative
 		{
 			super(literal.escaped());
 			this.literal = literal;
+		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			return literal.boundedLength();
 		}
 	}
 
