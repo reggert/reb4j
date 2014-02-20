@@ -61,4 +61,10 @@ public final class Adopted extends AbstractExpression
 		final Adopted other = (Adopted) obj;
 		return expression.toString().equals(other.expression.toString());
 	}
+
+	@Override
+	public Integer boundedLength() 
+	{
+		return null; // We don't have enough information to tell whether it is bounded.
+	}
 }

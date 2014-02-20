@@ -46,6 +46,12 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		{
 			super(base, mode, SYMBOL.append(mode.symbol));
 		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			return null;
+		}
 	}
 	
 	@Deprecated
@@ -74,6 +80,12 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		public AtLeastOnce(final Quantifiable base, final Mode mode)
 		{
 			super(base, mode, SYMBOL.append(mode.symbol));
+		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			return null;
 		}
 	}
 	
@@ -104,6 +116,12 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		{
 			super(base, mode, SYMBOL.append(mode.symbol));
 		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			return base.boundedLength();
+		}
 	}
 	
 	@Deprecated
@@ -133,6 +151,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		{
 			super(base, mode, LazyString.str("{").append(Integer.toString(n)).append("}").append(mode.symbol));
 			this.repetitions = n;
+		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			final Integer baseLength = base.boundedLength();
+			if (baseLength == null)
+				return null;
+			final long maximumLength = baseLength.longValue() * repetitions;
+			if (maximumLength <= 0xfffffffL) // arbitrary value from Pattern source code
+				return (int)maximumLength;
+			return null;
 		}
 	}
 	
@@ -174,6 +204,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 				);
 			this.minRepetitions = min;
 			this.maxRepetitions = max;
+		}
+
+		@Override
+		public Integer boundedLength() 
+		{
+			final Integer baseLength = base.boundedLength();
+			if (baseLength == null || maxRepetitions == null)
+				return null;
+			final long maximumLength = baseLength.longValue() * maxRepetitions.longValue();
+			if (maximumLength <= 0xfffffffL) // arbitrary value from Pattern source code
+				return (int)maximumLength;
+			return null;
 		}
 	}
 	

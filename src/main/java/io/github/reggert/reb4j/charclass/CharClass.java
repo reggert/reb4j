@@ -38,6 +38,12 @@ public abstract class CharClass extends AbstractQuantifiableSequenceableAlternat
 	@Override
 	public final LazyString expression()
 	{return independentForm();}
+	
+	@Override
+	public Integer boundedLength() 
+	{
+		return 1;
+	}
 
 	/**
 	 * Returns an expressing matching a single character that is not within
