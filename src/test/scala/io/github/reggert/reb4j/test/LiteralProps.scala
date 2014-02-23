@@ -11,19 +11,19 @@ class LiteralProps extends JUnitSuite with Checkers
 	with ExpressionProperties[Literal] 
 	with LiteralGenerators with LiteralShrinkers
 {
-	@Test def toPattern() : Unit = check(toPattern(arbitrary[Literal]), minSuccessful(100000))
+	@Test def toPattern() : Unit = check(toPattern(arbitrary[Literal]), minSuccessful(100000), maxDiscarded(500000))
 }
 
 class CharLiteralProps extends JUnitSuite with Checkers
 	with ExpressionProperties[CharLiteral] 
 	with LiteralGenerators
 {
-	@Test def toPattern() : Unit = check(toPattern(arbitrary[CharLiteral]), minSuccessful(100000))
+	@Test def toPattern() : Unit = check(toPattern(arbitrary[CharLiteral]), minSuccessful(100000), maxDiscarded(500000))
 }
 
 class StringLiteralProps extends JUnitSuite with Checkers
 	with ExpressionProperties[StringLiteral] 
 	with LiteralGenerators with LiteralShrinkers
 {
-	@Test def toPattern() : Unit = check(toPattern(arbitrary[StringLiteral]), minSuccessful(100000))
+	@Test def toPattern() : Unit = check(toPattern(arbitrary[StringLiteral]), minSuccessful(100000), maxDiscarded(500000))
 }

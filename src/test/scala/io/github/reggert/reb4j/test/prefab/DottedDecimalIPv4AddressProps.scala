@@ -86,7 +86,8 @@ class DottedDecimalIPv4AddressProps extends JUnitSuite with Checkers
 				&& dottedDecimalIPAddress.invalidatesAddressWithBadOctet
 				&& dottedDecimalIPAddress.invalidatesNonAddress
 			),
-			minSuccessful(100000)
+			minSuccessful(100000), 
+			maxDiscarded(500000)
 		)
 		
 }

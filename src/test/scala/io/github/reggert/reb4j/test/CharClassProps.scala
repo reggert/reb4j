@@ -17,7 +17,7 @@ class CharClassProps extends JUnitSuite with Checkers
 	with CharClassProperties[CharClass]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[CharClass]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[CharClass]), minSuccessful(100000), maxDiscarded(100000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[CharClass]))
 }
 
@@ -27,7 +27,7 @@ class SingleCharProps extends JUnitSuite with Checkers
 	with CharClassProperties[SingleChar]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[SingleChar]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[SingleChar]), minSuccessful(100000), maxDiscarded(100000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[SingleChar]))
 }
 
@@ -38,7 +38,7 @@ class MultiCharProps extends JUnitSuite with Checkers
 	with CharClassGenerators 
 	with CharClassShrinkers
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[MultiChar]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[MultiChar]), minSuccessful(100000), maxDiscarded(100000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[MultiChar]))
 }
 
@@ -48,7 +48,7 @@ class CharRangeProps extends JUnitSuite with Checkers
 	with CharClassProperties[CharRange]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[CharRange]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[CharRange]), minSuccessful(100000), maxDiscarded(500000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[CharRange]))
 }
 
@@ -59,7 +59,7 @@ class IntersectionProps extends JUnitSuite with Checkers
 	with CharClassGenerators
 	with CharClassShrinkers
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[Intersection]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[Intersection]), minSuccessful(100000), maxDiscarded(500000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[Intersection]))
 }
 
@@ -70,7 +70,7 @@ class UnionProps extends JUnitSuite with Checkers
 	with CharClassGenerators
 	with CharClassShrinkers
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[Union]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[Union]), minSuccessful(100000), maxDiscarded(500000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[Union]))
 }
 
@@ -80,6 +80,6 @@ class PredefinedClassProps extends JUnitSuite with Checkers
 	with CharClassProperties[PredefinedClass]
 	with CharClassGenerators
 {
-	@Test def toPattern : Unit = check(toPattern(arbitrary[PredefinedClass]), minSuccessful(100000))
+	@Test def toPattern : Unit = check(toPattern(arbitrary[PredefinedClass]), minSuccessful(100000), maxDiscarded(500000))
 	@Test def symmetricNegation : Unit = check(symmetricNegation(arbitrary[PredefinedClass]))
 }

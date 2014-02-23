@@ -42,12 +42,12 @@ sealed abstract class LookBehindProps[GroupType <: Group](name : String)(constru
 
 class UnboundedPositiveLookBehindProps extends LookBehindProps("UnboundedPositiveLookBehind")(Group.positiveLookBehind)
 {
-	@Test def testUnboundedLookBehind = check(unboundedLookBehindException, minSuccessful(100000)) 
+	@Test def testUnboundedLookBehind = check(unboundedLookBehindException, minSuccessful(100000), maxDiscarded(500000)) 
 }
 
 class UnboundedNegativeLookBehindProps extends LookBehindProps("UnboundedNegativeLookBehind")(Group.negativeLookBehind)
 {
-	@Test def testUnboundedLookBehind = check(unboundedLookBehindException, minSuccessful(100000)) 
+	@Test def testUnboundedLookBehind = check(unboundedLookBehindException, minSuccessful(100000), maxDiscarded(500000)) 
 }
 
 
