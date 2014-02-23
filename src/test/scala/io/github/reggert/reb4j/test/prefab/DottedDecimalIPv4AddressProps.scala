@@ -81,9 +81,12 @@ class DottedDecimalIPv4AddressProps extends JUnitSuite with Checkers
 	@Test def highTwoHundredsOctetMatchesPrecisely = check(highTwoHundredsOctet matchesOnlyNumberInRange(250, 255))
 	@Test def octetMatchesPrecisely = check(octet matchesOnlyNumberInRange(0, 255))
 	@Test def dottedDecimalIPAddressMatchesPrecisely = check(
-			dottedDecimalIPAddress.validatesAddressAndCapturesOctets &&
-			dottedDecimalIPAddress.invalidatesAddressWithBadOctet &&
-			dottedDecimalIPAddress.invalidatesNonAddress
+			(
+				dottedDecimalIPAddress.validatesAddressAndCapturesOctets
+				&& dottedDecimalIPAddress.invalidatesAddressWithBadOctet
+				&& dottedDecimalIPAddress.invalidatesNonAddress
+			),
+			minSuccessful(100000)
 		)
 		
 }
