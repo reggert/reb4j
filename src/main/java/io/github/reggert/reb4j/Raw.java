@@ -149,17 +149,24 @@ public abstract class Raw extends AbstractSequenceableAlternative
 		@Override
 		public Integer boundedLength() 
 		{
-			final long maximumLength = components.foldLeft(
+			final Long maximumLength = components.foldLeft(
 					new F2<Long, Raw, Long>()
 					{
 						@Override public Long f(final Long a, final Raw b) 
-						{return a + b.boundedLength();}
+						{
+							if (a == null)
+								return null;
+							final Integer next = b.boundedLength();
+							if (next == null)
+								return null;
+							return a + next;
+						}
 					},
 					0L
 				);
-			if (maximumLength <= 0xfffffffL) // arbitrary large value that appears in Pattern source code.
-				return (int)maximumLength;
-			return null;
+			if (maximumLength == null || maximumLength > 0xfffffffL) // arbitrary large value that appears in Pattern source code.
+				return null;
+			return maximumLength.intValue();
 		}
 		
 		@Override 
