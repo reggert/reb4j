@@ -1,5 +1,6 @@
 package io.github.reggert.reb4j.charclass;
 
+import io.github.reggert.reb4j.Literal;
 import fj.data.LazyString;
 
 /**
@@ -26,7 +27,7 @@ public final class CharRange extends CharClass
 	@Override
 	public LazyString unitableForm()
 	{
-		return LazyString.str(Character.toString(first)).append("-").append(Character.toString(last));
+		return Literal.escapeChar(first).append("-").append(Literal.escapeChar(last));
 	}
 
 	@Override
