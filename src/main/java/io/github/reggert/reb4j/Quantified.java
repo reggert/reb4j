@@ -52,6 +52,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		{
 			return null;
 		}
+
+		@Override
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return true;
+		}
+
+		@Override
+		public boolean possiblyZeroLength() 
+		{
+			return true;
+		}
 	}
 	
 	@Deprecated
@@ -86,6 +98,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		public Integer boundedLength() 
 		{
 			return null;
+		}
+
+		@Override
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return false;
+		}
+
+		@Override
+		public boolean possiblyZeroLength()
+		{
+			return base.possiblyZeroLength();
 		}
 	}
 	
@@ -122,6 +146,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		{
 			return base.boundedLength();
 		}
+
+		@Override
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return true;
+		}
+
+		@Override
+		public boolean possiblyZeroLength() 
+		{
+			return true;
+		}
 	}
 	
 	@Deprecated
@@ -156,6 +192,8 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		@Override
 		public Integer boundedLength() 
 		{
+			if (base.repetitionInvalidatesBounds())
+				return null;
 			final Integer baseLength = base.boundedLength();
 			if (baseLength == null)
 				return null;
@@ -163,6 +201,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 			if (maximumLength <= 0xfffffffL) // arbitrary value from Pattern source code
 				return (int)maximumLength;
 			return null;
+		}
+
+		@Override
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return base.repetitionInvalidatesBounds();
+		}
+
+		@Override
+		public boolean possiblyZeroLength() 
+		{
+			return repetitions == 0 || base.possiblyZeroLength();
 		}
 	}
 	
@@ -209,6 +259,8 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 		@Override
 		public Integer boundedLength() 
 		{
+			if (base.repetitionInvalidatesBounds())
+				return null;
 			final Integer baseLength = base.boundedLength();
 			if (baseLength == null || maxRepetitions == null)
 				return null;
@@ -216,6 +268,18 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 			if (maximumLength <= 0xfffffffL) // arbitrary value from Pattern source code
 				return (int)maximumLength;
 			return null;
+		}
+
+		@Override
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return minRepetitions == 0 || base.repetitionInvalidatesBounds();
+		}
+
+		@Override
+		public boolean possiblyZeroLength() 
+		{
+			return minRepetitions == 0 || base.possiblyZeroLength();
 		}
 	}
 	

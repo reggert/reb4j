@@ -1,5 +1,6 @@
 package io.github.reggert.reb4j;
 
+import fj.F;
 import fj.F2;
 import fj.data.LazyString;
 import fj.data.List;
@@ -148,19 +149,42 @@ public abstract class Raw extends AbstractSequenceableAlternative
 		@Override
 		public Integer boundedLength() 
 		{
-			long maximumLength = 0;
-			for (final Raw component : components)
-			{
-				final Integer componentLength = component.boundedLength();
-				if (componentLength == null)
-					return null;
-				maximumLength += componentLength;
-			}
+			final long maximumLength = components.foldLeft(
+					new F2<Long, Raw, Long>()
+					{
+						@Override public Long f(final Long a, final Raw b) 
+						{return a + b.boundedLength();}
+					},
+					0L
+				);
 			if (maximumLength <= 0xfffffffL) // arbitrary large value that appears in Pattern source code.
 				return (int)maximumLength;
 			return null;
 		}
 		
+		@Override 
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return components.forall(
+					new F<Raw, Boolean>()
+					{
+						@Override public Boolean f(final Raw a) 
+						{return a.repetitionInvalidatesBounds();}
+					}
+				);
+		}
+		
+		@Override 
+		public boolean possiblyZeroLength()
+		{
+			return components.forall(
+					new F<Raw, Boolean>()
+					{
+						@Override public Boolean f(final Raw a) 
+						{return a.possiblyZeroLength();}
+					}
+				);
+		}
 	}
 	
 	
@@ -183,6 +207,18 @@ public abstract class Raw extends AbstractSequenceableAlternative
 		public Integer boundedLength() 
 		{
 			return literal.boundedLength();
+		}
+		
+		@Override 
+		public boolean repetitionInvalidatesBounds() 
+		{
+			return possiblyZeroLength();
+		}
+		
+		@Override 
+		public boolean possiblyZeroLength()
+		{
+			return literal.possiblyZeroLength();
 		}
 	}
 

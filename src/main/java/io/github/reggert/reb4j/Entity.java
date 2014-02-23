@@ -6,7 +6,7 @@ import fj.data.LazyString;
 /**
  * Class representing special pre-defined expressions.
  */
-public final class Entity extends Raw implements Quantifiable
+public class Entity extends Raw implements Quantifiable
 {
 	private static final long serialVersionUID = 1L;
 
@@ -122,15 +122,36 @@ public final class Entity extends Raw implements Quantifiable
 	{return atLeast(n, Mode.POSSESSIVE);}
 	
 	@Override
-	public Integer boundedLength() 
+	public final Integer boundedLength() 
 	{
 		return 1;
+	}
+	
+	@Override 
+	public final boolean repetitionInvalidatesBounds()  
+	{
+		return false;
+	}
+	
+	@Override 
+	public boolean possiblyZeroLength()
+	{
+		return true;
 	}
 	
 	/**
 	 * Matches any single character.
 	 */
-	public static final Entity ANY_CHAR = new Entity(".");
+	public static final Entity ANY_CHAR = new Entity(".")
+	{
+		private static final long serialVersionUID = 1L;
+
+		@Override 
+		public final boolean possiblyZeroLength()
+		{
+			return false;
+		}
+	};
 
 	/**
 	 * Matches the beginning of a line.

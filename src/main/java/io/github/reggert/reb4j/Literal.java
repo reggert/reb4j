@@ -104,4 +104,22 @@ public abstract class Literal extends AbstractSequenceableAlternative
 	{
 		return escaped();
 	}
+	
+	@Override
+	public final Integer boundedLength() 
+	{
+		return unescaped().length();
+	}
+			
+	@Override
+	public final boolean repetitionInvalidatesBounds()
+	{
+		return possiblyZeroLength();
+	}
+			
+	@Override		
+	public final boolean possiblyZeroLength()
+	{
+		return unescaped().isEmpty();
+	}
 }

@@ -45,6 +45,18 @@ public abstract class CharClass extends AbstractQuantifiableSequenceableAlternat
 		return 1;
 	}
 
+	@Override
+	public boolean repetitionInvalidatesBounds() 
+	{
+		return false;
+	}
+
+	@Override
+	public boolean possiblyZeroLength() 
+	{
+		return false;
+	}
+
 	/**
 	 * Returns an expressing matching a single character that is not within
 	 * the class of characters matched by this expression.

@@ -34,4 +34,20 @@ public interface Expression extends Serializable
 	 * @return the computed maximum length, or null if it is unbounded.
 	 */
 	Integer boundedLength();
+	
+	/**
+	 * Indicates whether applying repetition to the expression invalidates the
+	 * boundedness computation. This generally indicates that the expression may
+	 * match a zero-repetition ({0, n} or ?).
+	 * 
+	 * This is used to determine boundedness of enclosing expressions.
+	 */
+	boolean repetitionInvalidatesBounds();
+	
+	/**
+	 * Indicates whether the expression may possibly be zero length.
+	 * 
+	 * Used in some cases for determining repetitionInvalidatesBounds.
+	 */
+	boolean possiblyZeroLength();
 }

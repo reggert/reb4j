@@ -34,11 +34,22 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 		return expression;
 	}
 	
-	
 	@Override
-	public Integer boundedLength() 
+	public final Integer boundedLength() 
 	{
 		return nested.boundedLength();
+	}
+	
+	@Override 
+	public final boolean repetitionInvalidatesBounds() 
+	{
+		return nested.repetitionInvalidatesBounds();
+	}
+			
+	@Override 
+	public final boolean possiblyZeroLength() 
+	{
+		return nested.possiblyZeroLength();
 	}
 	
 	

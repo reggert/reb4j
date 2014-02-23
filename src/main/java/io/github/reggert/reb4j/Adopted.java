@@ -67,4 +67,16 @@ public final class Adopted extends AbstractExpression
 	{
 		return null; // We don't have enough information to tell whether it is bounded.
 	}
+
+	@Override
+	public boolean repetitionInvalidatesBounds() 
+	{
+		return true;
+	}
+
+	@Override
+	public boolean possiblyZeroLength() 
+	{
+		return true;
+	}
 }

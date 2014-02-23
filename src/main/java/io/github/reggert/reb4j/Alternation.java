@@ -173,5 +173,20 @@ public final class Alternation extends AbstractExpression
 		}
 		return maximumLength;
 	}
+
+	@Override
+	public boolean repetitionInvalidatesBounds() 
+	{
+		return possiblyZeroLength();
+	}
+
+	@Override
+	public boolean possiblyZeroLength() 
+	{
+		for (final Alternative a : alternatives)
+			if (a.possiblyZeroLength())
+				return true;
+		return false;
+	}
 }
 
