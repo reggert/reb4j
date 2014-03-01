@@ -22,7 +22,7 @@ trait RawShrinkers extends LiteralShrinkers {
 	
 	implicit val shrinkRaw : Shrink[Raw] = Shrink {
 		case escapedLiteral : Raw.EscapedLiteral => shrink(escapedLiteral)
-		case compoundRaw : Raw.Compound => shrink(compoundRaw)
+		case compoundRaw : Raw.Compound => compoundRaw.components.asScala ++: shrink(compoundRaw)
 		case _ => Stream.empty
 	}
 }
