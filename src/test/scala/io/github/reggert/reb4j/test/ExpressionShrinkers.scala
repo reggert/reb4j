@@ -1,16 +1,9 @@
 package io.github.reggert.reb4j.test
 
 import org.scalacheck.Shrink
-import Shrink.shrink
-import io.github.reggert.reb4j.Expression
-import io.github.reggert.reb4j.Quantifiable
-import io.github.reggert.reb4j.Literal
-import io.github.reggert.reb4j.Raw
-import io.github.reggert.reb4j.charclass.CharClass
-import io.github.reggert.reb4j.Alternation
-import io.github.reggert.reb4j.Quantified
-import io.github.reggert.reb4j.Sequence
-import io.github.reggert.reb4j.Group
+import Shrink._
+import io.github.reggert.reb4j._
+import io.github.reggert.reb4j.charclass._
 import scala.collection.convert.decorateAll._
 
 trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
@@ -23,19 +16,39 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 		case group : Group => shrink(group)
 		case quantified : Quantified => shrink(quantified)
 		case sequence : Sequence => shrink(sequence)
+		case adopted : Adopted => shrink(adopted)
 	}
 	
+	implicit val shrinkAlternative : Shrink[Alternative] = Shrink {
+		case literal : Literal => shrink(literal) 
+		case raw : Raw => shrink(raw)
+		case charclass : CharClass => shrink(charclass)
+		case alternation : Alternation => shrink(alternation)
+		case group : Group => shrink(group)
+		case quantified : Quantified => shrink(quantified)
+		case sequence : Sequence => shrink(sequence)
+	}
+	
+	implicit val shrinkSequenceable : Shrink[Sequenceable] = Shrink {
+		case literal : Literal => shrink(literal) 
+		case raw : Raw => shrink(raw)
+		case charclass : CharClass => shrink(charclass)
+		case group : Group => shrink(group)
+		case quantified : Quantified => shrink(quantified)
+		case sequence : Sequence => shrink(sequence)
+	}
+
 	implicit val shrinkAlternation : Shrink[Alternation] = Shrink {alternation =>
 		for {
 			alternatives <- shrink(alternation.alternatives.asScala.toSeq)
-			if (alternatives.length >= 2)
+			if alternatives.length >= 2
 		} yield ((alternatives(0) or alternatives(1)) /: (alternatives.drop(2))) {_ or _}
 	}
 	
 	implicit val shrinkSequence : Shrink[Sequence] = Shrink {sequence =>
 		for {
 			components <- shrink(sequence.components.asScala.toSeq)
-			if (components.length >= 2)
+			if components.length >= 2
 		} yield ((components(0) andThen components(1)) /: (components.drop(2))) {_ andThen _}
 	}
 	
