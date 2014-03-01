@@ -20,7 +20,7 @@ public abstract class Literal extends AbstractSequenceableAlternative
 	public static final Set<Character> NEEDS_ESCAPE = 
 		Set.set(
 				Ord.charOrd, 
-				List.fromString("()[]{}.,-\\|+*?$^&:!<>=").array(Character[].class)
+				List.fromString("()[]{}.,-\\|+*?$^&:!<>=#").array(Character[].class)
 			);
 	
 	/**
