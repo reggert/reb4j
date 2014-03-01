@@ -7,7 +7,7 @@ import io.github.reggert.reb4j.charclass.CharClass
 import scala.collection.convert.decorateAll._
 import io.github.reggert.reb4j.charclass.SingleChar
 
-trait CharClassShrinkers {
+trait CharClassShrinkers extends CharShrinkers {
 	
 	implicit val shrinkUnion : Shrink[Union] = Shrink {
 		case union : Union => for {

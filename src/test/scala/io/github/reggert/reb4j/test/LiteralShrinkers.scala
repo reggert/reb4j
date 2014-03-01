@@ -4,7 +4,7 @@ import org.scalacheck.Shrink
 import Shrink._
 import io.github.reggert.reb4j.{Literal,StringLiteral,CharLiteral}
 
-trait LiteralShrinkers {
+trait LiteralShrinkers extends CharShrinkers {
 	
 	implicit val shrinkStringLiteral : Shrink[StringLiteral] = Shrink {stringLiteral =>
 		for {
