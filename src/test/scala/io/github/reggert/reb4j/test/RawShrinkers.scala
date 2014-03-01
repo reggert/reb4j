@@ -1,7 +1,8 @@
 package io.github.reggert.reb4j.test
 
 import org.scalacheck.Shrink
-import Shrink.shrink
+import Shrink._
+import org.scalacheck.util.Buildable._
 import io.github.reggert.reb4j.Raw
 import scala.collection.convert.decorateAll._
 

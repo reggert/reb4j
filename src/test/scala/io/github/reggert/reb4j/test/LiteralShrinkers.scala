@@ -1,7 +1,7 @@
 package io.github.reggert.reb4j.test
 
 import org.scalacheck.Shrink
-import Shrink.shrink
+import Shrink._
 import io.github.reggert.reb4j.{Literal,StringLiteral}
 
 trait LiteralShrinkers {
