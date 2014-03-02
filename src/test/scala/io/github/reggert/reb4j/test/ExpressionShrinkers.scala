@@ -75,24 +75,26 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	
 	implicit val shrinkPositiveLookBehind = shrinkGroupType(Group.positiveLookBehind)
 	
-	implicit val shrinkDisableFlags : Shrink[Group.DisableFlags] = Shrink {
-		g => for (n <- shrink(g.nested)) yield Group.disableFlags(n, g.flags.asScala.toSeq : _*)
+	implicit val shrinkDisableFlags : Shrink[Group.DisableFlags] = Shrink {g =>
+		(for (f <- shrink(g.flags.asScala)) yield Group.disableFlags(g.nested, f.toSeq : _*)) ++:
+		(for (n <- shrink(g.nested)) yield Group.disableFlags(n, g.flags.asScala.toSeq : _*))
 	}
 	
-	implicit val shrinkEnableFlags : Shrink[Group.EnableFlags] = Shrink {
-		g => for (n <- shrink(g.nested)) yield Group.enableFlags(n, g.flags.asScala.toSeq : _*)
+	implicit val shrinkEnableFlags : Shrink[Group.EnableFlags] = Shrink {g =>
+		(for (f <- shrink(g.flags.asScala)) yield Group.enableFlags(g.nested, f.toSeq : _*)) ++:
+		(for (n <- shrink(g.nested)) yield Group.enableFlags(n, g.flags.asScala.toSeq : _*))
 	}
 	
 	implicit val shrinkGroup : Shrink[Group] = Shrink {
-		case group : Group.Capture => for (g <- shrinkCapture.shrink(group)) yield g
-		case group : Group.Independent => for (g <- shrinkIndependent.shrink(group)) yield g
-		case group : Group.NegativeLookAhead => for (g <- shrinkNegativeLookAhead.shrink(group)) yield g
-		case group : Group.NegativeLookBehind => for (g <- shrinkNegativeLookBehind.shrink(group)) yield g
-		case group : Group.NonCapturing => for (g <- shrinkNonCapturing.shrink(group)) yield g
-		case group : Group.PositiveLookAhead => for (g <- shrinkPositiveLookAhead.shrink(group)) yield g
-		case group : Group.PositiveLookBehind => for (g <- shrinkPositiveLookBehind.shrink(group)) yield g
-		case group : Group.DisableFlags => for (g <- shrinkDisableFlags.shrink(group)) yield g
-		case group : Group.EnableFlags => for (g <- shrinkEnableFlags.shrink(group)) yield g
+		case group : Group.Capture => for (g <- shrink(group)) yield g
+		case group : Group.Independent => for (g <- shrink(group)) yield g
+		case group : Group.NegativeLookAhead => for (g <- shrink(group)) yield g
+		case group : Group.NegativeLookBehind => for (g <- shrink(group)) yield g
+		case group : Group.NonCapturing => for (g <- shrink(group)) yield g
+		case group : Group.PositiveLookAhead => for (g <- shrink(group)) yield g
+		case group : Group.PositiveLookBehind => for (g <- shrink(group)) yield g
+		case group : Group.DisableFlags => for (g <- shrink(group)) yield g
+		case group : Group.EnableFlags => for (g <- shrink(group)) yield g
 	}
 	
 	implicit val shrinkAnyTimes : Shrink[Quantified.AnyTimes] = Shrink {quantified =>
