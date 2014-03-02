@@ -114,11 +114,22 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	
 	implicit val shrinkRepeatExactly : Shrink[Quantified.RepeatExactly] = Shrink {quantified =>
 		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => q.base.repeat(q.repetitions)}) ++:
+		(for (repetitions <- shrink(quantified.repetitions) if repetitions > 0) yield quantified.base.repeat(repetitions, quantified.mode)) ++:
 		(for (base <- shrink(quantified.base)) yield base.repeat(quantified.repetitions, quantified.mode))
 	}
 	
 	implicit val shrinkRepeatRange : Shrink[Quantified.RepeatRange] = Shrink {quantified =>
 		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => new Quantified.RepeatRange(q.base, q.minRepetitions, q.maxRepetitions, Quantified.Mode.GREEDY)}) ++:
+		(for {
+			minRepetitions <- shrink(quantified.minRepetitions) 
+			if minRepetitions >= 0
+			if Option(quantified.maxRepetitions).isEmpty || minRepetitions < quantified.maxRepetitions
+		} yield new Quantified.RepeatRange(quantified.base, minRepetitions, quantified.maxRepetitions, quantified.mode)) ++:
+		(for {
+			maxRepetitions <- shrink(Option(quantified.maxRepetitions) map {_.intValue})
+			if maxRepetitions.isDefined
+			if maxRepetitions.get >= quantified.minRepetitions
+		} yield new Quantified.RepeatRange(quantified.base, quantified.minRepetitions, maxRepetitions map {Integer.valueOf} orNull, quantified.mode)) ++:
 		(for (base <- shrink(quantified.base)) yield base.repeat(quantified.minRepetitions, quantified.maxRepetitions, quantified.mode))
 	}
 	
