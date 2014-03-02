@@ -130,3 +130,5 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 		case quantified : Quantified.RepeatRange => for (q <- shrink(quantified)) yield q
 	}
 }
+
+object ExpressionShrinkers extends ExpressionShrinkers
