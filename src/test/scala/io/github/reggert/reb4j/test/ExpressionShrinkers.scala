@@ -96,35 +96,35 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	}
 	
 	implicit val shrinkAnyTimes : Shrink[Quantified.AnyTimes] = Shrink {quantified =>
-		for (nested <- shrink(quantified.base)) 
-			yield nested.anyTimes(quantified.mode)
+		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => q.base.anyTimes()}) ++:
+		(for (base <- shrink(quantified.base)) yield base.anyTimes(quantified.mode))
 	}
 	
 	implicit val shrinkAtLeastOnce : Shrink[Quantified.AtLeastOnce] = Shrink {quantified =>
-		for (nested <- shrink(quantified.base)) 
-			yield nested.atLeastOnce(quantified.mode)
+		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => q.base.atLeastOnce()}) ++:
+		(for (base <- shrink(quantified.base)) yield base.atLeastOnce(quantified.mode))
 	}
 	
 	implicit val shrinkOptional : Shrink[Quantified.Optional] = Shrink {quantified =>
-		for (nested <- shrink(quantified.base)) 
-			yield nested.optional(quantified.mode)
+		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => q.base.optional()}) ++:
+		(for (base <- shrink(quantified.base)) yield base.optional(quantified.mode))
 	}
 	
 	implicit val shrinkRepeatExactly : Shrink[Quantified.RepeatExactly] = Shrink {quantified =>
-		for (nested <- shrink(quantified.base)) 
-			yield nested.repeat(quantified.repetitions, quantified.mode)
+		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => q.base.repeat(q.repetitions)}) ++:
+		(for (base <- shrink(quantified.base)) yield base.repeat(quantified.repetitions, quantified.mode))
 	}
 	
 	implicit val shrinkRepeatRange : Shrink[Quantified.RepeatRange] = Shrink {quantified =>
-		for (nested <- shrink(quantified.base)) 
-			yield new Quantified.RepeatRange(nested, quantified.minRepetitions, quantified.maxRepetitions, quantified.mode)
+		(Some(quantified) filter {_.mode != Quantified.Mode.GREEDY} map {q => new Quantified.RepeatRange(q.base, q.minRepetitions, q.maxRepetitions, Quantified.Mode.GREEDY)}) ++:
+		(for (base <- shrink(quantified.base)) yield base.repeat(quantified.minRepetitions, quantified.maxRepetitions, quantified.mode))
 	}
 	
 	implicit val shrinkQuantified : Shrink[Quantified] = Shrink {
-		case quantified : Quantified.AnyTimes => for (q <- shrinkAnyTimes.shrink(quantified)) yield q
-		case quantified : Quantified.AtLeastOnce => for (q <- shrinkAtLeastOnce.shrink(quantified)) yield q
-		case quantified : Quantified.Optional => for (q <- shrinkOptional.shrink(quantified)) yield q
-		case quantified : Quantified.RepeatExactly => for (q <- shrinkRepeatExactly.shrink(quantified)) yield q
-		case quantified : Quantified.RepeatRange => for (q <- shrinkRepeatRange.shrink(quantified)) yield q
+		case quantified : Quantified.AnyTimes => for (q <- shrink(quantified)) yield q
+		case quantified : Quantified.AtLeastOnce => for (q <- shrink(quantified)) yield q
+		case quantified : Quantified.Optional => for (q <- shrink(quantified)) yield q
+		case quantified : Quantified.RepeatExactly => for (q <- shrink(quantified)) yield q
+		case quantified : Quantified.RepeatRange => for (q <- shrink(quantified)) yield q
 	}
 }
