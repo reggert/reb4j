@@ -2,8 +2,7 @@ package io.github.reggert.reb4j.test
 
 import org.scalacheck.Shrink
 import org.scalacheck.Shrink._
-import io.github.reggert.reb4j.charclass.{Intersection, MultiChar, Union}
-import io.github.reggert.reb4j.charclass.CharClass
+import io.github.reggert.reb4j.charclass._
 import scala.collection.convert.decorateAll._
 import io.github.reggert.reb4j.charclass.SingleChar
 
@@ -34,11 +33,21 @@ trait CharClassShrinkers extends CharShrinkers {
 		shrink(singlechar.character) map {CharClass.character}
 	}
 	
+	implicit val shrinkCharRange : Shrink[CharRange] = Shrink {charRange =>
+		for {
+			first <- shrink(charRange.first)
+			last <- shrink(charRange.last)
+			if first <= last
+		} yield CharClass.range(first, last)
+	}
+	
 	implicit val shrinkCharClass : Shrink[CharClass] = Shrink {
 		case multichar : MultiChar => 
 			(multichar.characters.asScala map {c => CharClass.character(Character.valueOf(c))}) ++: shrink(multichar)
 		case singlechar : SingleChar => shrink(singlechar)
 		case union : Union => union.subsets.asScala ++: shrink(union)
 		case intersection : Intersection => intersection.supersets.asScala ++: shrink(intersection)
+		case range : CharRange => shrink(range)
+		case negated : Negated[_] => negated.positive +: shrink(negated.positive)
 	}
 }
