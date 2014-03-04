@@ -11,6 +11,7 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	implicit val shrinkExpression : Shrink[Expression] = Shrink {
 		case literal : Literal => shrink(literal) 
 		case raw : Raw => shrink(raw)
+		case charclass : SingleChar => Literal.literal(charclass.character) +: shrink(charclass)
 		case charclass : CharClass => shrink(charclass)
 		case alternation : Alternation => alternation.alternatives.asScala ++: shrink(alternation)
 		case group : Group => group.nested +: shrink(group)
@@ -22,6 +23,7 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	implicit val shrinkAlternative : Shrink[Alternative] = Shrink {
 		case literal : Literal => shrink(literal) 
 		case raw : Raw => shrink(raw)
+		case charclass : SingleChar => Literal.literal(charclass.character) +: shrink(charclass)
 		case charclass : CharClass => shrink(charclass)
 		case alternation : Alternation => alternation.alternatives.asScala ++: shrink(alternation)
 		case group : Group =>
@@ -35,6 +37,7 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	implicit val shrinkSequenceable : Shrink[Sequenceable] = Shrink {
 		case literal : Literal => shrink(literal) 
 		case raw : Raw => shrink(raw)
+		case charclass : SingleChar => Literal.literal(charclass.character) +: shrink(charclass)
 		case charclass : CharClass => shrink(charclass)
 		case group : Group =>
 			(Some(group.nested) collect {case seq : Sequenceable => seq}) ++: shrink(group)
@@ -58,7 +61,10 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	}
 	
 	private def shrinkGroupType[T <: Group](construct : Expression => T) = Shrink {group : T =>
-		for (nested <- shrink(group.nested)) yield construct(nested)
+		for {
+			nested <- shrink(group.nested) 
+			shrunk <- try {Some(construct(nested))} catch {case _ : UnboundedLookBehindException => None} 
+		} yield shrunk
 	}
 	
 	implicit val shrinkCapture = shrinkGroupType(Group.capture)
@@ -87,14 +93,23 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	
 	implicit val shrinkGroup : Shrink[Group] = Shrink {
 		case group : Group.Capture => for (g <- shrink(group)) yield g
-		case group : Group.Independent => for (g <- shrink(group)) yield g
-		case group : Group.NegativeLookAhead => for (g <- shrink(group)) yield g
-		case group : Group.NegativeLookBehind => for (g <- shrink(group)) yield g
-		case group : Group.NonCapturing => for (g <- shrink(group)) yield g
-		case group : Group.PositiveLookAhead => for (g <- shrink(group)) yield g
-		case group : Group.PositiveLookBehind => for (g <- shrink(group)) yield g
-		case group : Group.DisableFlags => for (g <- shrink(group)) yield g
-		case group : Group.EnableFlags => for (g <- shrink(group)) yield g
+		case group : Group.Independent => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.NegativeLookAhead => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.NegativeLookBehind => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.NonCapturing => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.PositiveLookAhead => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.PositiveLookBehind => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.DisableFlags => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+		case group : Group.EnableFlags => Group.capture(group.nested) +: (for (g <- shrink(group)) yield g)
+	}
+	
+	implicit val shrinkQuantifiable : Shrink[Quantifiable] = Shrink {
+		case literal : Literal => shrink(literal) 
+		case raw : Raw => shrink(raw)
+		case charclass : CharClass => shrink(charclass)
+		case group : Group => 
+			(Some(group.nested) collect {case q : Quantifiable => q}) ++: shrink(group)
+		case quantified : Quantified => quantified.base +: shrink(quantified)
 	}
 	
 	implicit val shrinkAnyTimes : Shrink[Quantified.AnyTimes] = Shrink {quantified =>
@@ -134,11 +149,11 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 	}
 	
 	implicit val shrinkQuantified : Shrink[Quantified] = Shrink {
-		case quantified : Quantified.AnyTimes => for (q <- shrink(quantified)) yield q
-		case quantified : Quantified.AtLeastOnce => for (q <- shrink(quantified)) yield q
-		case quantified : Quantified.Optional => for (q <- shrink(quantified)) yield q
+		case quantified : Quantified.AnyTimes => quantified.base.repeat(1) +: (for (q <- shrink(quantified)) yield q)
+		case quantified : Quantified.AtLeastOnce => quantified.base.repeat(1) +: (for (q <- shrink(quantified)) yield q)
+		case quantified : Quantified.Optional => quantified.base.repeat(1) +: (for (q <- shrink(quantified)) yield q)
 		case quantified : Quantified.RepeatExactly => for (q <- shrink(quantified)) yield q
-		case quantified : Quantified.RepeatRange => for (q <- shrink(quantified)) yield q
+		case quantified : Quantified.RepeatRange => quantified.base.repeat(1) +: (for (q <- shrink(quantified)) yield q)
 	}
 }
 

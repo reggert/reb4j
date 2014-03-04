@@ -7,9 +7,7 @@ import io.github.reggert.reb4j.{Literal,StringLiteral,CharLiteral}
 trait LiteralShrinkers extends CharShrinkers {
 	
 	implicit val shrinkStringLiteral : Shrink[StringLiteral] = Shrink {stringLiteral =>
-		for {
-			s <- shrink(stringLiteral.unescaped)
-		} yield Literal.literal(s)
+		for {s <- shrink(stringLiteral.unescaped)} yield Literal.literal(s)
 	}
 	
 	implicit val shrinkCharLiteral : Shrink[CharLiteral] = Shrink {charLiteral =>
@@ -19,7 +17,6 @@ trait LiteralShrinkers extends CharShrinkers {
 	implicit val shrinkLiteral : Shrink[Literal] = Shrink {
 		case stringLiteral : StringLiteral => shrink(stringLiteral)
 		case charLiteral : CharLiteral => shrink(charLiteral)
-		case _ => Stream.empty
 	}
 }
 
