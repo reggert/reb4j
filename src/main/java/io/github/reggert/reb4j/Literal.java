@@ -5,6 +5,7 @@ import fj.Ord;
 import fj.data.LazyString;
 import fj.data.List;
 import fj.data.Set;
+import fj.data.TreeMap;
 
 
 /**
@@ -24,6 +25,19 @@ public abstract class Literal extends AbstractSequenceableAlternative
 			);
 	
 	/**
+	 * Characters that get their own special escape sequences.
+	 */
+	public static final TreeMap<Character, String> specialEscapes =
+		TreeMap.<Character, String>empty(Ord.charOrd)
+			.set('\n', "\\n")
+			.set('\t', "\\t")
+			.set('\r', "\\r")
+			.set('\f', "\\f")
+			.set('\u0007', "\\a")
+			.set('\u001b', "\\e")
+			.set('\0', "\\00");
+	
+	/**
 	 * Helper function that escapes the specified character.
 	 * 
 	 * @param c the character to escape; must not be <code>null</code>.
@@ -32,7 +46,11 @@ public abstract class Literal extends AbstractSequenceableAlternative
 	 * 	if <var>c</var> is <code>null</code>. 
 	 */
 	public static LazyString escapeChar(final Character c)
-	{return (NEEDS_ESCAPE.member(c) ? LazyString.str("\\") : LazyString.empty).append(c.toString());}
+	{
+		return NEEDS_ESCAPE.member(c) ? 
+			LazyString.str("\\").append(c.toString()) 
+			: LazyString.str(specialEscapes.get(c).orSome(c.toString()));
+	}
 	
 	/**
 	 * Helper function that escapes the specified string.
