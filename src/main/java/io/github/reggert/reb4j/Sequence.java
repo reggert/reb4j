@@ -166,7 +166,7 @@ public final class Sequence extends AbstractExpression
 	@Override 
 	public boolean repetitionInvalidatesBounds() 
 	{
-		return components.forall(
+		return components.exists(
 				new F<Sequenceable, Boolean>()
 				{
 					@Override public Boolean f(final Sequenceable a) 
