@@ -177,7 +177,7 @@ public final class Alternation extends AbstractExpression
 	@Override
 	public boolean repetitionInvalidatesBounds() 
 	{
-		return possiblyZeroLength();
+		return true;
 	}
 
 	@Override
