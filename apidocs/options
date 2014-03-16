@@ -15,10 +15,10 @@
 -docencoding
 'UTF-8'
 -doctitle
-'Regular Expression Builder for Java 3.0.0 API'
+'Regular Expression Builder for Java 3.1.0 API'
 -linkoffline
 'http://download.oracle.com/javase/6/docs/api' 'C:/Users/Rich/git/reb4j/target/checkout/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'Regular Expression Builder for Java 3.0.0 API'
+'Regular Expression Builder for Java 3.1.0 API'

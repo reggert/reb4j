@@ -1,2 +1,3 @@
-net.sourceforge.reb4j
-net.sourceforge.reb4j.charclass
+io.github.reggert.reb4j
+io.github.reggert.reb4j.charclass
+io.github.reggert.reb4j.prefab

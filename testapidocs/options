@@ -1,10 +1,10 @@
 -classpath
-'C:/Users/Rich/git/reb4j/target/checkout/target/classes;C:/Users/Rich/git/reb4j/target/checkout/target/test-classes;C:/Users/Rich/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar;C:/Users/Rich/.m2/repository/org/functionaljava/functionaljava/3.1/functionaljava-3.1.jar;C:/Users/Rich/.m2/repository/junit/junit/4.11/junit-4.11.jar'
+'C:/Users/Rich/git/reb4j/target/checkout/target/classes;C:/Users/Rich/git/reb4j/target/checkout/target/test-classes;C:/Users/Rich/.m2/repository/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.jar;C:/Users/Rich/.m2/repository/org/scalatest/scalatest_2.10/2.1.0-RC3/scalatest_2.10-2.1.0-RC3.jar;C:/Users/Rich/.m2/repository/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar;C:/Users/Rich/.m2/repository/org/scala-lang/scala-reflect/2.10.3/scala-reflect-2.10.3.jar;C:/Users/Rich/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar;C:/Users/Rich/.m2/repository/org/functionaljava/functionaljava/3.1/functionaljava-3.1.jar;C:/Users/Rich/.m2/repository/org/scalacheck/scalacheck_2.10/1.11.3/scalacheck_2.10-1.11.3.jar;C:/Users/Rich/.m2/repository/junit/junit/4.11/junit-4.11.jar'
 -encoding
 'UTF-8'
 -public
 -sourcepath
-'C:/Users/Rich/git/reb4j/target/checkout/src/test/java'
+'C:/Users/Rich/git/reb4j/target/checkout/src/test/java;C:/Users/Rich/git/reb4j/target/checkout/src/test/java/../scala'
 -author
 -bottom
 'Copyright &#169; 2014 <a href="https://github.com/reggert">Richard W. Eggert II</a>. All Rights Reserved.'
@@ -15,7 +15,7 @@
 -docencoding
 'UTF-8'
 -doctitle
-'Regular Expression Builder for Java 3.0.0 Test API'
+'Regular Expression Builder for Java 3.1.0 Test API'
 -link
 '../apidocs'
 -linkoffline
@@ -23,4 +23,4 @@
 -use
 -version
 -windowtitle
-'Regular Expression Builder for Java 3.0.0 Test API'
+'Regular Expression Builder for Java 3.1.0 Test API'
