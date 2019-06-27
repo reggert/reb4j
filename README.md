@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/reggert/reb4j.png)](https://travis-ci.org/reggert/reb4j)
 
-#About reb4j
+# About reb4j
 
 The purpose of **reb4j** is to provide a pure Java wrapper around
 the regular expression syntax provided by the JRE's 
