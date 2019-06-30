@@ -1,33 +1,31 @@
 package io.github.reggert.reb4j.test
 
-import scala.language.postfixOps
-import org.scalacheck.Arbitrary
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.Gen
 import io.github.reggert.reb4j._
-import io.github.reggert.reb4j.charclass._
-import java.util.regex.Pattern
+import org.scalacheck.Arbitrary.arbitrary
+import org.scalacheck.{Arbitrary, Gen}
+
+import scala.language.postfixOps
 
 trait ExpressionGenerators extends CharClassGenerators 
 	with UtilGenerators with LiteralGenerators with RawGenerators with AdoptedGenerators
 {
-	implicit val arbExpression = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genExpression)})
-	implicit val arbAlternation = 
-		Arbitrary(Gen.sized {size => Gen.choose(2, size) flatMap (genAlternation)})
-	implicit val arbAlternative = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genAlternative)})
-	implicit val arbFlag = Arbitrary(genFlag)
-	implicit val arbGroup = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genGroup)})
-	implicit val arbQuantifiable = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genQuantifiable)})
-	implicit val arbQuantified = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genQuantified)})
-	implicit val arbSequence = 
-		Arbitrary(Gen.sized {size => Gen.choose(2, size) flatMap (genSequence)})
-	implicit val arbSequenceable = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genSequenceable)})
+	implicit val arbExpression: Arbitrary[Expression] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genExpression })
+	implicit val arbAlternation: Arbitrary[Alternation] =
+		Arbitrary(Gen.sized {size => if (size < 2) Gen.fail else Gen.choose(2, size) flatMap genAlternation })
+	implicit val arbAlternative: Arbitrary[Alternative] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genAlternative })
+	implicit val arbFlag: Arbitrary[Flag] = Arbitrary(genFlag)
+	implicit val arbGroup: Arbitrary[Group] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genGroup })
+	implicit val arbQuantifiable: Arbitrary[Quantifiable] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genQuantifiable })
+	implicit val arbQuantified: Arbitrary[Quantified] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genQuantified })
+	implicit val arbSequence: Arbitrary[Sequence] =
+		Arbitrary(Gen.sized {size => if (size < 2) Gen.fail else Gen.choose(2, size) flatMap genSequence })
+	implicit val arbSequenceable: Arbitrary[Sequenceable] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genSequenceable })
 	
 	
 	def genExpression(size : Int) : Gen[Expression] = {
@@ -53,21 +51,22 @@ trait ExpressionGenerators extends CharClassGenerators
 		}
 	} 
 	
+	//noinspection ZeroIndexToHead
 	private def genCombined[CombinedType <: Expression, SubtreeType <: Expression](size : Int)
-		(genSubtree : Int => Gen[SubtreeType])
-		(combine : (SubtreeType, SubtreeType) => CombinedType)
-		(fold : (CombinedType, SubtreeType) => CombinedType) : Gen[CombinedType] = 
+																																								(genSubtree : Int => Gen[SubtreeType])
+																																								(combine : (SubtreeType, SubtreeType) => CombinedType)
+																																								(fold : (CombinedType, SubtreeType) => CombinedType) : Gen[CombinedType] =
 	{
 		require(size >= 2)
 		val sizesGen = size match
 		{
-			case 2 => Gen.value(1::1::Nil)
+			case 2 => Gen.const(1::1::Nil)
 			case _ => genSizes(size) filter {_.length >= 2}
 		}
 		for {
 			sizes <- sizesGen
 			subtreeGens = for {s <- sizes} yield genSubtree(s) 
-			subtreesGen = (Gen.value(Nil : List[SubtreeType]) /: subtreeGens) {(ssGen, sGen) => 
+			subtreesGen = (Gen.const(Nil : List[SubtreeType]) /: subtreeGens) {(ssGen, sGen) => 
 				for {
 					ss <- ssGen
 					s <- sGen
@@ -116,12 +115,12 @@ trait ExpressionGenerators extends CharClassGenerators
 					expressionGen.map(Group.nonCapturing),
 					expressionGen.map(Group.positiveLookAhead),
 					expressionGen.filter(_.boundedLength != null).map(Group.positiveLookBehind),
-					(for {
+					for {
 						flags <- Gen.choose(0, 6) flatMap {flagCount => Gen.listOfN(flagCount, genFlag)}
 						genEnabled = Gen.lzy(expressionGen map {e : Expression => Group.enableFlags(e, flags : _*)})
 						genDisabled = Gen.lzy(expressionGen map {e : Expression => Group.disableFlags(e, flags : _*)})
 						g <- Gen.oneOf(genEnabled, genDisabled)
-					} yield g)
+					} yield g
 				)
 		} yield g
 	}
@@ -147,18 +146,18 @@ trait ExpressionGenerators extends CharClassGenerators
 					quantifiableGen map (_.anyTimes(mode)),
 					quantifiableGen map (_.atLeastOnce(mode)),
 					quantifiableGen map (_.optional(mode)),
-					(for {
+					for {
 						n <- arbitrary[Int] if n > 0
 						quantifiable <- quantifiableGen
-					} yield quantifiable.repeat(n, mode)),
-					(for {
-						List(n, m) <- Gen.listOfN(2, arbitrary[Int]) if (n >= 0 && m > n)
+					} yield quantifiable.repeat(n, mode),
+					for {
+						List(n, m) <- Gen.listOfN(2, arbitrary[Int]) if n >= 0 && m > n
 							quantifiable <- quantifiableGen
-					} yield quantifiable.repeat(n, m, mode)),
-					(for {
+					} yield quantifiable.repeat(n, m, mode),
+					for {
 						n <- arbitrary[Int] if n > 0
-						quantifiable <- quantifiableGen	
-					} yield quantifiable.atLeast(n, mode))
+						quantifiable <- quantifiableGen
+					} yield quantifiable.atLeast(n, mode)
 				)
 		} yield quantified
 	}

@@ -1,31 +1,31 @@
 package io.github.reggert.reb4j.test
 
-import org.scalacheck.Arbitrary
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.Gen
-import io.github.reggert.reb4j.Raw
-import io.github.reggert.reb4j.Entity
+import io.github.reggert.reb4j.{Entity, Raw}
+import org.scalacheck.{Arbitrary, Gen}
+
 
 trait RawGenerators extends UtilGenerators with LiteralGenerators {
-	implicit val arbEntity = Arbitrary(genEntity)
+	implicit val arbEntity: Arbitrary[Entity] = Arbitrary(genEntity)
 	implicit val arbRawCompound : Arbitrary[Raw.Compound] = 
-		Arbitrary(Gen.sized {size => Gen.choose(2, size) flatMap (genRawCompound)})
-	implicit val arbEscapedLiteral = 
-		Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genEscapedLiteral)})
-	implicit val arbRaw = Arbitrary(Gen.sized {size => Gen.choose(1, size) flatMap (genRaw)})
+		Arbitrary(Gen.sized {size => if (size < 2) Gen.fail else Gen.choose(2, size) flatMap genRawCompound })
+	implicit val arbEscapedLiteral: Arbitrary[Raw.EscapedLiteral] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genEscapedLiteral })
+	implicit val arbRaw: Arbitrary[Raw] =
+		Arbitrary(Gen.sized {size => if (size < 1) Gen.fail else Gen.choose(1, size) flatMap genRaw })
 	
 
+	//noinspection ZeroIndexToHead
 	def genRawCompound(size : Int) : Gen[Raw.Compound] = {
 		require(size >= 2)
 		val sizesGen = size match
 		{
-			case 2 => Gen.value(1::1::Nil)
+			case 2 => Gen.const(1::1::Nil)
 			case _ => genSizes(size) filter {_.length >= 2}
 		}
 		for {
 			sizes <- sizesGen
 			subtreeGens = for {s <- sizes} yield genRaw(s) 
-			subtreesGen = (Gen.value(Nil : List[Raw]) /: subtreeGens) {(ssGen, sGen) => 
+			subtreesGen = (Gen.const(Nil : List[Raw]) /: subtreeGens) {(ssGen, sGen) =>
 				for {
 					ss <- ssGen
 					s <- sGen

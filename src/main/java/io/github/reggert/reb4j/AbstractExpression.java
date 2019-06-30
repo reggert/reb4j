@@ -2,6 +2,7 @@ package io.github.reggert.reb4j;
 
 import java.util.regex.Pattern;
 
+
 /**
  * Base implementation of {@link Expression}.
  *
@@ -17,7 +18,7 @@ public abstract class AbstractExpression implements Expression
 	 */
 	@Override
 	public final String toString()
-	{return expression().toString();}
+	{return expression().toStringEager();}
 
 	@Override
 	public final Pattern toPattern()

@@ -5,6 +5,8 @@ import Shrink._
 import io.github.reggert.reb4j._
 import io.github.reggert.reb4j.charclass._
 import scala.collection.convert.decorateAll._
+import scala.language.postfixOps
+
 
 trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 
@@ -46,18 +48,20 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 		case sequence : Sequence => sequence.components.asScala ++: shrink(sequence)
 	}
 
-	implicit val shrinkAlternation : Shrink[Alternation] = Shrink {alternation =>
+	//noinspection ZeroIndexToHead
+	implicit val shrinkAlternation : Shrink[Alternation] = Shrink { alternation =>
 		for {
 			alternatives <- shrink(alternation.alternatives.asScala.toSeq)
 			if alternatives.length >= 2
-		} yield ((alternatives(0) or alternatives(1)) /: (alternatives.drop(2))) {_ or _}
+		} yield ((alternatives(0) or alternatives(1)) /: alternatives.drop(2)) {_ or _}
 	}
 	
-	implicit val shrinkSequence : Shrink[Sequence] = Shrink {sequence =>
+	//noinspection ZeroIndexToHead
+	implicit val shrinkSequence : Shrink[Sequence] = Shrink { sequence =>
 		for {
 			components <- shrink(sequence.components.asScala.toSeq)
 			if components.length >= 2
-		} yield ((components(0) andThen components(1)) /: (components.drop(2))) {_ andThen _}
+		} yield ((components(0) andThen components(1)) /: components.drop(2)) {_ andThen _}
 	}
 	
 	private def shrinkGroupType[T <: Group](construct : Expression => T) = Shrink {group : T =>
@@ -67,19 +71,19 @@ trait ExpressionShrinkers extends LiteralShrinkers with RawShrinkers {
 		} yield shrunk
 	}
 	
-	implicit val shrinkCapture = shrinkGroupType(Group.capture)
+	implicit val shrinkCapture: Shrink[Group.Capture] = shrinkGroupType(Group.capture)
 	
-	implicit val shrinkIndependent = shrinkGroupType(Group.independent)
+	implicit val shrinkIndependent: Shrink[Group.Independent] = shrinkGroupType(Group.independent)
 	
-	implicit val shrinkNegativeLookAhead = shrinkGroupType(Group.negativeLookAhead)
+	implicit val shrinkNegativeLookAhead: Shrink[Group.NegativeLookAhead] = shrinkGroupType(Group.negativeLookAhead)
 	
-	implicit val shrinkNegativeLookBehind = shrinkGroupType(Group.negativeLookBehind)
+	implicit val shrinkNegativeLookBehind: Shrink[Group.NegativeLookBehind] = shrinkGroupType(Group.negativeLookBehind)
 	
-	implicit val shrinkNonCapturing = shrinkGroupType(Group.nonCapturing)
+	implicit val shrinkNonCapturing: Shrink[Group.NonCapturing] = shrinkGroupType(Group.nonCapturing)
 	
-	implicit val shrinkPositiveLookAhead = shrinkGroupType(Group.positiveLookAhead)
+	implicit val shrinkPositiveLookAhead: Shrink[Group.PositiveLookAhead] = shrinkGroupType(Group.positiveLookAhead)
 	
-	implicit val shrinkPositiveLookBehind = shrinkGroupType(Group.positiveLookBehind)
+	implicit val shrinkPositiveLookBehind: Shrink[Group.PositiveLookBehind] = shrinkGroupType(Group.positiveLookBehind)
 	
 	implicit val shrinkDisableFlags : Shrink[Group.DisableFlags] = Shrink {g =>
 		(for (f <- shrink(g.flags.asScala)) yield Group.disableFlags(g.nested, f.toSeq : _*)) ++:

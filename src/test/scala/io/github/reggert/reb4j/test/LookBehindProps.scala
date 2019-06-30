@@ -1,18 +1,12 @@
 package io.github.reggert.reb4j.test
 
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.Properties
-import io.github.reggert.reb4j.{Expression,Group}
-import Group.{PositiveLookBehind,NegativeLookBehind}
-import org.scalacheck.{Gen,Prop}
-import Prop.forAll
-import scala.util.Try
-import io.github.reggert.reb4j.UnboundedLookBehindException
-import io.github.reggert.reb4j.Quantified
-import org.scalatest.junit.JUnitSuite
-import org.scalatest.prop.Checkers
+import io.github.reggert.reb4j.{Expression, Group, Quantified, UnboundedLookBehindException}
 import org.junit.Test
-
+import org.scalacheck.Arbitrary.arbitrary
+import org.scalacheck.Prop.forAll
+import org.scalacheck.{Gen, Prop}
+import org.scalatestplus.junit.JUnitSuite
+import org.scalatestplus.scalacheck.Checkers
 
 
 sealed abstract class LookBehindProps[GroupType <: Group](name : String)(constructor : Expression => GroupType) 
@@ -27,27 +21,27 @@ sealed abstract class LookBehindProps[GroupType <: Group](name : String)(constru
 			quantified <- Gen.oneOf(
 					quantifiableGen map (_.anyTimes(mode)),
 					quantifiableGen map (_.atLeastOnce(mode)),
-					(for {
+					for {
 						n <- arbitrary[Int] if n > 0
-						quantifiable <- quantifiableGen	
-					} yield quantifiable.atLeast(n, mode))
+						quantifiable <- quantifiableGen
+					} yield quantifiable.atLeast(n, mode)
 				)
 		} yield quantified
 	}
 	
-	def unboundedLookBehindException = forAll(Gen.sized(n => genIndefinite(n + 1))){nested =>
+	def unboundedLookBehindException: Prop = forAll(Gen.sized(n => genIndefinite(n + 1))){ nested =>
 		Prop.throws(classOf[UnboundedLookBehindException])(constructor(nested))
 	}
 }
 
 class UnboundedPositiveLookBehindProps extends LookBehindProps("UnboundedPositiveLookBehind")(Group.positiveLookBehind)
 {
-	@Test def testUnboundedLookBehind = check(unboundedLookBehindException, minSuccessful(100000), maxDiscarded(500000)) 
+	@Test def testUnboundedLookBehind() : Unit = check(unboundedLookBehindException, minSuccessful(100000), maxDiscardedFactor(5.0))
 }
 
 class UnboundedNegativeLookBehindProps extends LookBehindProps("UnboundedNegativeLookBehind")(Group.negativeLookBehind)
 {
-	@Test def testUnboundedLookBehind = check(unboundedLookBehindException, minSuccessful(100000), maxDiscarded(500000)) 
+	@Test def testUnboundedLookBehind() : Unit = check(unboundedLookBehindException, minSuccessful(100000), maxDiscardedFactor(5.0))
 }
 
 
