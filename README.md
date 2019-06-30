@@ -27,24 +27,14 @@ As a quick example, here's one way to use **reb4j** to describe a pattern that v
 		Perl.DIGIT;
 	final Alternative twoDigitOctet = 
 		CharClass.range('1', '9').then(Perl.DIGIT);
-	final Alternative oneHundredsOctet = 
-		Literal.literal('1').then(Perl.DIGIT.repeat(2));
-	public final Alternative lowTwoHundredsOctet = Sequence.sequence(
-			Literal.literal('2'),
-			CharClass.range('0', '4'),
-			Perl.DIGIT
-		);
-	public final Alternative highTwoHundredsOctet = 
-		Literal.literal("25").then(CharClass.range('0', '5'));
-	public final Alternation octet = Alternation.alternatives(
-			oneDigitOctet, 
-			twoDigitOctet, 
-			oneHundredsOctet, 
-			lowTwoHundredsOctet,
-			highTwoHundredsOctet
-		);
-	public final CharLiteral dot = Literal.literal('.');
-	public final Sequence dottedDecimalIPAddress = Sequence.sequence(
+	final Alternation threeDigitOctet = Alternation.alternatives(
+	    Literal.literal('1').then(Perl.DIGIT.repeat(2)),
+	    Sequence.sequence( Literal.literal('2'), CharClass.range('0', '4'), Perl.DIGIT ),
+	    Literal.literal("25").then(CharClass.range('0', '5'))
+    );
+	final Alternation octet = Alternation.alternatives( oneDigitOctet, twoDigitOctet, threeDigitOctet );
+	final CharLiteral dot = Literal.literal('.');
+	final Sequence dottedDecimalIPAddress = Sequence.sequence(
 			Group.capture(octet), 
 			dot, 
 			Group.capture(octet), 
