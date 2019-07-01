@@ -4,7 +4,7 @@
 
     <groupId>io.github.reggert</groupId>
     <artifactId>reb4j</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.2.0</version>
     <packaging>bundle</packaging>
     <name>Regular Expression Builder for Java</name>
     <url>http://reggert.github.io/reb4j</url>
@@ -73,7 +73,8 @@
             scm:git:git@github.com:reggert/reb4j.git
         </developerConnection>
         <url>https://github.com/reggert/reb4j</url>
-    </scm>
+      <tag>reb4j-3.2.0</tag>
+  </scm>
 
     <distributionManagement>
         <site>
