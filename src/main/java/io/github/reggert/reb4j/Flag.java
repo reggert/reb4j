@@ -1,8 +1,8 @@
 package io.github.reggert.reb4j;
 
-import fj.F2;
 import fj.data.Array;
 import fj.data.LazyString;
+
 
 /**
  * Flag that can be passed to the {@link java.util.regex.Pattern} 
@@ -22,7 +22,7 @@ public enum Flag
 	 */
 	public final char c;
 	
-	private Flag(final char c)
+	Flag(final char c)
 	{
 		this.c = c;
 	}
@@ -30,12 +30,7 @@ public enum Flag
 	static LazyString toString(final Flag... flags)
 	{
 		return Array.array(flags).foldLeft(
-				new F2<LazyString, Flag, LazyString>()
-				{
-					@Override
-					public LazyString f(final LazyString a, final Flag b)
-					{return a.append(Character.toString(b.c));}
-				},
+			(a, b) -> a.append(Character.toString(b.c)),
 				LazyString.empty
 			);
 	}
