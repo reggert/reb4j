@@ -14,7 +14,11 @@ public enum Flag
 	UNIX_LINES('d'),
 	MULTILINE('m'),
 	DOT_ALL('s'),
-	UNICODE_CASE('u'), 
+	UNICODE_CASE('u'),
+	/**
+	 * @deprecated Use {@link Adopted} if you want to put comments in a pattern.
+	 */
+	@Deprecated
 	COMMENTS('x');
 	
 	/**
