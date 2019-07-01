@@ -1,8 +1,11 @@
 package io.github.reggert.reb4j.test.prefab
 
+import java.net.InetAddress
+import java.util.Optional
 import java.util.regex.Pattern
 
 import io.github.reggert.reb4j._
+import io.github.reggert.reb4j.prefab.DottedDecimalIPv4Address
 import io.github.reggert.reb4j.prefab.DottedDecimalIPv4Address._
 import org.junit.Test
 import org.scalacheck.Prop._
@@ -87,5 +90,16 @@ class DottedDecimalIPv4AddressProps extends JUnitSuite with Checkers
 			minSuccessful(100000), 
 			maxDiscardedFactor(5.0)
 		)
-		
+
+	@Test def parseParsesOnlyValidValues() : Unit = check(
+		forAll(genOctets) { case (a, b, c, d) =>
+			val s = s"$a.$b.$c.$d"
+			val expectedValue = InetAddress.getByAddress(s, Array(a, b, c, d).map(_.toByte))
+			DottedDecimalIPv4Address.parse(s) == Optional.of(expectedValue)
+		} &&
+			forAll { (a : Int, b : Int, c : Int, d : Int) =>
+				(List(a, b, c, d).exists(x => x < 0 || x > 255) : Prop) ==>
+					!DottedDecimalIPv4Address.parse(s"$a.$b.$c.$d").isPresent
+			}
+	)
 }

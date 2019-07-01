@@ -4,6 +4,12 @@ import io.github.reggert.reb4j.*;
 import io.github.reggert.reb4j.charclass.CharClass;
 import io.github.reggert.reb4j.charclass.CharClass.Perl;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import java.util.regex.Matcher;
+
 public final class DottedDecimalIPv4Address {
     private DottedDecimalIPv4Address() {
     }
@@ -36,4 +42,31 @@ public final class DottedDecimalIPv4Address {
         dot,
         Group.capture(octet)
     );
+
+    /**
+     * Parses the specified string as an IPv4 address in dotted-decimal notation.
+     *
+     * @param s the string to parse.
+     * @return the parsed {@link Inet4Address}, or {@link Optional#empty()} if the string is invalid.
+     */
+    public static Optional<Inet4Address> parse(final String s) {
+        final Matcher matcher = dottedDecimalIPAddress.toPattern().matcher(s);
+        if (matcher.matches()) {
+            final byte[] octets = new byte[]{
+                (byte) Integer.parseInt(matcher.group(1)),
+                (byte) Integer.parseInt(matcher.group(2)),
+                (byte) Integer.parseInt(matcher.group(3)),
+                (byte) Integer.parseInt(matcher.group(4))
+            };
+            try {
+                return Optional.of((Inet4Address) InetAddress.getByAddress(s, octets));
+            }
+            catch (final UnknownHostException e) {
+                throw new AssertionError("Unreachable", e);
+            }
+        }
+        else {
+            return Optional.empty();
+        }
+    }
 }
