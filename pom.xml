@@ -153,7 +153,7 @@
                             JavaSE-1.8
                         </Bundle-RequiredExecutionEnvironment>
                         <Export-Package>
-                            *;version="${packageVersion}"
+                            io.github.reggert.reb4j.*;version="${packageVersion}"
                         </Export-Package>
                     </instructions>
                 </configuration>
