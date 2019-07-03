@@ -1,6 +1,9 @@
 language: java
 sudo: false
 
+git:
+  depth: false
+
 jdk:
   - oraclejdk8
   - openjdk8
