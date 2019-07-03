@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/reggert/reb4j.png)](https://travis-ci.org/reggert/reb4j)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.reggert/reb4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.reggert/reb4j/)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=reggert_reb4j&metric=bugs)](https://sonarcloud.io/dashboard?id=reggert_reb4j)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=reggert_reb4j&metric=code_smells)](https://sonarcloud.io/dashboard?id=reggert_reb4j)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=reggert_reb4j&metric=coverage)](https://sonarcloud.io/dashboard?id=reggert_reb4j)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=io.github.reggert%3Areb4j&metric=bugs)](https://sonarcloud.io/dashboard?id=io.github.reggert%3Areb4j)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=io.github.reggert%3Areb4j&metric=code_smells)](https://sonarcloud.io/dashboard?id=io.github.reggert%3Areb4j)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=io.github.reggert%3Areb4j&metric=coverage)](https://sonarcloud.io/dashboard?id=io.github.reggert%3Areb4j)
 
 
 # About reb4j
