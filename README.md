@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/reggert/reb4j.png)](https://travis-ci.org/reggert/reb4j)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.reggert/reb4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.reggert/reb4j/)
 
 # About reb4j
 
