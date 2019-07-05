@@ -1,8 +1,8 @@
 package io.github.reggert.reb4j.charclass;
 
-import fj.F2;
-import fj.data.LazyString;
 import fj.data.List;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Character class composed of the union of two other character classes.
@@ -21,27 +21,22 @@ public final class Union extends CharClass
 	@Override
 	public Negated<Union> negated()
 	{
-		return new Negated<Union>(this);
+		return new Negated<>(this);
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
 		return subsets.foldLeft(
-				new F2<LazyString, CharClass, LazyString>()
-				{
-					@Override
-					public LazyString f(final LazyString a, final CharClass b)
-					{return a.append(b.unitableForm());}
-				},
-				LazyString.empty
+			(a, b) -> a.append(b.unitableForm()),
+				Rope.empty()
 			);
 	}
 
 	@Override
-	public LazyString independentForm()
+	public Rope independentForm()
 	{
-		return LazyString.str("[").append(unitableForm()).append("]");
+		return Rope.fromString("[").append(unitableForm()).append("]");
 	}
 
 	@Override

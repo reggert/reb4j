@@ -11,8 +11,8 @@ import io.github.reggert.reb4j.Sequenceable;
 import java.lang.Character.UnicodeBlock;
 
 
-import fj.data.LazyString;
 import fj.data.Set;
+import io.github.reggert.reb4j.data.Rope;
 
 /**
  * Base class representing an expression that matches a single character 
@@ -27,16 +27,16 @@ public abstract class CharClass extends AbstractQuantifiableSequenceableAlternat
 	 * The regular expression string that can be used within square brackets
 	 * to merge with other character classes.
 	 */
-	protected abstract LazyString unitableForm();
+	protected abstract Rope unitableForm();
 	
 	/**
 	 * The regular expression string that can be used independently of square 
 	 * brackets.
 	 */
-	protected abstract LazyString independentForm();
+	protected abstract Rope independentForm();
 	
 	@Override
-	public final LazyString expression()
+	public final Rope expression()
 	{return independentForm();}
 	
 	@Override

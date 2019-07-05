@@ -3,6 +3,7 @@ package io.github.reggert.reb4j;
 import fj.F2;
 import fj.data.LazyString;
 import fj.data.List;
+import io.github.reggert.reb4j.data.Rope;
 
 /**
  * Expression representing a set of alternatives that may be matched.
@@ -116,13 +117,13 @@ public final class Alternation extends AbstractExpression
 	}
 	
 	@Override
-	public LazyString expression() 
+	public Rope expression()
 	{
 		return alternatives.tail().foldLeft(
-				new F2<LazyString, Alternative, LazyString>() 
+				new F2<Rope, Alternative, Rope>()
 				{
 					@Override
-					public LazyString f(final LazyString a, final Alternative b)
+					public Rope f(final Rope a, final Alternative b)
 					{return a.append("|").append(b.expression());}
 				}, 
 				alternatives.head().expression()

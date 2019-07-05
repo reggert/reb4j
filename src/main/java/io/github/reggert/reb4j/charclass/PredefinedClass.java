@@ -1,6 +1,8 @@
 package io.github.reggert.reb4j.charclass;
 
-import fj.data.LazyString;
+
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Predefined character class referenced using an escape sequence.
@@ -28,13 +30,13 @@ public class PredefinedClass extends CharClass
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
-		return LazyString.str("\\").append(Character.toString(nameChar));
+		return Rope.fromString("\\").append(Character.toString(nameChar));
 	}
 
 	@Override
-	public final LazyString independentForm()
+	public final Rope independentForm()
 	{return unitableForm();}
 
 	@Override

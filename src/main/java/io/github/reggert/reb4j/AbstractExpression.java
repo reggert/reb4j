@@ -18,7 +18,8 @@ public abstract class AbstractExpression implements Expression
 	 */
 	@Override
 	public final String toString()
-	{return expression().toStringEager();}
+	{return expression().toString();}
+
 
 	@Override
 	public final Pattern toPattern()

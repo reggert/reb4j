@@ -1,6 +1,8 @@
 package io.github.reggert.reb4j.charclass;
 
-import fj.data.LazyString;
+
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Predefined character class that is accepted by name using \p{..} or \P{..}.
@@ -31,7 +33,7 @@ public final class NamedPredefinedClass extends PredefinedClass
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
 		return super.unitableForm().append("{").append(className).append("}");
 	}

@@ -1,6 +1,7 @@
 package io.github.reggert.reb4j.charclass;
 
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Character class representing the negation of another character class.
@@ -23,13 +24,13 @@ public final class Negated<T extends CharClass> extends CharClass
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
-		return LazyString.str("[^").append(positive.unitableForm()).append("]");
+		return Rope.fromString("[^").append(positive.unitableForm()).append("]");
 	}
 
 	@Override
-	public LazyString independentForm()
+	public Rope independentForm()
 	{
 		return unitableForm();
 	}

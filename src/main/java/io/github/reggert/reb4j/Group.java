@@ -2,8 +2,8 @@ package io.github.reggert.reb4j;
 
 import java.util.Arrays;
 
-import fj.data.LazyString;
 import fj.data.List;
+import io.github.reggert.reb4j.data.Rope;
 
 /**
  * Expression that has been grouped in parentheses.
@@ -18,9 +18,9 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	 */
 	public final Expression nested;
 	
-	private final LazyString expression;
+	private final Rope expression;
 
-	private Group(final Expression nested, final LazyString opening)
+	private Group(final Expression nested, final Rope opening)
 	{
 		if (nested == null) throw new NullPointerException("nested");
 		assert opening != null;
@@ -29,7 +29,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	}
 	
 	@Override
-	public LazyString expression()
+	public Rope expression()
 	{
 		return expression;
 	}
@@ -56,7 +56,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class Capture extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(");
+		private static final Rope OPENING = Rope.fromString("(");
 		
 		public Capture(final Expression nested)
 		{
@@ -81,7 +81,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class NonCapturing extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(?:");
+		private static final Rope OPENING = Rope.fromString("(?:");
 		
 		public NonCapturing(final Expression nested)
 		{
@@ -106,7 +106,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class Independent extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(?>");
+		private static final Rope OPENING = Rope.fromString("(?>");
 		
 		public Independent(final Expression nested)
 		{
@@ -131,7 +131,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class PositiveLookAhead extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(?=");
+		private static final Rope OPENING = Rope.fromString("(?=");
 		
 		public PositiveLookAhead(final Expression nested)
 		{
@@ -156,7 +156,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class NegativeLookAhead extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(?!");
+		private static final Rope OPENING = Rope.fromString("(?!");
 		
 		public NegativeLookAhead(final Expression nested)
 		{
@@ -181,7 +181,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class PositiveLookBehind extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(?<=");
+		private static final Rope OPENING = Rope.fromString("(?<=");
 		
 		public PositiveLookBehind(final Expression nested) throws UnboundedLookBehindException
 		{
@@ -210,7 +210,7 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 	public final static class NegativeLookBehind extends Group
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString OPENING = LazyString.str("(?<!");
+		private static final Rope OPENING = Rope.fromString("(?<!");
 		
 		public NegativeLookBehind(final Expression nested) throws UnboundedLookBehindException
 		{
@@ -242,9 +242,9 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 		private static final long serialVersionUID = 1L;
 		public final List<Flag> flags;
 		
-		private static LazyString opening(final Flag... flags)
+		private static Rope opening(final Flag... flags)
 		{
-			return LazyString.str("(?").append(Flag.toString(flags)).append(":");
+			return Rope.fromString("(?").append(Flag.toString(flags)).append(":");
 		}
 		
 		public EnableFlags(final Expression nested, final Flag... flags)
@@ -275,9 +275,9 @@ public abstract class Group extends AbstractQuantifiableSequenceableAlternative
 		private static final long serialVersionUID = 1L;
 		public final List<Flag> flags;
 		
-		private static LazyString opening(final Flag... flags)
+		private static Rope opening(final Flag... flags)
 		{
-			return LazyString.str("(?-").append(Flag.toString(flags)).append(":");
+			return Rope.fromString("(?-").append(Flag.toString(flags)).append(":");
 		}
 		
 		public DisableFlags(final Expression nested, final Flag... flags)

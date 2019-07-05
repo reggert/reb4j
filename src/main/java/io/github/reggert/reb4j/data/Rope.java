@@ -4,6 +4,8 @@ import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static java.util.Objects.requireNonNull;
 
@@ -12,7 +14,7 @@ import static java.util.Objects.requireNonNull;
  * Rope implementation to avoid unnecessary copying of strings.
  */
 @Immutable
-public abstract class Rope implements Serializable, CharSequence {
+public abstract class Rope implements Serializable, CharSequence, Iterable<Character> {
     private static final long serialVersionUID = 1L;
     private static final Rope EMPTY = new Rope() {
         private static final long serialVersionUID = 1L;
@@ -87,6 +89,28 @@ public abstract class Rope implements Serializable, CharSequence {
 
 
     protected abstract char charAtUnchecked(@Nonnegative final int index);
+
+
+    @Override
+    @Nonnull
+    public Iterator<Character> iterator() {
+        return new Iterator<Character>() {
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < length();
+            }
+
+            @Override
+            public Character next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return charAtUnchecked(index++);
+            }
+        };
+    }
 
 
     @Override
@@ -170,6 +194,11 @@ public abstract class Rope implements Serializable, CharSequence {
                 second.addTo(stringBuilder);
             }
         };
+    }
+
+
+    public Rope append(@Nonnull final String stringValue) {
+        return append(Rope.fromString(stringValue));
     }
 
 

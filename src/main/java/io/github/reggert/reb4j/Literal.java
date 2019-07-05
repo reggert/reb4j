@@ -1,11 +1,10 @@
 package io.github.reggert.reb4j;
 
-import fj.F2;
 import fj.Ord;
-import fj.data.LazyString;
 import fj.data.List;
 import fj.data.Set;
 import fj.data.TreeMap;
+import io.github.reggert.reb4j.data.Rope;
 
 
 /**
@@ -41,15 +40,15 @@ public abstract class Literal extends AbstractSequenceableAlternative
 	 * Helper function that escapes the specified character.
 	 * 
 	 * @param c the character to escape; must not be <code>null</code>.
-	 * @return a {@link LazyString} containing the escaped (if necessary) character.
+	 * @return a {@link Rope} containing the escaped (if necessary) character.
 	 * @throws NullPointerException
 	 * 	if <var>c</var> is <code>null</code>. 
 	 */
-	public static LazyString escapeChar(final Character c)
+	public static Rope escapeChar(final Character c)
 	{
 		return NEEDS_ESCAPE.member(c) ? 
-			LazyString.str("\\").append(c.toString()) 
-			: LazyString.str(specialEscapes.get(c).orSome(c.toString()));
+			Rope.fromString("\\").append(c.toString())
+			: Rope.fromString(specialEscapes.get(c).orSome(c.toString()));
 	}
 	
 	/**
@@ -57,21 +56,17 @@ public abstract class Literal extends AbstractSequenceableAlternative
 	 * 
 	 * @param unescaped
 	 * 	the string to escape; must not be <code>null</code>.
-	 * @return a {@link LazyString} containing the escaped (if necessary) string.
+	 * @return the escaped string.
 	 * @throws NullPointerException
 	 * 	if <var>unescaped</var> is <code>null</code>.
 	 */
-	public static LazyString escape(final LazyString unescaped)
+	public static String escape(final String unescaped)
 	{
-		return unescaped.toStream().foldLeft(
-				new F2<LazyString, Character, LazyString>()
-				{
-					@Override
-					public LazyString f(final LazyString a, final Character b)
-					{return a.append(escapeChar(b));}
-				},
-				LazyString.empty
-			);
+		final StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < unescaped.length(); i++) {
+			builder.append(escapeChar(unescaped.charAt(i)));
+		}
+		return builder.toString();
 	}
 	
 	/**
@@ -112,15 +107,15 @@ public abstract class Literal extends AbstractSequenceableAlternative
 	 * Returns the escaped form of the string or character matched by
 	 * this expression.
 	 */
-	public final LazyString escaped()
+	public final String escaped()
 	{
-		return escape(LazyString.str(unescaped()));
+		return escape(unescaped());
 	}
 	
 	@Override
-	public final LazyString expression()
+	public final Rope expression()
 	{
-		return escaped();
+		return Rope.fromString(escaped());
 	}
 	
 	@Override

@@ -3,7 +3,8 @@ package io.github.reggert.reb4j;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Basic abstraction of a regular expression.
@@ -19,7 +20,7 @@ public interface Expression extends Serializable
 	/**
 	 * Returns the regular expression represented by this object.
 	 */
-	LazyString expression();
+	Rope expression();
 	
 	/**
 	 * Passes the regular expression represented by this object to 
