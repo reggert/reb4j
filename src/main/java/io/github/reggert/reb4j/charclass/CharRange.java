@@ -1,7 +1,8 @@
 package io.github.reggert.reb4j.charclass;
 
 import io.github.reggert.reb4j.Literal;
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Character class consisting of a range of characters.
@@ -21,19 +22,19 @@ public final class CharRange extends CharClass
 	@Override
 	public Negated<CharRange> negated()
 	{
-		return new Negated<CharRange>(this);
+		return new Negated<>(this);
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
 		return Literal.escapeChar(first).append("-").append(Literal.escapeChar(last));
 	}
 
 	@Override
-	public LazyString independentForm()
+	public Rope independentForm()
 	{
-		return LazyString.str("[").append(unitableForm()).append("]");
+		return Rope.fromString("[").append(unitableForm()).append("]");
 	}
 
 }

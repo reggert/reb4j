@@ -4,8 +4,9 @@ import static fj.Ord.charOrd;
 import io.github.reggert.reb4j.Literal;
 
 
-import fj.data.LazyString;
 import fj.data.Set;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Character class consisting of a single character.
@@ -23,17 +24,17 @@ public final class SingleChar extends CharClass
 	@Override
 	public Negated<SingleChar> negated()
 	{
-		return new Negated<SingleChar>(this);
+		return new Negated<>(this);
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
 		return Literal.escapeChar(character);
 	}
 
 	@Override
-	public LazyString independentForm()
+	public Rope independentForm()
 	{
 		return unitableForm();
 	}

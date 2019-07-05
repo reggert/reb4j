@@ -1,7 +1,7 @@
 package io.github.reggert.reb4j;
 
 import fj.data.Array;
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
 
 
 /**
@@ -31,11 +31,11 @@ public enum Flag
 		this.c = c;
 	}
 	
-	static LazyString toString(final Flag... flags)
+	static Rope toString(final Flag... flags)
 	{
 		return Array.array(flags).foldLeft(
 			(a, b) -> a.append(Character.toString(b.c)),
-				LazyString.empty
+				Rope.empty()
 			);
 	}
 	

@@ -1,6 +1,6 @@
 package io.github.reggert.reb4j;
 
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
 
 /**
  * Expression that has a quantifier attached to it.
@@ -9,22 +9,22 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 {
 	private static final long serialVersionUID = 2L;
 	public final Quantifiable base;
-	private final LazyString quantifier;
+	private final Rope quantifier;
 	public final Mode mode;
 	
-	public static enum Mode
+	public enum Mode
 	{
-		GREEDY(LazyString.empty),
-		RELUCTANT(LazyString.str("?")),
-		POSSESSIVE(LazyString.str("+"));
+		GREEDY(Rope.empty()),
+		RELUCTANT(Rope.fromString("?")),
+		POSSESSIVE(Rope.fromString("+"));
 		
-		public final LazyString symbol;
+		public final Rope symbol;
 		
-		private Mode(final LazyString symbol)
+		Mode(final Rope symbol)
 		{this.symbol = symbol;}
 	}
 	
-	private Quantified(final Quantifiable base, final Mode mode, final LazyString quantifier)
+	private Quantified(final Quantifiable base, final Mode mode, final Rope quantifier)
 	{
 		if (base == null) throw new NullPointerException("base");
 		if (quantifier == null) throw new NullPointerException("quantifier");
@@ -40,7 +40,7 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 	public static final class AnyTimes extends Quantified
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString SYMBOL = LazyString.str("*");
+		private static final Rope SYMBOL = Rope.fromString("*");
 
 		public AnyTimes(final Quantifiable base, final Mode mode)
 		{
@@ -87,7 +87,7 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 	public static final class AtLeastOnce extends Quantified
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString SYMBOL = LazyString.str("+");
+		private static final Rope SYMBOL = Rope.fromString("+");
 
 		public AtLeastOnce(final Quantifiable base, final Mode mode)
 		{
@@ -134,7 +134,7 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 	public static final class Optional extends Quantified
 	{
 		private static final long serialVersionUID = 1L;
-		private static final LazyString SYMBOL = LazyString.str("?");
+		private static final Rope SYMBOL = Rope.fromString("?");
 
 		public Optional(final Quantifiable base, final Mode mode)
 		{
@@ -185,7 +185,7 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 
 		public RepeatExactly(final Quantifiable base, final int n, final Mode mode)
 		{
-			super(base, mode, LazyString.str("{").append(Integer.toString(n)).append("}").append(mode.symbol));
+			super(base, mode, Rope.fromString("{").append(Integer.toString(n)).append("}").append(mode.symbol));
 			this.repetitions = n;
 		}
 
@@ -245,7 +245,7 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 			super(
 					base, 
 					mode,
-					LazyString.str("{")
+					Rope.fromString("{")
 						.append(Integer.toString(min))
 						.append(",")
 						.append(max == null ? "" : max.toString())
@@ -320,7 +320,7 @@ public abstract class Quantified extends AbstractSequenceableAlternative
 	}
 
 	@Override
-	public LazyString expression()
+	public Rope expression()
 	{
 		return base.expression().append(quantifier);
 	}

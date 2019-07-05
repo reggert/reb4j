@@ -1,8 +1,8 @@
 package io.github.reggert.reb4j.charclass;
 
-import fj.F2;
-import fj.data.LazyString;
 import fj.data.List;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Character class consisting of the intersection of two other character classes.
@@ -22,27 +22,22 @@ public final class Intersection extends CharClass
 	@Override
 	public Negated<Intersection> negated()
 	{
-		return new Negated<Intersection>(this);
+		return new Negated<>(this);
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
 		return supersets.tail().foldLeft(
-				new F2<LazyString, CharClass, LazyString>()
-				{
-					@Override
-					public LazyString f(final LazyString a, final CharClass b)
-					{return a.append("&&").append(b.independentForm());}
-				},
+			(a, b) -> a.append("&&").append(b.independentForm()),
 				supersets.head().independentForm()
 			);
 	}
 
 	@Override
-	public LazyString independentForm()
+	public Rope independentForm()
 	{
-		return LazyString.str("[").append(unitableForm()).append("]");
+		return Rope.fromString("[").append(unitableForm()).append("]");
 	}
 	
 	@Override

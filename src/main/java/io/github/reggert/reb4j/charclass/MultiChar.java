@@ -1,10 +1,9 @@
 package io.github.reggert.reb4j.charclass;
 
-import io.github.reggert.reb4j.Literal;
-
-import fj.F2;
-import fj.data.LazyString;
 import fj.data.Set;
+import io.github.reggert.reb4j.Literal;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Character class consisting of multiple characters.
@@ -23,27 +22,22 @@ public final class MultiChar extends CharClass
 	@Override
 	public Negated<MultiChar> negated()
 	{
-		return new Negated<MultiChar>(this);
+		return new Negated<>(this);
 	}
 
 	@Override
-	public LazyString unitableForm()
+	public Rope unitableForm()
 	{
 		return characters.toStream().foldLeft(
-				new F2<LazyString, Character, LazyString>()
-				{
-					@Override
-					public LazyString f(final LazyString a, final Character b)
-					{return a.append(Literal.escapeChar(b));}
-				},
-				LazyString.empty
+			(a, b) -> a.append(Literal.escapeChar(b)),
+				Rope.empty()
 			);
 	}
 
 	@Override
-	public LazyString independentForm()
+	public Rope independentForm()
 	{
-		return LazyString.str("[").append(unitableForm()).append("]");
+		return Rope.fromString("[").append(unitableForm()).append("]");
 	}
 	
 	/**

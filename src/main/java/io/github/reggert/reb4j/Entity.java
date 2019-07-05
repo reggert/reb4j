@@ -1,7 +1,8 @@
 package io.github.reggert.reb4j;
 
 import io.github.reggert.reb4j.Quantified.Mode;
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Class representing special pre-defined expressions.
@@ -11,7 +12,7 @@ public class Entity extends Raw implements Quantifiable
 	private static final long serialVersionUID = 1L;
 
 	private Entity(final String rawExpression)
-	{super(LazyString.str(rawExpression));}
+	{super(Rope.fromString(rawExpression));}
 	
 	@Override
 	public final Quantified.AnyTimes anyTimes(final Mode mode)

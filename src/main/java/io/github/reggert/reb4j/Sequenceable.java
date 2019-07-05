@@ -2,13 +2,6 @@ package io.github.reggert.reb4j;
 
 public interface Sequenceable extends Expression
 {
-	@Deprecated
-	Sequence then(Sequenceable right);
-	
-	@Deprecated
-	Sequence then(Sequence right);
-	
-	
 	/**
 	 * Constructs a sequence consisting of the receiver followed by the 
 	 * specified sub-expression.

@@ -1,9 +1,7 @@
 package io.github.reggert.reb4j;
 
-import fj.F;
-import fj.F2;
-import fj.data.LazyString;
 import fj.data.List;
+import io.github.reggert.reb4j.data.Rope;
 
 
 /**
@@ -17,42 +15,21 @@ import fj.data.List;
 public abstract class Raw extends AbstractSequenceableAlternative
 {
 	private static final long serialVersionUID = 1L;
-	private final LazyString rawExpression;
+	private final Rope rawExpression;
 	
-	Raw(final LazyString rawExpression)
+	Raw(final Rope rawExpression)
 	{
 		assert rawExpression != null;
 		this.rawExpression = rawExpression;
 	}
 
 	@Override
-	public final LazyString expression()
+	public final Rope expression()
 	{return rawExpression;}
 	
-	/**
-	 * @Deprecated Use {@link #andThen(Raw)} instead.
-	 */
-	@Deprecated
-	public Compound then(final Raw right)
-	{return andThen(right);}
 
 	/**
-	 * @Deprecated Use {@link #andThen(Compound)} instead.
-	 */
-	@Deprecated
-	public Compound then(final Compound right)
-	{return andThen(right);}
-
-	/**
-	 * @Deprecated Use {@link #andThen(Literal)} instead.
-	 */
-	@Deprecated
-	public Compound then(final Literal right)
-	{return andThen(right);}
-	
-	
-	/**
-	 * Overloaded version of {@link Sequenceable#andThen(net.sourceforge.reb4j.Sequence.Sequenceable)} 
+	 * Overloaded version of {@link Sequenceable#andThen(Sequenceable)}
 	 * for when the argument is an instance of {@link Raw}.
 	 * 
 	 * @param right an instance of {@link Raw}; must not be <code>null</code>.
@@ -67,7 +44,7 @@ public abstract class Raw extends AbstractSequenceableAlternative
 	}
 
 	/**
-	 * Overloaded version of {@link Sequenceable#andThen(net.sourceforge.reb4j.Sequence.Sequenceable)} 
+	 * Overloaded version of {@link Sequenceable#andThen(Sequenceable)} )}
 	 * for when the argument is an instance of {@link Compound}.
 	 * 
 	 * @param right an instance of {@link Compound}; must not be <code>null</code>.
@@ -82,7 +59,7 @@ public abstract class Raw extends AbstractSequenceableAlternative
 	}
 
 	/**
-	 * Overloaded version of {@link Sequenceable#andThen(net.sourceforge.reb4j.Sequence.Sequenceable)} 
+	 * Overloaded version of {@link Sequenceable#andThen(Sequenceable)} )}
 	 * for when the argument is an instance of {@link Literal}.
 	 * 
 	 * @param right an instance of {@link Literal}; must not be <code>null</code>.
@@ -93,7 +70,7 @@ public abstract class Raw extends AbstractSequenceableAlternative
 	public Compound andThen(final Literal right)
 	{
 		if (right == null) throw new NullPointerException("right");
-		return this.then(new EscapedLiteral(right));
+		return this.andThen(new EscapedLiteral(right));
 	}
 	
 
@@ -111,28 +88,13 @@ public abstract class Raw extends AbstractSequenceableAlternative
 			this.components = components;
 		}
 		
-		private static LazyString compoundExpression(final List<Raw> components)
+		private static Rope compoundExpression(final List<Raw> components)
 		{
 			return components.foldLeft(
-					new F2<LazyString, Raw, LazyString>()
-					{
-						@Override
-						public LazyString f(final LazyString a, final Raw b)
-						{return a.append(b.rawExpression);}
-					},
-					LazyString.empty
+				(a, b) -> a.append(b.rawExpression),
+					Rope.empty()
 				);
 		}
-		
-		@Override
-		@Deprecated
-		public Compound then(final Raw right)
-		{return andThen(right);}
-		
-		@Override
-		@Deprecated
-		public Compound then(final Compound right)
-		{return andThen(right);}
 		
 		@Override
 		public Compound andThen(final Raw right)
@@ -150,18 +112,14 @@ public abstract class Raw extends AbstractSequenceableAlternative
 		public Integer boundedLength() 
 		{
 			final Long maximumLength = components.foldLeft(
-					new F2<Long, Raw, Long>()
-					{
-						@Override public Long f(final Long a, final Raw b) 
-						{
-							if (a == null)
-								return null;
-							final Integer next = b.boundedLength();
-							if (next == null)
-								return null;
-							return a + next;
-						}
-					},
+				(a, b) -> {
+					if (a == null)
+						return null;
+					final Integer next = b.boundedLength();
+					if (next == null)
+						return null;
+					return a + next;
+				},
 					0L
 				);
 			if (maximumLength == null || maximumLength > 0xfffffffL) // arbitrary large value that appears in Pattern source code.
@@ -172,25 +130,13 @@ public abstract class Raw extends AbstractSequenceableAlternative
 		@Override 
 		public boolean repetitionInvalidatesBounds() 
 		{
-			return components.forall(
-					new F<Raw, Boolean>()
-					{
-						@Override public Boolean f(final Raw a) 
-						{return a.repetitionInvalidatesBounds();}
-					}
-				);
+			return components.forall(Expression::repetitionInvalidatesBounds);
 		}
 		
 		@Override 
 		public boolean possiblyZeroLength()
 		{
-			return components.forall(
-					new F<Raw, Boolean>()
-					{
-						@Override public Boolean f(final Raw a) 
-						{return a.possiblyZeroLength();}
-					}
-				);
+			return components.forall(Expression::possiblyZeroLength);
 		}
 	}
 	
@@ -206,7 +152,7 @@ public abstract class Raw extends AbstractSequenceableAlternative
 		
 		public EscapedLiteral(final Literal literal)
 		{
-			super(literal.escaped());
+			super(Rope.fromString(literal.escaped()));
 			this.literal = literal;
 		}
 

@@ -2,7 +2,8 @@ package io.github.reggert.reb4j;
 
 import java.util.regex.Pattern;
 
-import fj.data.LazyString;
+import io.github.reggert.reb4j.data.Rope;
+
 
 /**
  * Expression constructed by "adopting" the expression string from
@@ -15,13 +16,13 @@ import fj.data.LazyString;
 public final class Adopted extends AbstractExpression 
 {
 	private static final long serialVersionUID = 1L;
-	public final LazyString expression;
+	public final Rope expression;
 	
 	private Adopted(final String expression)
-	{this.expression = LazyString.str(expression);}
+	{this.expression = Rope.fromString(expression);}
 	
 	@Override
-	public LazyString expression() 
+	public Rope expression()
 	{return expression;}
 	
 	/**

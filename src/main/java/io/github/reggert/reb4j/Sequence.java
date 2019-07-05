@@ -1,9 +1,7 @@
 package io.github.reggert.reb4j;
 
-import fj.F;
-import fj.F2;
-import fj.data.LazyString;
 import fj.data.List;
+import io.github.reggert.reb4j.data.Rope;
 
 /**
  * Expression consisting of several sub-expressions that must be matched
@@ -79,16 +77,11 @@ public final class Sequence extends AbstractExpression
 	
 
 	@Override
-	public LazyString expression()
+	public Rope expression()
 	{
 		return components.foldLeft(
-				new F2<LazyString, Sequenceable, LazyString>() 
-				{
-					@Override
-					public LazyString f(final LazyString a, final Sequenceable b)
-					{return a.append(b.expression());}
-				}, 
-				LazyString.empty
+			(a, b) -> a.append(b.expression()),
+				Rope.empty()
 			);
 	}
 
@@ -99,16 +92,6 @@ public final class Sequence extends AbstractExpression
 	@Override
 	public Alternation or(final Alternative right) 
 	{return new Alternation(this, right);}
-	
-	@Override
-	@Deprecated
-	public Sequence then(final Sequenceable right)
-	{return andThen(right);}
-
-	@Override
-	@Deprecated
-	public Sequence then(final Sequence right)
-	{return andThen(right);}
 	
 	@Override
 	public Sequence andThen(final Sequenceable right)
@@ -144,18 +127,14 @@ public final class Sequence extends AbstractExpression
 	public Integer boundedLength() 
 	{
 		final Long maximumLength = components.foldLeft(
-				new F2<Long, Sequenceable, Long>()
-				{
-					@Override public Long f(final Long a, final Sequenceable b) 
-					{
-						if (a == null)
-							return null;
-						final Integer next = b.boundedLength();
-						if (next == null)
-							return null;
-						return a + next;
-					}
-				},
+			(a, b) -> {
+				if (a == null)
+					return null;
+				final Integer next = b.boundedLength();
+				if (next == null)
+					return null;
+				return a + next;
+			},
 				0L
 			);
 		if (maximumLength == null || maximumLength > 0xfffffffL) // arbitrary large value that appears in Pattern source code.
@@ -166,25 +145,13 @@ public final class Sequence extends AbstractExpression
 	@Override 
 	public boolean repetitionInvalidatesBounds() 
 	{
-		return components.exists(
-				new F<Sequenceable, Boolean>()
-				{
-					@Override public Boolean f(final Sequenceable a) 
-					{return a.repetitionInvalidatesBounds();}
-				}
-			);
+		return components.exists(Expression::repetitionInvalidatesBounds);
 	}
 	
 	@Override 
 	public boolean possiblyZeroLength()
 	{
-		return components.forall(
-				new F<Sequenceable, Boolean>()
-				{
-					@Override public Boolean f(final Sequenceable a) 
-					{return a.possiblyZeroLength();}
-				}
-			);
+		return components.forall(Expression::possiblyZeroLength);
 	}
 }
 
